@@ -121,15 +121,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-3 shrink-0">
 
             {/* Phone badge */}
-            <a
-              href="tel:+919876543210"
-              className="flex items-center gap-2 px-4 py-[7px] rounded-full border border-slate-200 bg-slate-50 no-underline hover:border-amber-300 hover:bg-amber-50 transition-all duration-200 group"
-            >
-              <span className="w-[7px] h-[7px] rounded-full bg-emerald-400 shadow-[0_0_7px_rgba(52,211,153,0.85)] animate-pulse shrink-0" />
-              <span className="font-syne text-[11px] font-bold tracking-[0.5px] text-slate-600 group-hover:text-amber-700 transition-colors">
-                +91 98765 43210
-              </span>
-            </a>
+            
 
             {/* Divider */}
             <span className="w-px h-5 bg-slate-200 shrink-0" />
