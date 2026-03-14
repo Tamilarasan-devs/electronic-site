@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 // ─── GOOGLE FONTS ────────────────────────────────────────────────────────────
 const FontLoader = () => (
@@ -178,7 +178,7 @@ function Navbar({ activePage, setPage }) {
 }
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
-function HeroSection({ setPage }) {
+function HeroSection() {
   return (
     <section className="relative min-h-[100vh] flex items-center overflow-hidden bg-slate-950 pt-16">
       {/* Geometric background */}
@@ -423,7 +423,7 @@ function TestimonialsSection() {
 }
 
 // ─── LOCATION ─────────────────────────────────────────────────────────────────
-function LocationSection({ setPage }) {
+function LocationSection() {
   useScrollReveal();
   return (
     <section className="py-20 bg-white">
@@ -589,13 +589,13 @@ function HomePage({ setPage, onEnquire }) {
   useScrollReveal();
   return (
     <>
-      <HeroSection setPage={setPage}/>
+      <HeroSection />
       <BrandTicker/>
       <ServicesSection setPage={setPage} onEnquire={onEnquire}/>
       <WhyUsSection/>
       <BrandsSection setPage={setPage}/>
       <TestimonialsSection/>
-      <LocationSection setPage={setPage}/>
+      <LocationSection />
       <CTASection setPage={setPage}/>
     </>
   );
