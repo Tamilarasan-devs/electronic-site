@@ -23,14 +23,14 @@ export default function StatsSection() {
         <div className="text-center mb-20 flex flex-col items-center gap-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8]">
             <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-            <p className="text-[10px] font-semibold tracking-[4px] uppercase text-[#2a4771]">Numbers That Speak</p>
+            <p className="text-[14px] font-semibold tracking-[4px] uppercase text-[#2a4771]">Numbers That Speak</p>
           </div>
-          <h2 className="text-5xl md:text-7xl text-gray-900 uppercase leading-none tracking-widest" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+          <h2 className="text-5xl md:text-7xl text-gray-900 uppercase leading-none tracking-widest" >
             Our <span className="relative text-[#2a4771]">Achievements<span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" /></span>
           </h2>
           <div className="flex items-center gap-3 mt-1">
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-            <p className="text-gray-400 text-xs font-medium tracking-[3px] uppercase italic">Trusted by Thousands for Top‑Notch Service</p>
+            <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase italic">Trusted by Thousands for Top‑Notch Service</p>
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function StatsSection() {
                 {/* Ghost watermark */}
                 <span className="absolute -bottom-2 -right-2 text-[90px] leading-none select-none pointer-events-none
                   text-[#2a4771]/[0.06] group-hover:text-white/[0.07] transition-all duration-500"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}>0{stat.id}</span>
+                  >0{stat.id}</span>
 
                 {/* Icon */}
                 <div className="relative w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-400
@@ -71,11 +71,11 @@ export default function StatsSection() {
                 <div className="flex flex-col gap-1">
                   <p className="text-5xl md:text-6xl leading-none transition-colors duration-300
                     text-[#2a4771] group-hover:text-white"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{stat.value}</p>
-                  <p className="text-sm font-bold tracking-wide transition-colors duration-300
+                    >{stat.value}</p>
+                  <p className="text-md font-bold tracking-wide transition-colors duration-300
                     text-gray-800 group-hover:text-white">{stat.label}</p>
-                  <p className="text-xs tracking-wide leading-relaxed transition-colors duration-300
-                    text-gray-400 group-hover:text-white/75">{stat.sub}</p>
+                  <p className="text-md tracking-wide leading-relaxed transition-colors duration-300
+                    text-gray-600 group-hover:text-white/75">{stat.sub}</p>
                 </div>
 
                 {/* Progress + arrow */}
@@ -103,7 +103,7 @@ export default function StatsSection() {
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#eef2f8]/60 via-transparent to-[#eef2f8]/60" />
           <div className="relative flex flex-col gap-1 text-center md:text-left pl-4">
             <p className="text-gray-900 text-lg font-bold tracking-wide">Ready to join our success story?</p>
-            <p className="text-gray-400 text-sm">Book a repair today and experience the KJ Electronics difference.</p>
+            <p className="text-gray-600 text-md">Book a repair today and experience the KJ Electronics difference.</p>
           </div>
           <div className="relative flex items-center gap-4 shrink-0">
             <button className="px-7 py-3 text-white text-xs font-bold tracking-[3px] uppercase rounded-full transition-all duration-300
@@ -111,7 +111,7 @@ export default function StatsSection() {
               hover:bg-[#3d5f96] hover:shadow-[0_12px_36px_rgba(42,71,113,0.45)] hover:-translate-y-0.5">
               Book a Repair
             </button>
-            <button className="group/sec flex items-center gap-2 text-gray-400 hover:text-[#2a4771] text-xs tracking-[2px] uppercase font-semibold transition-all duration-300">
+            <button className="group/sec flex items-center gap-2 text-gray-600 hover:text-[#2a4771] text-md tracking-[2px] uppercase font-semibold transition-all duration-300">
               Call Us
               <span className="relative inline-block w-5 h-px bg-gray-300 group-hover/sec:bg-[#2a4771] group-hover/sec:w-8 transition-all duration-300">
                 <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-gray-300 group-hover/sec:border-[#2a4771] rotate-45 inline-block transition-colors duration-300" />

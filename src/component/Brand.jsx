@@ -91,7 +91,7 @@ export default function Brand() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
             style={{ background: "rgba(42,71,113,0.08)", border: "1px solid rgba(42,71,113,0.18)" }}>
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#2a4771" }} />
-            <p className="text-xs font-bold tracking-[4px] uppercase" style={{ color: "#2a4771" }}>
+            <p className="text-md font-bold tracking-[4px] uppercase" style={{ color: "#2a4771" }}>
               All Major Brands
             </p>
           </div>

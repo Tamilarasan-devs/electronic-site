@@ -49,14 +49,14 @@ export default function WhyChoose() {
         <div className="text-center mb-20 flex flex-col items-center gap-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8]">
             <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-            <p className="text-[10px] font-semibold tracking-[4px] uppercase text-[#2a4771]">Our Promise</p>
+            <p className="text-[14px] font-semibold tracking-[4px] uppercase text-[#2a4771]">Our Promise</p>
           </div>
-          <h2 className="text-5xl md:text-7xl text-gray-900 uppercase leading-none tracking-widest" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+          <h2 className="text-5xl md:text-7xl text-gray-900 uppercase leading-none tracking-widest">
             Why <span className="relative text-[#2a4771]">Choose<span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" /></span> Us
           </h2>
           <div className="flex items-center gap-3 mt-1">
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-            <p className="text-gray-400 text-xs font-medium tracking-[3px] uppercase italic">Experience Unmatched Service &amp; Expertise</p>
+            <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase italic">Experience Unmatched Service &amp; Expertise</p>
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function WhyChoose() {
                 {/* Ghost watermark */}
                 <span className="absolute bottom-4 right-5 text-[100px] leading-none select-none pointer-events-none
                   text-[#2a4771]/[0.06] group-hover:text-white/[0.07] transition-all duration-500"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}>0{item.id}</span>
+                  >0{item.id}</span>
 
                 {/* Icon + tag row */}
                 <div className="relative flex items-center justify-between">
@@ -89,7 +89,7 @@ export default function WhyChoose() {
                     group-hover:bg-white/20 group-hover:border-white/30">
                     <Icon size={24} className="text-[#2a4771] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <span className="text-[9px] font-bold tracking-[2px] uppercase rounded-full px-3 py-1 transition-all duration-300
+                  <span className="text-[14px] font-bold tracking-[2px] uppercase rounded-full px-3 py-1 transition-all duration-300
                     text-[#3d5f96] border border-[#c5d3e8]
                     group-hover:text-white group-hover:border-white/30 group-hover:bg-white/10">
                     {item.tag}
@@ -103,8 +103,8 @@ export default function WhyChoose() {
                 <div className="flex flex-col gap-3">
                   <h3 className="text-2xl uppercase tracking-wide leading-tight transition-colors duration-300
                     text-gray-800 group-hover:text-white"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{item.title}</h3>
-                  <p className="text-sm leading-relaxed font-light transition-colors duration-300
+                   >{item.title}</h3>
+                  <p className="text-md leading-relaxed font-light transition-colors duration-300
                     text-gray-500 group-hover:text-white/80">{item.description}</p>
                 </div>
 
@@ -113,8 +113,8 @@ export default function WhyChoose() {
                   <div>
                     <p className="text-4xl leading-none transition-colors duration-300
                       text-[#2a4771] group-hover:text-white"
-                      style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{item.stat}</p>
-                    <p className="text-[10px] tracking-[2px] uppercase mt-1 transition-colors duration-300
+                     >{item.stat}</p>
+                    <p className="text-[12px] tracking-[2px] uppercase mt-1 transition-colors duration-300
                       text-[#3d5f96] group-hover:text-white/70">{item.statLabel}</p>
                   </div>
                   {/* Arrow orb */}
@@ -147,10 +147,10 @@ export default function WhyChoose() {
                 bg-[#2a4771] group-hover:bg-white
                 shadow-[0_0_8px_rgba(42,71,113,0.5)] group-hover:shadow-[0_0_10px_rgba(255,255,255,0.6)]" />
               <div>
-                <p className="text-sm font-bold tracking-wide transition-colors duration-300
+                <p className="text-md font-bold tracking-wide transition-colors duration-300
                   text-[#2a4771] group-hover:text-white">{item.label}</p>
-                <p className="text-xs tracking-wide mt-0.5 transition-colors duration-300
-                  text-gray-400 group-hover:text-white/70">{item.sub}</p>
+                <p className="text-md tracking-wide mt-0.5 transition-colors duration-300
+                  text-gray-600 group-hover:text-white/70">{item.sub}</p>
               </div>
             </div>
           ))}

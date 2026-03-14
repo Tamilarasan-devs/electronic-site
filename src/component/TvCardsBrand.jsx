@@ -138,8 +138,8 @@ const TVBrandCards = () => {
               style={{ background: BRAND }}
             />
             <span
-              className="text-[10px] font-semibold tracking-[4px] uppercase"
-              style={{ color: BRAND, fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.2em" }}
+              className="text-[14px] font-semibold tracking-[4px] uppercase"
+              style={{ color: BRAND,  letterSpacing: "0.2em" }}
             >
               All Major Brands
             </span>
@@ -147,8 +147,8 @@ const TVBrandCards = () => {
 
           {/* Main title */}
           <h2
-            className="text-5xl md:text-7xl uppercase leading-none tracking-widest text-gray-900"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            className="text-3xl md:text-7xl uppercase leading-none tracking-widest text-gray-900"
+            // style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             Popular{" "}
             <span className="relative" style={{ color: BRAND }}>
@@ -163,19 +163,19 @@ const TVBrandCards = () => {
           {/* Subtitle row */}
           <div className="flex items-center gap-4 mt-2">
             <span className="w-10 h-px bg-gray-200" />
-            <p className="text-gray-400 text-xs font-medium tracking-[3px] uppercase">
+            <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase">
               We Service All Leading Television Brands
             </p>
             <span className="w-10 h-px bg-gray-200" />
           </div>
 
           {/* Count badge */}
-          <div className="mt-1 px-5 py-2 rounded-full border border-gray-200 bg-gray-50 flex items-center gap-2 shadow-sm">
+          <div className="mt-4 px-5 py-2 rounded-full border border-gray-200 bg-gray-50 flex items-center gap-2 shadow-sm">
             <span
               className="w-1.5 h-1.5 rounded-full animate-pulse"
               style={{ background: BRAND }}
             />
-            <span className="text-gray-500 text-[11px] tracking-[2px] uppercase font-medium">
+            <span className="text-gray-500 text-[14px] tracking-[2px] uppercase font-medium">
               {tvBrands.length} Brands &amp; Counting
             </span>
           </div>

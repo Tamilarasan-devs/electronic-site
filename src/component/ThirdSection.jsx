@@ -72,7 +72,7 @@ export default function ThirdSection() {
           {/* <div className="absolute -bottom-20 -right-4 rounded-xl px-5 py-3 shadow-lg backdrop-blur-sm
             bg-white border border-[#c5d3e8]">
             <p className="text-[#3d5f96] text-xs tracking-[3px] uppercase font-bold mb-0.5">Trusted Since</p>
-            <p className="text-[#2a4771] font-black text-2xl leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <p className="text-[#2a4771] font-black text-2xl leading-none" >
               2014
             </p>
           </div> */}
@@ -89,12 +89,12 @@ export default function ThirdSection() {
                 <p
                   className="text-xl font-black leading-none mb-1 transition-colors duration-300
                     text-[#2a4771] group-hover:text-white"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  
                 >
                   {s.value}
                 </p>
-                <p className="text-[9px] tracking-widest uppercase leading-tight transition-colors duration-300
-                  text-gray-400 group-hover:text-white/75">
+                <p className="text-[13px] tracking-widest uppercase leading-tight transition-colors duration-300
+                  text-gray-600 group-hover:text-white/75">
                   {s.label}
                 </p>
               </div>
@@ -108,13 +108,13 @@ export default function ThirdSection() {
           {/* Eyebrow chip */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8] self-start">
             <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-            <p className="text-[10px] font-bold tracking-[4px] uppercase text-[#2a4771]">Best in Coimbatore</p>
+            <p className="text-[14px] font-bold tracking-[4px] uppercase text-[#2a4771]">Best in Coimbatore</p>
           </div>
 
           {/* Heading */}
           <h2
             className="text-5xl md:text-6xl text-gray-900 uppercase leading-none tracking-widest"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             KJ{" "}
             <span className="relative text-[#2a4771]">
@@ -126,7 +126,7 @@ export default function ThirdSection() {
           {/* Tagline */}
           <div className="flex items-center gap-3 mt-1">
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-            <p className="text-[#3d5f96] text-sm font-semibold tracking-widest uppercase italic">
+            <p className="text-[#3d5f96] text-md font-semibold tracking-widest uppercase italic">
               Always Deliver More Than Expected
             </p>
           </div>
@@ -135,7 +135,7 @@ export default function ThirdSection() {
           <div className="w-full h-[1px] bg-gradient-to-r from-[#2a4771]/30 via-[#c5d3e8] to-transparent" />
 
           {/* Body paragraphs */}
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <p className="text-gray-500 text-md leading-relaxed">
             Welcome to the{" "}
             <span className="text-gray-800 font-semibold">Best LED TV Service Center in Coimbatore!</span>{" "}
             Our highly trained technicians have over{" "}
@@ -143,7 +143,7 @@ export default function ThirdSection() {
             trustworthy LED TV repair for all major brands — built on precision, trust, and speed.
           </p>
 
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <p className="text-gray-500 text-md leading-relaxed">
             We specialize in fixing all types of TVs including{" "}
             <span className="text-gray-800 font-semibold">LED, LCD, and Plasma</span> using modern
             technology. We provide{" "}
@@ -151,7 +151,7 @@ export default function ThirdSection() {
             to ensure your TV works again without delay.
           </p>
 
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <p className="text-gray-500 text-md leading-relaxed">
             We only use{" "}
             <span className="text-gray-800 font-semibold">original spare parts</span> for
             long-lasting results. Customer satisfaction is our number one goal — affordable,
@@ -163,14 +163,14 @@ export default function ThirdSection() {
 
           {/* Brands */}
           <div>
-            <p className="text-[9px] tracking-[3px] text-gray-400 uppercase mb-3 font-semibold">
+            <p className="text-[14px] tracking-[3px] text-gray-600 uppercase mb-3 font-semibold">
               Brands We Service
             </p>
             <div className="flex flex-wrap gap-2">
               {brands.map((brand) => (
                 <span
                   key={brand}
-                  className="group/pill text-[11px] font-semibold tracking-wider rounded-full px-3 py-1 cursor-default transition-all duration-300
+                  className="group/pill text-[14px] font-semibold tracking-wider rounded-full px-3 py-1 cursor-default transition-all duration-300
                     text-[#2a4771] border border-[#c5d3e8] bg-[#eef2f8]
                     hover:bg-[#2a4771] hover:border-[#2a4771] hover:text-white hover:shadow-[0_4px_12px_rgba(42,71,113,0.2)]"
                 >
@@ -188,7 +188,7 @@ export default function ThirdSection() {
               Book a Repair
             </button>
 
-            <button className="group/sec flex items-center gap-2 text-gray-400 hover:text-[#2a4771] text-xs tracking-[2px] uppercase font-semibold transition-all duration-300">
+            <button className="group/sec flex items-center gap-2 text-gray-600 hover:text-[#2a4771] text-md tracking-[2px] uppercase font-semibold transition-all duration-300">
               Call Us Now
               <span className="relative inline-block w-6 h-px bg-gray-300 group-hover/sec:bg-[#2a4771] group-hover/sec:w-9 transition-all duration-300">
                 <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-gray-300 group-hover/sec:border-[#2a4771] rotate-45 inline-block transition-colors duration-300" />
@@ -199,7 +199,7 @@ export default function ThirdSection() {
         </div>
       </div>
 
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');`}</style>
+      {/* <style>{`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');`}</style> */}
     </section>
   );
 }

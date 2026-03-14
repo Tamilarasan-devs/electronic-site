@@ -85,7 +85,7 @@ export default function ContactPage() {
 
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8]">
             <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-            <p className="text-[10px] font-bold tracking-[4px] uppercase text-[#2a4771]">Get In Touch</p>
+            <p className="text-[14px] font-bold tracking-[4px] uppercase text-[#2a4771]">Get In Touch</p>
           </div>
 
           <h1 className="text-5xl md:text-7xl text-gray-900 uppercase leading-none tracking-widest"
@@ -99,7 +99,7 @@ export default function ContactPage() {
 
           <div className="flex items-center gap-3 mt-1">
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-            <p className="text-gray-400 text-xs font-medium tracking-[3px] uppercase italic">
+            <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase italic">
               We're Here to Help — Reach Out Anytime
             </p>
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
@@ -142,12 +142,12 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <p className="text-[10px] font-bold tracking-[3px] uppercase mb-1 transition-colors duration-300
+                  <p className="text-[14px] font-bold tracking-[3px] uppercase mb-1 transition-colors duration-300
                     text-[#3d5f96] group-hover:text-white/70">{info.label}</p>
-                  <p className="text-sm font-bold leading-tight transition-colors duration-300
+                  <p className="text-md font-bold leading-tight transition-colors duration-300
                     text-gray-800 group-hover:text-white">{info.value}</p>
-                  <p className="text-xs mt-0.5 transition-colors duration-300
-                    text-gray-400 group-hover:text-white/65">{info.sub}</p>
+                  <p className="text-md mt-0.5 transition-colors duration-300
+                    text-gray-600 group-hover:text-white/65">{info.sub}</p>
                 </div>
 
                 {/* Arrow */}
@@ -181,14 +181,14 @@ export default function ContactPage() {
                 <div className="mb-8 pl-3">
                   <div className="flex items-center gap-2 mb-3">
                     <MessageSquare size={15} className="text-[#2a4771]" />
-                    <p className="text-[10px] font-bold tracking-[3px] uppercase text-[#2a4771]">Send a Message</p>
+                    <p className="text-[14px] font-bold tracking-[3px] uppercase text-[#2a4771]">Send a Message</p>
                   </div>
                   <h2 className="text-3xl md:text-4xl text-gray-900 uppercase leading-tight mb-2"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                >
                     Book a Repair{" "}
                     <span className="text-[#2a4771]">Instantly</span>
                   </h2>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-md leading-relaxed">
                     Fill in the details and our team will get back to you within <span className="font-bold text-[#2a4771]">30 minutes</span>.
                   </p>
                 </div>
@@ -198,7 +198,7 @@ export default function ContactPage() {
                   {/* Name + Phone row */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-bold tracking-[2px] uppercase text-[#2a4771]">Your Name *</label>
+                      <label className="text-[14px] font-bold tracking-[2px] uppercase text-[#2a4771]">Your Name *</label>
                       <input
                         type="text"
                         placeholder="e.g. Ravi Kumar"
@@ -211,7 +211,7 @@ export default function ContactPage() {
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-bold tracking-[2px] uppercase text-[#2a4771]">Phone Number *</label>
+                      <label className="text-[14px] font-bold tracking-[2px] uppercase text-[#2a4771]">Phone Number *</label>
                       <input
                         type="tel"
                         placeholder="+91 98765 43210"
@@ -227,7 +227,7 @@ export default function ContactPage() {
 
                   {/* Service */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-bold tracking-[2px] uppercase text-[#2a4771]">Service Required *</label>
+                    <label className="text-[14px] font-bold tracking-[2px] uppercase text-[#2a4771]">Service Required *</label>
                     <select
                       required
                       value={formState.service}
@@ -245,7 +245,7 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-bold tracking-[2px] uppercase text-[#2a4771]">Describe Your Issue</label>
+                    <label className="text-[14px] font-bold tracking-[2px] uppercase text-[#2a4771]">Describe Your Issue</label>
                     <textarea
                       rows={4}
                       placeholder="Briefly describe the problem with your TV..."
@@ -274,7 +274,7 @@ export default function ContactPage() {
                   </button>
 
                   {/* Privacy note */}
-                  <p className="text-center text-[10px] text-gray-400 tracking-wide">
+                  <p className="text-center text-[14px] text-gray-400 tracking-wide">
                     🔒 Your information is safe and will never be shared.
                   </p>
                 </form>

@@ -89,7 +89,7 @@ export default function AboutUs() {
 
         {/* Ghost bg word */}
         <div className="absolute top-4 right-0 pointer-events-none select-none"
-          style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(100px, 18vw, 260px)", color: "rgba(42,71,113,0.04)", lineHeight: 1 }}>
+          style={{ fontSize: "clamp(100px, 18vw, 260px)", color: "rgba(42,71,113,0.04)", lineHeight: 1 }}>
           ABOUT
         </div>
 
@@ -101,11 +101,11 @@ export default function AboutUs() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
               style={{ background: "rgba(42,71,113,0.08)", border: "1px solid rgba(42,71,113,0.18)" }}>
               <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#2a4771" }} />
-              <p className="text-xs font-bold tracking-[4px] uppercase" style={{ color: "#2a4771" }}>Est. 2014 · Coimbatore</p>
+              <p className="text-xs font-bold tracking-[4px] uppercase" style={{ color: "#2a4771" }}>Coimbatore</p>
             </div>
 
             <h1 className="leading-[0.88] tracking-tight mb-8"
-              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(64px, 10vw, 120px)", color: "#2a4771" }}>
+              style={{ fontSize: "clamp(64px, 10vw, 120px)", color: "#2a4771" }}>
               <span className="block" style={{ color: "#1a2e4a" }}>Your TV,</span>
               <span className="block relative" style={{ color: "#2a4771" }}>
                 Repaired.
@@ -170,7 +170,7 @@ export default function AboutUs() {
                 onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(42,71,113,0.06)"; e.currentTarget.style.borderColor = "rgba(42,71,113,0.12)"; }}
               >
                 <p className="font-black leading-none mb-2"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 5vw, 60px)", color: "#2a4771" }}>
+                  style={{ fontSize: "clamp(40px, 5vw, 60px)", color: "#2a4771" }}>
                   {s.value}
                 </p>
                 <p className="text-xs font-bold uppercase tracking-[3px]" style={{ color: "#7aa0cc" }}>
@@ -196,7 +196,7 @@ export default function AboutUs() {
                   <span className="text-[10px] font-bold tracking-[3px] uppercase" style={{ color: "#2a4771" }}>About Us</span>
                 </div>
                 <h2 className="font-normal leading-tight"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4.5vw, 58px)", color: "#1a2e4a" }}>
+                  style={{ fontSize: "clamp(36px, 4.5vw, 58px)", color: "#1a2e4a" }}>
                   Who We Are &<br />
                   <span style={{ color: "#2a4771" }}>What We Stand For</span>
                 </h2>
@@ -227,13 +227,9 @@ export default function AboutUs() {
 
           <RevealSection className="flex items-end justify-between mb-16 gap-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4"
-                style={{ background: "rgba(42,71,113,0.08)", border: "1px solid rgba(42,71,113,0.15)" }}>
-                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#2a4771" }} />
-                <span className="text-[10px] font-bold tracking-[3px] uppercase" style={{ color: "#2a4771" }}>Services</span>
-              </div>
+              
               <h2 className="font-normal leading-none"
-                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px, 7vw, 88px)", color: "#1a2e4a" }}>
+                style={{  fontSize: "clamp(48px, 7vw, 88px)", color: "#1a2e4a" }}>
                 What We<br /><span style={{ color: "#2a4771" }}>Do Best</span>
               </h2>
             </div>
@@ -243,7 +239,7 @@ export default function AboutUs() {
             {services.map((s, idx) => (
               <RevealSection key={s.id} delay={idx * 80}>
                 <div
-                  className="grid grid-cols-[56px_1fr] md:grid-cols-[56px_1fr_56px] gap-6 md:gap-12 py-10 px-4 cursor-pointer transition-all duration-400 rounded-2xl"
+                  className="grid grid-cols-[56px_1fr] md:grid-cols-[56px_1fr_56px] gap-6 md:gap-12 py-10 px-4 cursor-pointer transition-all duration-400 rounded-2xl "
                   style={{
                     borderBottom: idx < services.length - 1 ? "1px solid rgba(42,71,113,0.08)" : "none",
                     background: hovered === s.id ? "rgba(42,71,113,0.04)" : "transparent",
@@ -251,25 +247,25 @@ export default function AboutUs() {
                   onMouseEnter={() => setHovered(s.id)}
                   onMouseLeave={() => setHovered(null)}
                 >
-                  <p className="text-sm font-black tracking-[2px] pt-2 transition-colors duration-300"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif", color: hovered === s.id ? "#2a4771" : "rgba(42,71,113,0.2)" }}>
+                  <p className="text-md font-black tracking-[2px] pt-2 transition-colors duration-300"
+                    style={{  color: hovered === s.id ? "#2a4771" : "rgba(42,71,113,0.2)" }}>
                     {s.num}
                   </p>
 
                   <div>
-                    <h3 className="font-normal mb-4 transition-all duration-400"
+                    <h3 className=" mb-4 transition-all duration-400"
                       style={{
-                        fontFamily: "'Bebas Neue', sans-serif",
+                      
                         fontSize: "clamp(28px, 3.5vw, 44px)",
                         letterSpacing: "0.03em",
-                        color: hovered === s.id ? "#2a4771" : "#1a2e4a",
+                        color: hovered === s.id ? "#2a4771" : "#2a4771 2024 KJ Electronics · Coimbatore, Tamil Nadu",
                         transform: hovered === s.id ? "translateX(10px)" : "translateX(0)",
                         transition: "transform 0.4s cubic-bezier(0.34,1.2,0.64,1), color 0.3s ease",
                       }}>
                       {s.title}
                     </h3>
                     <p className="text-lg leading-relaxed max-w-xl mb-5 transition-colors duration-300"
-                      style={{ fontFamily: "'Rajdhani', sans-serif", color: hovered === s.id ? "#3d5f96" : "#6b8aaa" }}>
+                      style={{  color: hovered === s.id ? "#3d5f96" : "#6b8aaa" }}>
                       {s.desc}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -320,7 +316,7 @@ export default function AboutUs() {
             {[...brands, ...brands, ...brands].map((b, i) => (
               <span key={i}
                 className="text-3xl md:text-4xl font-black cursor-default select-none shrink-0 transition-colors duration-200"
-                style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.1em", color: "#2a4771" }}
+                style={{ letterSpacing: "0.1em", color: "#2a4771" }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = "#2a4771"; }}
                 // onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(42,71,113,0.18)"; }}
               >
@@ -351,7 +347,7 @@ export default function AboutUs() {
               <span className="text-[10px] font-bold tracking-[3px] uppercase" style={{ color: "#2a4771" }}>Why Choose Us</span>
             </div>
             <h2 className="font-normal leading-none"
-              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px, 7vw, 90px)", color: "#1a2e4a" }}>
+              style={{ fontSize: "clamp(48px, 7vw, 90px)", color: "#1a2e4a" }}>
               The KJ Electronics{" "}
               <span style={{ color: "#2a4771" }}>Difference</span>
             </h2>
@@ -378,7 +374,7 @@ export default function AboutUs() {
                 >
                   {/* Ghost number */}
                   <span className="absolute -bottom-4 -right-2 font-black leading-none select-none pointer-events-none"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "120px", color: "rgba(42,71,113,0.04)" }}>
+                    style={{ fontSize: "120px", color: "rgba(42,71,113,0.04)" }}>
                     {item.num}
                   </span>
                   {/* Top accent */}
@@ -388,7 +384,7 @@ export default function AboutUs() {
                   <div className="w-8 h-[3px] rounded-full mb-6" style={{ background: "#2a4771" }} />
 
                   <h4 className="font-black mb-3"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(26px, 3vw, 36px)", letterSpacing: "0.04em", color: "#2a4771" }}>
+                    style={{ fontSize: "clamp(26px, 3vw, 36px)", letterSpacing: "0.04em", color: "#2a4771" }}>
                     {item.title}
                   </h4>
                   <p className="text-lg leading-relaxed" style={{ fontFamily: "'Rajdhani', sans-serif", color: "#6b8aaa" }}>
@@ -423,7 +419,7 @@ export default function AboutUs() {
 
               {/* Ghost KJ */}
               <div className="absolute bottom-0 right-0 font-black leading-none select-none pointer-events-none"
-                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "240px", color: "rgba(255,255,255,0.03)", lineHeight: 0.85 }}>
+                style={{ fontSize: "240px", color: "rgba(255,255,255,0.03)", lineHeight: 0.85 }}>
                 KJ
               </div>
 
@@ -435,7 +431,7 @@ export default function AboutUs() {
                   </div>
 
                   <h2 className="text-white leading-none mb-5"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(44px, 6vw, 80px)" }}>
+                    style={{ fontSize: "clamp(44px, 6vw, 80px)" }}>
                     Bring Your TV In.<br />
                     <span style={{ color: "rgba(255,255,255,0.5)" }}>We'll Take It From Here.</span>
                   </h2>
@@ -483,24 +479,6 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="relative z-10 px-6 md:px-14 lg:px-20 py-8 flex flex-col sm:flex-row items-center justify-between gap-4"
-        style={{ borderTop: "1px solid rgba(42,71,113,0.1)" }}>
-        <div className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center"
-            style={{ background: "linear-gradient(135deg, #2a4771, #3d5f96)" }}>
-            <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
-            </svg>
-          </div>
-          <p className="text-sm font-bold tracking-wide" style={{ color: "#7aa0cc", fontFamily: "'Rajdhani', sans-serif" }}>
-            © 2024 KJ Electronics · Coimbatore, Tamil Nadu
-          </p>
-        </div>
-        <p className="text-xs font-bold tracking-[3px] uppercase" style={{ color: "#3d5f96", fontFamily: "'Rajdhani', sans-serif" }}>
-          LCD · LED · PCB · Spare Parts
-        </p>
-      </footer>
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');

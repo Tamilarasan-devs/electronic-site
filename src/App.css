@@ -1,1 +1,7 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "LemonMilk";
+  src: url("./assets/font/LemonMilkMedium-mLZYV.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}

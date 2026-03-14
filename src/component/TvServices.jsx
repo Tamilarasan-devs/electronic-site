@@ -36,7 +36,7 @@ export default function TVServices() {
             {/* Floating badge */}
             <div className="absolute bottom-5 right-5 rounded-xl px-5 py-3 shadow-lg backdrop-blur-sm bg-white/92 border border-[#c5d3e8]">
               <p className="text-[9px] tracking-[3px] uppercase font-bold mb-0.5 text-[#3d5f96]">Response Time</p>
-              <p className="font-black text-2xl leading-none text-[#2a4771]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>Under 3 Hrs</p>
+              <p className="font-black text-2xl leading-none text-[#2a4771]">Under 3 Hrs</p>
             </div>
           </div>
 
@@ -47,7 +47,7 @@ export default function TVServices() {
                 className="group rounded-xl py-3 px-2 text-center cursor-default transition-all duration-300
                   bg-[#eef2f8] border border-[#c5d3e8]
                   hover:bg-[#2a4771] hover:border-[#2a4771] hover:shadow-[0_4px_16px_rgba(42,71,113,0.2)]">
-                <p className="text-[10px] tracking-[2px] uppercase font-bold transition-colors duration-300
+                <p className="text-[14px] tracking-[2px] uppercase font-bold transition-colors duration-300
                   text-[#2a4771] group-hover:text-white">{item}</p>
               </div>
             ))}
@@ -58,10 +58,10 @@ export default function TVServices() {
         <div className="lg:w-1/2 w-full flex flex-col gap-7">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8] self-start">
             <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-            <p className="text-[10px] font-bold tracking-[4px] uppercase text-[#2a4771]">Premium TV Services</p>
+            <p className="text-[14px] font-bold tracking-[4px] uppercase text-[#2a4771]">Premium TV Services</p>
           </div>
 
-          <h2 className="text-4xl md:text-6xl uppercase leading-none tracking-widest text-gray-900" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+          <h2 className="text-4xl md:text-6xl uppercase leading-none tracking-widest text-gray-900">
             Get Started with the{" "}
             <span className="relative text-[#2a4771]">
               Best TV Services
@@ -71,12 +71,12 @@ export default function TVServices() {
 
           <div className="flex items-center gap-3">
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-            <p className="text-gray-400 text-xs font-medium tracking-[3px] uppercase italic">Experts Ready to Serve You</p>
+            <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase italic">Experts Ready to Serve You</p>
           </div>
 
           <div className="w-full h-[1px] bg-gradient-to-r from-[#2a4771]/30 via-[#c5d3e8] to-transparent" />
 
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <p className="text-gray-500 text-md leading-relaxed">
             Ready to enhance your TV viewing experience? Contact our experts to find the perfect service for your home. Whether you need a{" "}
             <span className="text-gray-800 font-semibold">comprehensive repair</span> or a{" "}
             <span className="font-bold text-[#2a4771]">flexible same-day solution</span>, we help you get back to watching — fast.
@@ -100,8 +100,8 @@ export default function TVServices() {
                   <div className="flex flex-col gap-1 flex-1">
                     <h3 className="text-lg uppercase tracking-wide leading-none transition-colors duration-300
                       text-gray-800 group-hover:text-white"
-                      style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{feature.title}</h3>
-                    <p className="text-xs leading-relaxed transition-colors duration-300
+                    >{feature.title}</h3>
+                    <p className="text-md leading-relaxed transition-colors duration-300
                       text-gray-400 group-hover:text-white/80">{feature.description}</p>
                   </div>
                   <div className="ml-auto shrink-0 self-center opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
@@ -122,7 +122,7 @@ export default function TVServices() {
               hover:bg-[#3d5f96] hover:shadow-[0_12px_36px_rgba(42,71,113,0.5)] hover:-translate-y-0.5">
               Contact Our Experts
             </button>
-            <button className="group/sec flex items-center gap-2 text-gray-400 hover:text-[#2a4771] text-xs tracking-[2px] uppercase font-semibold transition-all duration-300">
+            <button className="group/sec flex items-center gap-2 text-gray-600 hover:text-[#2a4771] text-md tracking-[2px] uppercase font-semibold transition-all duration-300">
               Call Us Now
               <span className="relative inline-block w-6 h-px bg-gray-300 group-hover/sec:bg-[#2a4771] group-hover/sec:w-9 transition-all duration-300">
                 <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-gray-300 group-hover/sec:border-[#2a4771] rotate-45 inline-block transition-colors duration-300" />
@@ -131,7 +131,6 @@ export default function TVServices() {
           </div>
         </div>
       </div>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');`}</style>
     </section>
   );
 }

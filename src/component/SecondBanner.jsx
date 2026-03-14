@@ -125,7 +125,7 @@ export default function SecondBanner() {
           style={{ opacity: 0, transform: "translateY(20px)", transition: "opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.2,0.64,1)" }}
         >
           <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-          <p className="text-[10px] font-bold tracking-[4px] uppercase text-[#2a4771]">Why Choose Us</p>
+          {/* <p className="text-[10px] font-bold tracking-[4px] uppercase text-[#2a4771]">Why Choose Us</p> */}
         </div>
 
         {/* Heading */}
@@ -133,7 +133,7 @@ export default function SecondBanner() {
           data-animate
           className="text-5xl md:text-6xl tracking-widest text-gray-900 uppercase leading-none"
           style={{
-            fontFamily: "'Bebas Neue', sans-serif",
+        
             opacity: 0,
             transform: "translateY(24px)",
             transition: "opacity 0.7s ease, transform 0.7s cubic-bezier(0.34,1.2,0.64,1)",
@@ -153,7 +153,7 @@ export default function SecondBanner() {
           style={{ opacity: 0, transform: "translateY(20px)", transition: "opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.2,0.64,1)" }}
         >
           <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-          <p className="text-gray-400 text-xs font-medium tracking-[3px] uppercase italic">
+          <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase italic">
             Experience Unmatched Service &amp; Expertise
           </p>
           <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
@@ -225,7 +225,7 @@ export default function SecondBanner() {
             <span
               className="absolute top-4 right-5 z-[2] text-[80px] leading-none select-none transition-all duration-500
                 text-white/[0.04] group-hover:text-white/[0.1] group-hover:scale-110"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              
             >
               {card.number}
             </span>
@@ -246,7 +246,7 @@ export default function SecondBanner() {
                 className="text-[26px] tracking-wide text-white leading-[1.15] mb-3.5
                   group-hover:-translate-y-1 group-hover:text-white
                   transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                
               >
                 {card.title}
               </h3>
@@ -280,7 +280,7 @@ export default function SecondBanner() {
         ))}
       </div>
 
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');`}</style>
+      {/* <style>{`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');`}</style> */}
     </section>
   );
 }
