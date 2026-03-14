@@ -2,7 +2,6 @@ import React from "react";
 import { Tv } from "lucide-react";
 
 const services = [
-
   "Samsung LED TV Service in Coimbatore",
   "VU TV Service in Coimbatore",
   "ONIDA LED TV Service in Coimbatore",
@@ -24,67 +23,76 @@ const services = [
   "DOR LED TV Service in Coimbatore",
   "Hisense LED TV Service in Coimbatore",
   "Toshiba LED TV Service in Coimbatore",
-  
 ];
 
 export default function OurServices() {
   return (
-    <section className="w-full bg-[#0a0000] py-24 px-6 md:px-12 relative overflow-hidden">
+    <section className="w-full  py-24 px-6 md:px-12 relative overflow-hidden">
 
-      {/* Background Glows */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-red-800/10 blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[300px] rounded-full bg-red-900/10 blur-[100px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[300px] rounded-full bg-red-900/8 blur-[100px]" />
-        {/* Top hairline */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[1px] bg-gradient-to-r from-transparent via-red-600/25 to-transparent" />
-        {/* Bottom hairline */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[1px] bg-gradient-to-r from-transparent via-red-600/25 to-transparent" />
-        {/* Grid pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-      </div>
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+    style={{
+      backgroundImage: "https://m.media-amazon.com/images/I/81n1QNM4XwL.jpg",
+    }}
+  />
+
+  {/* Dot pattern */}
+  <div
+    className="absolute inset-0 pointer-events-none opacity-[0.35]"
+    style={{
+      backgroundImage: "radial-gradient(circle, #c7d4e8 1px, transparent 1px)",
+      backgroundSize: "28px 28px",
+    }}
+  />
+
+      {/* Hairlines */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[1px]"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(42,71,113,0.2), transparent)" }} />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[1px]"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(42,71,113,0.2), transparent)" }} />
+
+      {/* Soft bg glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full blur-[120px] pointer-events-none opacity-20 bg-[#eef2f8]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[300px] rounded-full blur-[100px] pointer-events-none opacity-15 bg-[#eef2f8]" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[300px] rounded-full blur-[100px] pointer-events-none opacity-15 bg-[#eef2f8]" />
 
       <div className="relative max-w-7xl mx-auto">
 
         {/* ── HEADER ── */}
         <div className="text-center mb-16 flex flex-col items-center gap-4">
 
-          {/* Eyebrow label */}
-          <p className="text-[10px] font-medium tracking-[4px] text-red-500 uppercase">
-            What We Fix
-          </p>
+          {/* Eyebrow chip */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8]">
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
+            <p className="text-[10px] font-bold tracking-[4px] uppercase text-[#2a4771]">What We Fix</p>
+          </div>
 
           {/* Main heading */}
           <h2
-            className="text-5xl md:text-7xl text-white uppercase leading-none tracking-widest"
+            className="text-5xl md:text-7xl text-gray-900 uppercase leading-none tracking-widest"
             style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             Our{" "}
-            <span className="text-red-600 drop-shadow-[0_0_24px_rgba(220,38,38,0.7)]">
+            <span className="relative text-[#2a4771]">
               Services
+              <span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" />
             </span>
           </h2>
 
           {/* Tagline row */}
-          <div className="flex items-center gap-3">
-            <span className="w-8 h-[2px] bg-red-600" />
-            <p className="text-white/40 text-xs font-medium tracking-[3px] uppercase italic">
+          <div className="flex items-center gap-3 mt-1">
+            <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
+            <p className="text-gray-400 text-xs font-medium tracking-[3px] uppercase italic">
               Professional LED TV Repair for All Major Brands
             </p>
-            <span className="w-8 h-[2px] bg-red-600" />
+            <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
           </div>
 
           {/* Count badge */}
-          <div className="mt-2 px-5 py-2 rounded-full border border-red-700/30 bg-red-950/20 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_6px_rgba(220,38,38,0.8)]" />
-            <span className="text-white/50 text-[11px] tracking-[2px] uppercase">
+          <div className="mt-2 px-5 py-2 rounded-full border border-[#c5d3e8] bg-[#eef2f8] flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2a4771] animate-pulse" />
+            <span className="text-[#2a4771] text-[11px] tracking-[2px] uppercase font-semibold">
               {services.length} Brands Covered
             </span>
           </div>
@@ -95,37 +103,46 @@ export default function OurServices() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative bg-white/[0.03] hover:bg-red-950/30 border border-white/[0.06] hover:border-red-600/50 rounded-2xl p-5 flex items-center gap-4 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(220,38,38,0.15)] overflow-hidden"
+              className="group relative rounded-2xl p-5 flex items-center gap-4 cursor-pointer overflow-hidden
+                bg-[#eef2f8] border border-[#c5d3e8]
+                hover:bg-[#2a4771] hover:border-[#2a4771]
+                hover:-translate-y-1.5 hover:shadow-[0_10px_32px_rgba(42,71,113,0.22)]
+                transition-all duration-300"
             >
-              {/* Card inner glow on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 via-transparent to-red-900/0 group-hover:from-red-600/5 group-hover:to-red-900/10 transition-all duration-300 rounded-2xl" />
-
               {/* Left accent line */}
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-0 group-hover:h-10 bg-gradient-to-b from-transparent via-red-500 to-transparent transition-all duration-400 rounded-full" />
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-0 group-hover:h-10
+                bg-gradient-to-b from-transparent via-white/60 to-transparent
+                transition-all duration-400 rounded-full" />
+
+              {/* Inner glow wash */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.06), transparent)" }} />
 
               {/* Icon */}
-              <div className="relative shrink-0 w-10 h-10 rounded-xl bg-red-600/10 border border-red-600/20 group-hover:bg-red-600 group-hover:border-red-600 group-hover:shadow-[0_0_16px_rgba(220,38,38,0.5)] flex items-center justify-center transition-all duration-300">
-                <Tv
-                  size={18}
-                  className="text-red-400 group-hover:text-white transition-colors duration-300"
-                />
+              <div className="relative shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300
+                bg-[#2a4771]/10 border border-[#2a4771]/20
+                group-hover:bg-white/20 group-hover:border-white/30">
+                <Tv size={18} className="text-[#2a4771] group-hover:text-white transition-colors duration-300" />
               </div>
 
               {/* Text */}
-              <div className="relative flex flex-col gap-0.5">
-                {/* Brand name extracted (first word) */}
-                <span className="text-[9px] tracking-[2px] text-red-500/70 group-hover:text-red-400 uppercase font-medium transition-colors duration-300">
+              <div className="relative flex flex-col gap-0.5 flex-1 min-w-0">
+                {/* Brand name tag */}
+                <span className="text-[9px] tracking-[2px] uppercase font-bold transition-colors duration-300
+                  text-[#3d5f96] group-hover:text-white/70">
                   {service.split(" ")[0]}
                 </span>
-                <h3 className="text-white/60 group-hover:text-white text-xs font-medium leading-snug transition-colors duration-300">
+                {/* Full service name */}
+                <h3 className="text-xs font-semibold leading-snug transition-colors duration-300 truncate
+                  text-gray-600 group-hover:text-white">
                   {service}
                 </h3>
               </div>
 
               {/* Arrow indicator */}
-              <div className="ml-auto shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
-                <span className="relative inline-block w-4 h-px bg-red-500">
-                  <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-red-500 rotate-45 inline-block" />
+              <div className="ml-auto shrink-0 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                <span className="relative inline-block w-4 h-px bg-white">
+                  <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-white rotate-45 inline-block" />
                 </span>
               </div>
             </div>
@@ -133,28 +150,34 @@ export default function OurServices() {
         </div>
 
         {/* ── BOTTOM CTA STRIP ── */}
-        <div className="mt-16 rounded-2xl border border-red-700/20 bg-red-950/10 px-8 py-7 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
-          {/* Strip glow */}
-          <div className="absolute inset-0 bg-gradient-to-r from-red-900/10 via-transparent to-red-900/10 pointer-events-none" />
+        <div className="mt-16 rounded-2xl px-8 py-7 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-sm
+          bg-[#f7f9fc] border border-[#e2e8f2]">
 
-          <div className="relative flex flex-col gap-1 text-center md:text-left">
-            <p className="text-white text-lg font-semibold tracking-wide">
+          {/* Left accent bar */}
+          <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b from-[#2a4771] to-[#3d5f96]" />
+
+          {/* Soft bg wash */}
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#eef2f8]/60 via-transparent to-[#eef2f8]/60" />
+
+          <div className="relative flex flex-col gap-1 text-center md:text-left pl-4">
+            <p className="text-gray-900 text-lg font-bold tracking-wide">
               Don't see your brand?
             </p>
-            <p className="text-white/40 text-sm">
+            <p className="text-gray-400 text-sm">
               We service many more brands — call us and we'll help you out.
             </p>
           </div>
 
           <div className="relative flex items-center gap-4 shrink-0">
-            <button className="group px-7 py-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold tracking-[3px] uppercase rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(220,38,38,0.4)] hover:shadow-[0_0_40px_rgba(220,38,38,0.6)] relative overflow-hidden">
-              <span className="relative z-10">Book a Repair</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <button className="px-7 py-3 text-white text-xs font-bold tracking-[3px] uppercase rounded-full transition-all duration-300
+              bg-[#2a4771] shadow-[0_8px_28px_rgba(42,71,113,0.30)]
+              hover:bg-[#3d5f96] hover:shadow-[0_12px_36px_rgba(42,71,113,0.45)] hover:-translate-y-0.5">
+              Book a Repair
             </button>
-            <button className="flex items-center gap-2 text-white/40 hover:text-red-400 text-xs tracking-[2px] uppercase font-medium transition-all duration-300 group">
+            <button className="group/sec flex items-center gap-2 text-gray-400 hover:text-[#2a4771] text-xs tracking-[2px] uppercase font-semibold transition-all duration-300">
               Call Us
-              <span className="relative inline-block w-5 h-px bg-white/30 group-hover:bg-red-500 group-hover:w-8 transition-all duration-300">
-                <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-white/30 group-hover:border-red-500 rotate-45 inline-block transition-colors duration-300" />
+              <span className="relative inline-block w-5 h-px bg-gray-300 group-hover/sec:bg-[#2a4771] group-hover/sec:w-8 transition-all duration-300">
+                <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-gray-300 group-hover/sec:border-[#2a4771] rotate-45 inline-block transition-colors duration-300" />
               </span>
             </button>
           </div>
