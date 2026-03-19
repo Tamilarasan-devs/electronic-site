@@ -46,7 +46,7 @@ const Footer = () => {
 
       {/* Bottom Note */}
       <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
-        © 2026 TVBrands. All rights reserved.
+        © 2026 fruition global. All rights reserved.
       </div>
     </footer>
   );

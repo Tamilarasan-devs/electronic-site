@@ -91,7 +91,9 @@ export default function SecondBanner() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full py-24 px-6 bg-white relative overflow-hidden">
+    <section ref={sectionRef} className="w-full py-24 px-6 
+bg-gradient-to-br from-[#0A1F44] via-[#1E3A8A] to-[#3B82F6]
+     relative overflow-hidden">
 
       {/* Dot pattern */}
       <div
@@ -131,7 +133,7 @@ export default function SecondBanner() {
         {/* Heading */}
         <h2
           data-animate
-          className="text-5xl md:text-6xl tracking-widest text-gray-900 uppercase leading-none"
+          className="text-5xl md:text-6xl tracking-widest text-white  uppercase leading-none"
           style={{
         
             opacity: 0,
@@ -140,7 +142,7 @@ export default function SecondBanner() {
           }}
         >
           What Sets Us{" "}
-          <span className="relative text-[#2a4771]">
+          <span className="relative text-[#2a4771] text-blue-300">
             Apart
             <span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" />
           </span>
@@ -153,7 +155,7 @@ export default function SecondBanner() {
           style={{ opacity: 0, transform: "translateY(20px)", transition: "opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.2,0.64,1)" }}
         >
           <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-          <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase italic">
+          <p className="text-md font-bold tracking-[3px] uppercase italic text-blue-200">
             Experience Unmatched Service &amp; Expertise
           </p>
           <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
@@ -161,7 +163,7 @@ export default function SecondBanner() {
       </div>
 
       {/* ── CARDS GRID ── */}
-      <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
         {cards.map((card, index) => (
           <div
             key={card.number}
@@ -279,8 +281,6 @@ export default function SecondBanner() {
           </div>
         ))}
       </div>
-
-      {/* <style>{`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');`}</style> */}
     </section>
   );
 }

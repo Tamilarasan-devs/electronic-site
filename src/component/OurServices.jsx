@@ -1,6 +1,7 @@
 import React from "react";
 import { Import, Tv } from "lucide-react";
 import uv from '../assets/images/VuTv_logo.avif'
+import bg from '../assets/images/electric.webp'
 const services = [
   {
     name: "Samsung LED TV Service in Coimbatore",
@@ -87,16 +88,20 @@ export default function OurServices() {
     <section className="w-full  py-24 px-6 md:px-12 relative overflow-hidden">
 
   {/* Background Image */}
+ <div className="absolute inset-0 -z-10">
   <div
-    className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+    className="w-full h-full bg-cover bg-center bg-no-repeat"
     style={{
-      backgroundImage: "https://m.media-amazon.com/images/I/81n1QNM4XwL.jpg",
+      backgroundImage: `url(${bg})`,
+      backgroundAttachment: "fixed",
     }}
   />
+  <div className="absolute inset-0 bg-black/40" /> {/* overlay */}
+</div>
 
   {/* Dot pattern */}
   <div
-    className="absolute inset-0 pointer-events-none opacity-[0.35]"
+    // className="absolute inset-0 pointer-events-none opacity-[0.35]"
     style={{
       backgroundImage: "radial-gradient(circle, #c7d4e8 1px, transparent 1px)",
       backgroundSize: "28px 28px",
@@ -131,7 +136,7 @@ export default function OurServices() {
             style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             Our{" "}
-            <span className="relative text-[#2a4771]">
+            <span className="relative text-blue-300">
               Services
               <span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" />
             </span>
@@ -140,7 +145,7 @@ export default function OurServices() {
           {/* Tagline row */}
           <div className="flex items-center gap-3 mt-1">
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-            <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase italic">
+            <p className="text-white text-lg font-medium tracking-[3px] uppercase italic">
               Professional LED TV Repair for All Major Brands
             </p>
             <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
@@ -218,8 +223,6 @@ export default function OurServices() {
         </div>
 
       </div>
-
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');`}</style>
     </section>
   );
 }

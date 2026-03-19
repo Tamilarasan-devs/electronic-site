@@ -1,126 +1,478 @@
-import React from "react";
-import { Tv, Users, Star, BadgeCheck } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { Tv, Users, Star, BadgeCheck, ArrowUpRight, Phone, CalendarCheck } from "lucide-react";
 
 const stats = [
-  { id: 1, icon: Tv, value: "5K+", label: "Projects Completed", sub: "Successful TV repairs done" },
-  { id: 2, icon: Users, value: "29K+", label: "Service Experts", sub: "Certified trained technicians" },
-  { id: 3, icon: Star, value: "9K+", label: "Satisfied Customers", sub: "Happy clients across Coimbatore" },
-  { id: 4, icon: BadgeCheck, value: "74%", label: "Service Quality", sub: "Rated excellent by customers" },
+  {
+    id: 1, icon: Tv, value: "5K+", label: "Projects Completed", sub: "Successful TV repairs done",
+    accent: "#2563eb", glow: "rgba(37,99,235,0.18)", light: "#eff6ff", border: "#bfdbfe",
+    iconBg: "#dbeafe", tag: "Repairs",
+  },
+  {
+    id: 2, icon: Users, value: "29K+", label: "Service Experts", sub: "Certified trained technicians",
+    accent: "#0891b2", glow: "rgba(8,145,178,0.18)", light: "#ecfeff", border: "#a5f3fc",
+    iconBg: "#cffafe", tag: "Team",
+  },
+  {
+    id: 3, icon: Star, value: "9K+", label: "Satisfied Customers", sub: "Happy clients across Coimbatore",
+    accent: "#7c3aed", glow: "rgba(124,58,237,0.18)", light: "#f5f3ff", border: "#ddd6fe",
+    iconBg: "#ede9fe", tag: "Clients",
+  },
+  {
+    id: 4, icon: BadgeCheck, value: "74%", label: "Service Quality", sub: "Rated excellent by customers",
+    accent: "#0d9488", glow: "rgba(13,148,136,0.18)", light: "#f0fdfa", border: "#99f6e4",
+    iconBg: "#ccfbf1", tag: "Quality",
+  },
 ];
 
-export default function StatsSection() {
+function useInView(threshold = 0.12) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setInView(true); },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, inView];
+}
+
+function AnimatedCounter({ target, inView, delay = 0 }) {
+  const [display, setDisplay] = useState("0");
+  useEffect(() => {
+    if (!inView) return;
+    const numPart = parseInt(target);
+    if (isNaN(numPart)) { setTimeout(() => setDisplay(target), delay); return; }
+    const suffix = target.replace(/[0-9]/g, "");
+    let start = 0;
+    const t = setTimeout(() => {
+      const step = Math.ceil(numPart / (1500 / 16));
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= numPart) { setDisplay(`${numPart}${suffix}`); clearInterval(timer); }
+        else setDisplay(`${start}${suffix}`);
+      }, 16);
+    }, delay);
+    return () => clearTimeout(t);
+  }, [inView]);
+  return <span>{display}</span>;
+}
+
+function ProgressBar({ inView, color, delay = 0 }) {
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const t = setTimeout(() => setWidth(100), delay + 200);
+    return () => clearTimeout(t);
+  }, [inView]);
   return (
-    <section className="w-full bg-white py-24 px-6 md:px-12 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none opacity-[0.35]"
-        style={{ backgroundImage: "radial-gradient(circle, #c7d4e8 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full blur-[130px] pointer-events-none opacity-20 bg-[#eef2f8]" />
-      <div className="absolute bottom-0 left-0 w-[350px] h-[300px] rounded-full blur-[100px] pointer-events-none opacity-15 bg-[#eef2f8]" />
-      <div className="absolute bottom-0 right-0 w-[350px] h-[300px] rounded-full blur-[100px] pointer-events-none opacity-15 bg-[#eef2f8]" />
+    <div style={{
+      flex: 1, height: 3, borderRadius: 9999,
+      background: "rgba(0,0,0,0.07)", overflow: "hidden",
+    }}>
+      <div style={{
+        height: "100%", width: `${width}%`,
+        background: `linear-gradient(90deg, ${color}88, ${color})`,
+        borderRadius: 9999,
+        transition: "width 1s cubic-bezier(.22,1,.36,1)",
+      }} />
+    </div>
+  );
+}
 
-      <div className="relative max-w-7xl mx-auto">
-        {/* HEADER */}
-        <div className="text-center mb-20 flex flex-col items-center gap-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8]">
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-            <p className="text-[14px] font-semibold tracking-[4px] uppercase text-[#2a4771]">Numbers That Speak</p>
+export default function StatsSection() {
+  const [headerRef, headerInView] = useInView(0.2);
+  const [gridRef,   gridInView]   = useInView(0.1);
+  const [ctaRef,    ctaInView]    = useInView(0.2);
+  const [hovered,   setHovered]   = useState(null);
+
+  return (
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,600&display=swap');
+
+        .ss * { box-sizing: border-box; }
+
+        /* ── Scroll reveal ── */
+        .ss-reveal {
+          opacity: 0; transform: translateY(44px);
+          transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+        }
+        .ss-reveal.in { opacity: 1; transform: translateY(0); }
+        .d0 { transition-delay: 0s    !important; }
+        .d1 { transition-delay: 0.1s  !important; }
+        .d2 { transition-delay: 0.2s  !important; }
+        .d3 { transition-delay: 0.3s  !important; }
+        .d4 { transition-delay: 0.42s !important; }
+        .d5 { transition-delay: 0.54s !important; }
+
+        /* ── Breathe dot bg ── */
+        @keyframes dotBreathe { 0%,100%{opacity:.3} 50%{opacity:.55} }
+        .dot-bg { animation: dotBreathe 5s ease-in-out infinite; }
+
+        /* ── Pulse ring ── */
+        @keyframes pulseRing {
+          0%   { transform:scale(1); opacity:.85; }
+          80%  { transform:scale(2.5); opacity:0; }
+          100% { transform:scale(2.5); opacity:0; }
+        }
+        .p-dot {
+          position:relative; width:8px; height:8px;
+          border-radius:50%; flex-shrink:0;
+        }
+        .p-dot::after {
+          content:''; position:absolute; inset:0; border-radius:50%;
+          animation: pulseRing 2s ease-out infinite;
+        }
+
+        /* ── Heading underline draw ── */
+        .draw-u {
+          position:absolute; bottom:-5px; left:0; right:0;
+          height:3px; border-radius:9999px;
+          transform:scaleX(0); transform-origin:left;
+          transition:transform .9s cubic-bezier(.22,1,.36,1) .55s;
+        }
+        .draw-u.on { transform:scaleX(1); }
+
+        /* ── Stat card ── */
+        .stat-card {
+          position:relative; border-radius:26px;
+          padding:32px 28px;
+          display:flex; flex-direction:column; gap:18px;
+          cursor:default; overflow:hidden;
+          transition: transform .45s cubic-bezier(.22,1,.36,1),
+                      box-shadow .45s ease,
+                      border-color .4s;
+        }
+        .stat-card:hover { transform: translateY(-10px) scale(1.015); }
+
+        /* Shimmer sweep */
+        .stat-card::after {
+          content:''; position:absolute;
+          top:0; left:-100%; width:55%; height:100%;
+          background:linear-gradient(105deg,transparent,rgba(255,255,255,0.55),transparent);
+          transition:left .65s ease; pointer-events:none;
+        }
+        .stat-card:hover::after { left:150%; }
+
+        /* Icon box */
+        .s-icon-box {
+          width:50px; height:50px; border-radius:14px;
+          display:flex; align-items:center; justify-content:center;
+          transition:transform .4s cubic-bezier(.22,1,.36,1);
+        }
+        .stat-card:hover .s-icon-box { transform:rotate(-8deg) scale(1.12); }
+
+        /* Arrow orb */
+        .s-arrow {
+          width:36px; height:36px; border-radius:50%;
+          display:flex; align-items:center; justify-content:center;
+          opacity:0; transform:translateY(8px) rotate(-45deg);
+          transition:opacity .4s, transform .4s cubic-bezier(.22,1,.36,1);
+          flex-shrink:0;
+        }
+        .stat-card:hover .s-arrow { opacity:1; transform:translateY(0) rotate(0); }
+
+        /* Watermark */
+        .s-wm {
+          position:absolute; bottom:4px; right:12px;
+          font-family:'Bebas Neue',sans-serif; font-size:110px; line-height:1;
+          pointer-events:none; user-select:none; transition:opacity .4s;
+        }
+
+        /* ── CTA strip ── */
+        .cta-strip {
+          border-radius:24px; padding:32px 36px;
+          display:flex; flex-direction:row;
+          align-items:center; justify-content:space-between; gap:24px;
+          flex-wrap:wrap; position:relative; overflow:hidden;
+          transition: box-shadow .4s;
+        }
+        .cta-strip:hover { box-shadow: 0 24px 60px rgba(37,99,235,0.15); }
+
+        /* ── CTA Buttons ── */
+        .btn-book {
+          display:inline-flex; align-items:center; gap:8px;
+          padding:13px 28px; border-radius:999px;
+          font-family:'Barlow',sans-serif; font-size:12px; font-weight:700;
+          letter-spacing:3px; text-transform:uppercase;
+          color:#fff; border:none; cursor:pointer; overflow:hidden; position:relative;
+          transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
+        }
+        .btn-book::after {
+          content:''; position:absolute; inset:0;
+          background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0.18) 50%,transparent 65%);
+          transform:translateX(-100%); transition:transform .5s;
+        }
+        .btn-book:hover { transform:translateY(-3px); }
+        .btn-book:hover::after { transform:translateX(100%); }
+
+        .btn-call {
+          display:inline-flex; align-items:center; gap:8px;
+          padding:13px 22px; border-radius:999px;
+          font-family:'Barlow',sans-serif; font-size:12px; font-weight:700;
+          letter-spacing:3px; text-transform:uppercase; cursor:pointer;
+          border:none;
+          transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
+        }
+        .btn-call:hover { transform:translateY(-3px); }
+        .btn-call svg { transition:transform .3s cubic-bezier(.22,1,.36,1); }
+        .btn-call:hover svg { transform:translateX(4px); }
+      `}</style>
+
+      <section className="ss" style={{
+        width:"100%", background:"#f8faff",
+        padding:"96px 24px", position:"relative", overflow:"hidden",
+        fontFamily:"'Barlow',sans-serif",
+      }}>
+
+        {/* Dot bg */}
+        <div className="dot-bg" style={{
+          position:"absolute", inset:0, pointerEvents:"none",
+          backgroundImage:"radial-gradient(circle,#bed0ef 1px,transparent 1px)",
+          backgroundSize:"28px 28px",
+        }} />
+
+        {/* Top bar */}
+        <div style={{
+          position:"absolute", top:0, left:0, right:0, height:3,
+          background:"linear-gradient(90deg,#2563eb,#0891b2,#7c3aed,#0d9488)",
+        }} />
+
+        {/* Ambient glows */}
+        <div style={{
+          position:"absolute", top:"-8%", left:"50%", transform:"translateX(-50%)",
+          width:900, height:500, borderRadius:"50%",
+          background:"radial-gradient(ellipse,rgba(37,99,235,0.09) 0%,transparent 65%)",
+          pointerEvents:"none",
+        }} />
+        <div style={{
+          position:"absolute", bottom:0, left:0, width:450, height:450,
+          borderRadius:"50%",
+          background:"radial-gradient(ellipse,rgba(8,145,178,0.08) 0%,transparent 70%)",
+          pointerEvents:"none",
+        }} />
+        <div style={{
+          position:"absolute", bottom:0, right:0, width:450, height:450,
+          borderRadius:"50%",
+          background:"radial-gradient(ellipse,rgba(124,58,237,0.07) 0%,transparent 70%)",
+          pointerEvents:"none",
+        }} />
+
+        <div style={{ position:"relative", maxWidth:1200, margin:"0 auto" }}>
+
+          {/* ── HEADER ── */}
+          <div ref={headerRef} style={{
+            textAlign:"center", marginBottom:72,
+            display:"flex", flexDirection:"column", alignItems:"center", gap:18,
+          }}>
+
+            <div className={`ss-reveal d0 ${headerInView ? "in" : ""}`} style={{
+              display:"inline-flex", alignItems:"center", gap:10,
+              padding:"7px 20px", borderRadius:999,
+              border:"1px solid #bfdbfe", background:"#eff6ff",
+            }}>
+              <span className="p-dot" style={{ background:"#2563eb" }}>
+                <style>{`.p-dot::after{background:#2563eb}`}</style>
+              </span>
+              <span style={{
+                fontSize:11, fontWeight:700, letterSpacing:5,
+                textTransform:"uppercase", color:"#1d4ed8",
+              }}>Numbers That Speak</span>
+            </div>
+
+            <div className={`ss-reveal d1 ${headerInView ? "in" : ""}`}>
+              <h2 style={{
+                fontFamily:"'Bebas Neue',sans-serif",
+                fontSize:"clamp(50px,8vw,88px)",
+                color:"#0f172a", textTransform:"uppercase",
+                lineHeight:1, letterSpacing:8, margin:0,
+              }}>
+                Our{" "}
+                <span style={{ position:"relative", color:"#2563eb" }}>
+                  Achievements
+                  <span
+                    className={`draw-u ${headerInView ? "on" : ""}`}
+                    style={{ background:"linear-gradient(90deg,#2563eb,#7c3aed)" }}
+                  />
+                </span>
+              </h2>
+            </div>
+
+            <div className={`ss-reveal d2 ${headerInView ? "in" : ""}`} style={{
+              display:"flex", alignItems:"center", gap:12,
+            }}>
+              <span style={{ width:32, height:2, background:"linear-gradient(90deg,#2563eb,transparent)", borderRadius:9999 }} />
+              <p style={{
+                margin:0, color:"#64748b", fontSize:13, fontWeight:600,
+                letterSpacing:4, textTransform:"uppercase", fontStyle:"italic",
+              }}>
+                Trusted by Thousands for Top-Notch Service
+              </p>
+              <span style={{ width:32, height:2, background:"linear-gradient(90deg,transparent,#7c3aed)", borderRadius:9999 }} />
+            </div>
           </div>
-          <h2 className="text-5xl md:text-7xl text-gray-900 uppercase leading-none tracking-widest" >
-            Our <span className="relative text-[#2a4771]">Achievements<span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" /></span>
-          </h2>
-          <div className="flex items-center gap-3 mt-1">
-            <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-            <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase italic">Trusted by Thousands for Top‑Notch Service</p>
-            <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-          </div>
-        </div>
 
-        {/* STATS GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {stats.map((stat) => {
-            const Icon = stat.icon;
-            return (
-              <div key={stat.id}
-                className="group relative rounded-3xl p-8 flex flex-col gap-5 cursor-default overflow-hidden
-                  bg-[#eef2f8] border border-[#c5d3e8]
-                  hover:bg-[#2a4771] hover:border-[#2a4771]
-                  hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(42,71,113,0.25)]
-                  transition-all duration-500">
+          {/* ── STATS GRID ── */}
+          <div ref={gridRef} style={{
+            display:"grid",
+            gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",
+            gap:20,
+          }}>
+            {stats.map((stat, i) => {
+              const Icon = stat.icon;
+              const isHov = hovered === stat.id;
+              return (
+                <div
+                  key={stat.id}
+                  className={`stat-card ss-reveal d${i + 1} ${gridInView ? "in" : ""}`}
+                  onMouseEnter={() => setHovered(stat.id)}
+                  onMouseLeave={() => setHovered(null)}
+                  style={{
+                    background: isHov
+                      ? `linear-gradient(145deg,${stat.light},#fff)`
+                      : "#fff",
+                    border: `1.5px solid ${isHov ? stat.border : "#e2e8f0"}`,
+                    boxShadow: isHov
+                      ? `0 24px 64px ${stat.glow}, 0 0 0 1px ${stat.border}`
+                      : "0 2px 16px rgba(15,23,42,0.07)",
+                  }}
+                >
+                  {/* Watermark */}
+                  <span className="s-wm" style={{
+                    color: isHov ? `${stat.accent}0d` : "rgba(15,23,42,0.04)",
+                  }}>0{stat.id}</span>
 
-                {/* Top shine */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px]
-                  bg-gradient-to-r from-transparent via-transparent to-transparent
-                  group-hover:via-white/25 transition-all duration-500" />
-
-                {/* Ghost watermark */}
-                <span className="absolute -bottom-2 -right-2 text-[90px] leading-none select-none pointer-events-none
-                  text-[#2a4771]/[0.06] group-hover:text-white/[0.07] transition-all duration-500"
-                  >0{stat.id}</span>
-
-                {/* Icon */}
-                <div className="relative w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-400
-                  bg-[#2a4771]/10 border border-[#2a4771]/20
-                  group-hover:bg-white/20 group-hover:border-white/30">
-                  <Icon size={20} className="text-[#2a4771] group-hover:text-white transition-colors duration-300" />
-                </div>
-
-                {/* Divider */}
-                <div className="w-full h-[1px] bg-[#2a4771]/20 group-hover:bg-white/20 transition-colors duration-500" />
-
-                {/* Values */}
-                <div className="flex flex-col gap-1">
-                  <p className="text-5xl md:text-6xl leading-none transition-colors duration-300
-                    text-[#2a4771] group-hover:text-white"
-                    >{stat.value}</p>
-                  <p className="text-md font-bold tracking-wide transition-colors duration-300
-                    text-gray-800 group-hover:text-white">{stat.label}</p>
-                  <p className="text-md tracking-wide leading-relaxed transition-colors duration-300
-                    text-gray-600 group-hover:text-white/75">{stat.sub}</p>
-                </div>
-
-                {/* Progress + arrow */}
-                <div className="mt-auto flex items-center justify-between gap-3">
-                  <div className="flex-1 h-[2px] rounded-full overflow-hidden bg-[#2a4771]/15 group-hover:bg-white/15">
-                    <div className="h-full w-0 group-hover:w-full rounded-full transition-all duration-700 ease-out
-                      bg-gradient-to-r from-white/50 to-white/90" />
-                  </div>
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0
-                    opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0
-                    border border-white/40 bg-white/15 transition-all duration-300">
-                    <span className="relative inline-block w-3 h-px bg-white">
-                      <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-white rotate-45 inline-block" />
+                  {/* Top row: icon + tag */}
+                  <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                    <div className="s-icon-box" style={{
+                      background: stat.iconBg,
+                      border: `1px solid ${stat.border}`,
+                    }}>
+                      <Icon size={22} color={stat.accent} />
+                    </div>
+                    <span style={{
+                      fontSize:10, fontWeight:700, letterSpacing:3,
+                      textTransform:"uppercase", borderRadius:999,
+                      padding:"4px 12px",
+                      background: isHov ? `${stat.accent}15` : "#f1f5f9",
+                      border: `1px solid ${isHov ? stat.border : "#e2e8f0"}`,
+                      color: isHov ? stat.accent : "#94a3b8",
+                      transition:"all .4s",
+                    }}>
+                      {stat.tag}
                     </span>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
 
-        {/* CTA STRIP */}
-        <div className="mt-16 rounded-2xl px-8 py-7 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-sm bg-[#f7f9fc] border border-[#e2e8f2]">
-          <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b from-[#2a4771] to-[#3d5f96]" />
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#eef2f8]/60 via-transparent to-[#eef2f8]/60" />
-          <div className="relative flex flex-col gap-1 text-center md:text-left pl-4">
-            <p className="text-gray-900 text-lg font-bold tracking-wide">Ready to join our success story?</p>
-            <p className="text-gray-600 text-md">Book a repair today and experience the KJ Electronics difference.</p>
+                  {/* Divider */}
+                  <div style={{
+                    width:"100%", height:1,
+                    background: isHov ? `${stat.accent}25` : "#f1f5f9",
+                    transition:"background .4s",
+                  }} />
+
+                  {/* Values */}
+                  <div style={{ display:"flex", flexDirection:"column", gap:5 }}>
+                    <div style={{
+                      fontFamily:"'Bebas Neue',sans-serif",
+                      fontSize:"clamp(52px,6vw,68px)", lineHeight:1,
+                      color: isHov ? stat.accent : "#0f172a",
+                      transition:"color .4s",
+                    }}>
+                      <AnimatedCounter target={stat.value} inView={gridInView} delay={i * 120} />
+                    </div>
+                    <p style={{
+                      margin:0, fontSize:15, fontWeight:700,
+                      color: isHov ? "#0f172a" : "#1e293b",
+                      letterSpacing:.5, transition:"color .4s",
+                    }}>
+                      {stat.label}
+                    </p>
+                    <p style={{
+                      margin:0, fontSize:13, fontWeight:400, lineHeight:1.6,
+                      color: isHov ? "#475569" : "#94a3b8",
+                      transition:"color .4s",
+                    }}>
+                      {stat.sub}
+                    </p>
+                  </div>
+
+                  {/* Progress bar + arrow */}
+                  <div style={{ marginTop:"auto", display:"flex", alignItems:"center", gap:10 }}>
+                    <ProgressBar inView={gridInView} color={stat.accent} delay={i * 120} />
+                    <div className="s-arrow" style={{
+                      background:`${stat.accent}18`,
+                      border:`1px solid ${stat.border}`,
+                    }}>
+                      <ArrowUpRight size={16} color={stat.accent} />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <div className="relative flex items-center gap-4 shrink-0">
-            <button className="px-7 py-3 text-white text-xs font-bold tracking-[3px] uppercase rounded-full transition-all duration-300
-              bg-[#2a4771] shadow-[0_8px_28px_rgba(42,71,113,0.30)]
-              hover:bg-[#3d5f96] hover:shadow-[0_12px_36px_rgba(42,71,113,0.45)] hover:-translate-y-0.5">
-              Book a Repair
-            </button>
-            <button className="group/sec flex items-center gap-2 text-gray-600 hover:text-[#2a4771] text-md tracking-[2px] uppercase font-semibold transition-all duration-300">
-              Call Us
-              <span className="relative inline-block w-5 h-px bg-gray-300 group-hover/sec:bg-[#2a4771] group-hover/sec:w-8 transition-all duration-300">
-                <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-gray-300 group-hover/sec:border-[#2a4771] rotate-45 inline-block transition-colors duration-300" />
-              </span>
-            </button>
+
+          {/* ── CTA STRIP ── */}
+          <div
+            ref={ctaRef}
+            className={`cta-strip ss-reveal d1 ${ctaInView ? "in" : ""}`}
+            style={{
+              marginTop:28,
+              background:"#fff",
+              border:"1.5px solid #e2e8f0",
+              boxShadow:"0 4px 24px rgba(15,23,42,0.07)",
+            }}
+          >
+            {/* Left accent bar */}
+            <div style={{
+              position:"absolute", left:0, top:0, bottom:0, width:4, borderRadius:"24px 0 0 24px",
+              background:"linear-gradient(180deg,#2563eb,#7c3aed)",
+            }} />
+
+            {/* Soft bg wash */}
+            <div style={{
+              position:"absolute", inset:0,
+              background:"linear-gradient(90deg,rgba(239,246,255,0.7),transparent,rgba(245,243,255,0.5))",
+              pointerEvents:"none", borderRadius:22,
+            }} />
+
+            <div style={{ position:"relative", paddingLeft:16 }}>
+              <p style={{
+                margin:"0 0 4px",
+                fontFamily:"'Bebas Neue',sans-serif",
+                fontSize:26, letterSpacing:2, color:"#0f172a",
+              }}>
+                Ready to join our success story?
+              </p>
+              <p style={{ margin:0, fontSize:14, color:"#64748b", fontWeight:400 }}>
+                Book a repair today and experience the KJ Electronics difference.
+              </p>
+            </div>
+
+            <div style={{ position:"relative", display:"flex", alignItems:"center", gap:12, flexShrink:0 }}>
+              <button className="btn-book" style={{
+                background:"linear-gradient(135deg,#2563eb,#1d4ed8)",
+                boxShadow:"0 8px 28px rgba(37,99,235,0.35)",
+              }}>
+                <CalendarCheck size={15} />
+                Book a Repair
+              </button>
+              <button className="btn-call" style={{
+                background:"linear-gradient(135deg,#eff6ff,#dbeafe)",
+                color:"#1d4ed8",
+                border:"1.5px solid #bfdbfe",
+                boxShadow:"0 4px 14px rgba(37,99,235,0.12)",
+              }}>
+                <Phone size={14} />
+                Call Us
+                <ArrowUpRight size={14} />
+              </button>
+            </div>
           </div>
+
         </div>
-      </div>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');`}</style>
-    </section>
+      </section>
+    </>
   );
 }

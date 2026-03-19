@@ -1,136 +1,469 @@
-import React from "react";
-import { MonitorCheck, Volume2, Wifi } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { MonitorCheck, Volume2, Wifi, Phone, MessageSquare, ArrowUpRight } from "lucide-react";
 
 const features = [
-  { id: 1, icon: MonitorCheck, title: "Video Resolution", description: "Support for HD, 4K, and HDR content to ensure the best possible viewing experience on every screen." },
-  { id: 2, icon: Volume2, title: "Audio Quality", description: "Options for surround sound, Dolby Atmos, and high-fidelity audio formats for immersive sound." },
-  { id: 3, icon: Wifi, title: "Reliability", description: "Consistent streaming quality without buffering or drops — smooth performance every time." },
+  {
+    id: 1, icon: MonitorCheck,
+    title: "Video Resolution",
+    description: "Support for HD, 4K, and HDR content to ensure the best possible viewing experience on every screen.",
+    accent: "#2563eb", light: "#eff6ff", border: "#bfdbfe", iconBg: "#dbeafe",
+  },
+  {
+    id: 2, icon: Volume2,
+    title: "Audio Quality",
+    description: "Options for surround sound, Dolby Atmos, and high-fidelity audio formats for immersive sound.",
+    accent: "#0891b2", light: "#ecfeff", border: "#a5f3fc", iconBg: "#cffafe",
+  },
+  {
+    id: 3, icon: Wifi,
+    title: "Reliability",
+    description: "Consistent streaming quality without buffering or drops — smooth performance every time.",
+    accent: "#7c3aed", light: "#f5f3ff", border: "#ddd6fe", iconBg: "#ede9fe",
+  },
 ];
 
+const miniStrip = [
+  { label: "HD & 4K Ready", accent: "#2563eb", bg: "#eff6ff", border: "#bfdbfe" },
+  { label: "All Brands",     accent: "#0891b2", bg: "#ecfeff", border: "#a5f3fc" },
+  { label: "Doorstep",       accent: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe" },
+];
+
+function useInView(threshold = 0.12) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setInView(true); },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, inView];
+}
+
 export default function TVServices() {
+  const [leftRef,  leftInView]  = useInView(0.12);
+  const [rightRef, rightInView] = useInView(0.12);
+  const [hovFeat,  setHovFeat]  = useState(null);
+  const [hovStrip, setHovStrip] = useState(null);
+
   return (
-    <section className="w-full bg-white py-24 px-6 md:px-12 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none opacity-[0.35]"
-        style={{ backgroundImage: "radial-gradient(circle, #c7d4e8 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[130px] pointer-events-none opacity-15 bg-[#eef2f8]" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[110px] pointer-events-none opacity-15 bg-[#eef2f8]" />
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,600&display=swap');
 
-      <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+        .tvs * { box-sizing: border-box; }
 
-        {/* LEFT IMAGE */}
-        <div className="relative lg:w-1/2 w-full">
-          <div className="absolute -inset-4 rounded-3xl blur-2xl opacity-20 bg-[#eef2f8]" />
-          <div className="relative rounded-2xl overflow-hidden shadow-xl border border-[#c5d3e8]">
-            <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80"
-              alt="TV Services" className="w-full h-[480px] object-cover brightness-[0.75] saturate-75" />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(42,71,113,0.45) 0%, transparent 60%)" }} />
-            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/20 to-transparent" />
+        /* ── Scroll reveal ── */
+        .tvs-left  { opacity:0; transform:translateX(-48px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
+        .tvs-right { opacity:0; transform:translateX( 48px); transition:opacity .8s cubic-bezier(.22,1,.36,1) .15s, transform .8s cubic-bezier(.22,1,.36,1) .15s; }
+        .tvs-left.in, .tvs-right.in { opacity:1; transform:translateX(0); }
 
-            {/* Floating label */}
-            <div className="absolute top-5 left-5 flex items-center gap-2 rounded-xl px-4 py-2.5 shadow-lg backdrop-blur-sm bg-white/92 border border-[#c5d3e8]">
-              <span className="w-2 h-2 rounded-full animate-pulse bg-[#2a4771]" style={{ boxShadow: "0 0 6px rgba(42,71,113,0.6)" }} />
-              <span className="text-[10px] font-bold tracking-[3px] uppercase text-[#2a4771]">Expert Support</span>
-            </div>
+        .tvs-reveal { opacity:0; transform:translateY(36px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+        .tvs-reveal.in { opacity:1; transform:translateY(0); }
+        .d0 { transition-delay:0s    !important; }
+        .d1 { transition-delay:0.1s  !important; }
+        .d2 { transition-delay:0.2s  !important; }
+        .d3 { transition-delay:0.32s !important; }
+        .d4 { transition-delay:0.44s !important; }
+        .d5 { transition-delay:0.56s !important; }
 
-            {/* Floating badge */}
-            <div className="absolute bottom-5 right-5 rounded-xl px-5 py-3 shadow-lg backdrop-blur-sm bg-white/92 border border-[#c5d3e8]">
-              <p className="text-[9px] tracking-[3px] uppercase font-bold mb-0.5 text-[#3d5f96]">Response Time</p>
-              <p className="font-black text-2xl leading-none text-[#2a4771]">Under 3 Hrs</p>
-            </div>
-          </div>
+        /* ── Dot bg breathe ── */
+        @keyframes dotBreathe { 0%,100%{opacity:.28} 50%{opacity:.52} }
+        .dot-bg { animation: dotBreathe 5s ease-in-out infinite; }
 
-          {/* Mini strip */}
-          <div className="mt-5 grid grid-cols-3 gap-3">
-            {["HD & 4K Ready", "All Brands", "Doorstep Service"].map((item) => (
-              <div key={item}
-                className="group rounded-xl py-3 px-2 text-center cursor-default transition-all duration-300
-                  bg-[#eef2f8] border border-[#c5d3e8]
-                  hover:bg-[#2a4771] hover:border-[#2a4771] hover:shadow-[0_4px_16px_rgba(42,71,113,0.2)]">
-                <p className="text-[14px] tracking-[2px] uppercase font-bold transition-colors duration-300
-                  text-[#2a4771] group-hover:text-white">{item}</p>
+        /* ── Pulse ring ── */
+        @keyframes pulseRing {
+          0%   { transform:scale(1); opacity:.85; }
+          80%  { transform:scale(2.5); opacity:0; }
+          100% { transform:scale(2.5); opacity:0; }
+        }
+        .p-dot {
+          position:relative; width:8px; height:8px;
+          border-radius:50%; background:#2563eb; flex-shrink:0;
+        }
+        .p-dot::after {
+          content:''; position:absolute; inset:0; border-radius:50%;
+          background:#2563eb; animation:pulseRing 2s ease-out infinite;
+        }
+
+        /* ── Scan line on image ── */
+        @keyframes scan {
+          0%   { top:0%;   opacity:.6; }
+          50%  { opacity:.3; }
+          100% { top:100%; opacity:0; }
+        }
+        .scan-line {
+          position:absolute; left:0; right:0; height:2px;
+          background:linear-gradient(90deg,transparent,rgba(59,130,246,0.55),transparent);
+          animation:scan 3.5s linear infinite; pointer-events:none;
+        }
+
+        /* ── Heading underline ── */
+        .draw-u {
+          position:absolute; bottom:-4px; left:0; right:0;
+          height:3px; border-radius:9999px;
+          background:linear-gradient(90deg,#2563eb,#7c3aed);
+          transform:scaleX(0); transform-origin:left;
+          transition:transform .9s cubic-bezier(.22,1,.36,1) .6s;
+        }
+        .draw-u.on { transform:scaleX(1); }
+
+        /* ── Image card hover ── */
+        .img-wrap {
+          position:relative; border-radius:22px; overflow:hidden;
+          border:1.5px solid #e2e8f0;
+          box-shadow:0 12px 40px rgba(15,23,42,0.1);
+          transition:transform .55s cubic-bezier(.22,1,.36,1), box-shadow .55s ease;
+        }
+        .img-wrap:hover {
+          transform:scale(1.015) translateY(-4px);
+          box-shadow:0 28px 70px rgba(37,99,235,0.18);
+        }
+
+        /* ── Live badge slide-in ── */
+        @keyframes badgeIn {
+          from { opacity:0; transform:translateY(-12px) scale(.92); }
+          to   { opacity:1; transform:translateY(0) scale(1); }
+        }
+        .live-badge { animation:badgeIn .65s cubic-bezier(.22,1,.36,1) .8s both; }
+        .resp-badge { animation:badgeIn .65s cubic-bezier(.22,1,.36,1) 1s both; }
+
+        /* ── Mini strip pill ── */
+        .strip-pill {
+          border-radius:14px; padding:12px 8px; text-align:center;
+          cursor:default; overflow:hidden; position:relative;
+          transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s, border-color .3s, background .3s;
+        }
+        .strip-pill:hover { transform:translateY(-5px); }
+        .strip-pill::after {
+          content:''; position:absolute;
+          top:0; left:-100%; width:55%; height:100%;
+          background:linear-gradient(105deg,transparent,rgba(255,255,255,0.6),transparent);
+          transition:left .55s ease; pointer-events:none;
+        }
+        .strip-pill:hover::after { left:140%; }
+
+        /* ── Feature row card ── */
+        .feat-row {
+          display:flex; align-items:flex-start; gap:16px;
+          border-radius:20px; padding:18px 20px;
+          cursor:default; overflow:hidden; position:relative;
+          transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s, background .4s, border-color .35s;
+        }
+        .feat-row:hover { transform:translateY(-5px); }
+        .feat-row::after {
+          content:''; position:absolute;
+          top:0; left:-100%; width:55%; height:100%;
+          background:linear-gradient(105deg,transparent,rgba(255,255,255,0.55),transparent);
+          transition:left .6s ease; pointer-events:none;
+        }
+        .feat-row:hover::after { left:150%; }
+
+        .feat-icon-box {
+          width:44px; height:44px; border-radius:13px; flex-shrink:0;
+          display:flex; align-items:center; justify-content:center;
+          transition:transform .4s cubic-bezier(.22,1,.36,1), background .4s, border-color .4s;
+        }
+        .feat-row:hover .feat-icon-box { transform:rotate(-8deg) scale(1.1); }
+
+        /* ── Divider draw ── */
+        .div-draw {
+          height:1px; background:linear-gradient(90deg,rgba(37,99,235,.25),#bfdbfe,transparent);
+          width:0; transition:width 1s cubic-bezier(.22,1,.36,1);
+        }
+        .div-draw.on { width:100%; }
+
+        /* ── Buttons ── */
+        .btn-primary {
+          display:inline-flex; align-items:center; gap:9px;
+          padding:13px 28px; border-radius:999px;
+          font-family:'Barlow',sans-serif; font-size:12px; font-weight:700;
+          letter-spacing:3px; text-transform:uppercase;
+          color:#fff; border:none; cursor:pointer; position:relative; overflow:hidden;
+          background:linear-gradient(135deg,#2563eb,#1d4ed8);
+          box-shadow:0 8px 28px rgba(37,99,235,0.35);
+          transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
+        }
+        .btn-primary::after {
+          content:''; position:absolute; inset:0;
+          background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0.18) 50%,transparent 65%);
+          transform:translateX(-100%); transition:transform .5s;
+        }
+        .btn-primary:hover { transform:translateY(-3px); box-shadow:0 14px 38px rgba(37,99,235,0.45); }
+        .btn-primary:hover::after { transform:translateX(100%); }
+
+        .btn-ghost {
+          display:inline-flex; align-items:center; gap:9px;
+          padding:13px 22px; border-radius:999px;
+          font-family:'Barlow',sans-serif; font-size:12px; font-weight:700;
+          letter-spacing:3px; text-transform:uppercase; cursor:pointer;
+          background:#eff6ff; color:#1d4ed8;
+          border:1.5px solid #bfdbfe;
+          box-shadow:0 4px 14px rgba(37,99,235,0.1);
+          transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s, background .3s;
+        }
+        .btn-ghost:hover {
+          transform:translateY(-3px); background:#dbeafe;
+          box-shadow:0 10px 28px rgba(37,99,235,0.18);
+        }
+        .btn-ghost svg { transition:transform .3s cubic-bezier(.22,1,.36,1); }
+        .btn-ghost:hover svg { transform:translateX(4px); }
+      `}</style>
+
+      <section className="tvs" style={{
+        width:"100%", background:"#f8faff",
+        padding:"96px 24px", position:"relative", overflow:"hidden",
+        fontFamily:"'Barlow',sans-serif",
+      }}>
+
+        {/* Dot bg */}
+        <div className="dot-bg" style={{
+          position:"absolute", inset:0, pointerEvents:"none",
+          backgroundImage:"radial-gradient(circle,#bed0ef 1px,transparent 1px)",
+          backgroundSize:"28px 28px",
+        }} />
+
+        {/* Top bar */}
+        <div style={{
+          position:"absolute", top:0, left:0, right:0, height:3,
+          background:"linear-gradient(90deg,#2563eb,#0891b2,#7c3aed)",
+        }} />
+
+        {/* Ambient glows */}
+        <div style={{
+          position:"absolute", top:0, right:0, width:500, height:500, borderRadius:"50%",
+          background:"radial-gradient(ellipse,rgba(124,58,237,0.08) 0%,transparent 70%)",
+          pointerEvents:"none",
+        }} />
+        <div style={{
+          position:"absolute", bottom:0, left:0, width:450, height:450, borderRadius:"50%",
+          background:"radial-gradient(ellipse,rgba(37,99,235,0.07) 0%,transparent 70%)",
+          pointerEvents:"none",
+        }} />
+
+        <div style={{
+          position:"relative", maxWidth:1200, margin:"0 auto",
+          display:"flex", flexDirection:"row", flexWrap:"wrap",
+          alignItems:"center", gap:56,
+        }}>
+
+          {/* ── LEFT IMAGE ── */}
+          <div
+            ref={leftRef}
+            className={`tvs-left ${leftInView ? "in" : ""}`}
+            style={{ flex:"1 1 340px", minWidth:300 }}
+          >
+            {/* Image */}
+            <div className="img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80"
+                alt="TV Services"
+                style={{ width:"100%", height:460, objectFit:"cover", filter:"brightness(.78) saturate(.82)", display:"block" }}
+              />
+              {/* Tint */}
+              <div style={{
+                position:"absolute", inset:0,
+                background:"linear-gradient(135deg,rgba(37,99,235,0.35) 0%,transparent 60%)",
+              }} />
+              {/* Scan */}
+              <div className="scan-line" />
+              {/* Bottom fade */}
+              <div style={{
+                position:"absolute", bottom:0, left:0, right:0, height:"35%",
+                background:"linear-gradient(to top,rgba(248,250,255,0.2),transparent)",
+              }} />
+
+              {/* Live badge */}
+              <div className="live-badge" style={{
+                position:"absolute", top:16, left:16,
+                display:"flex", alignItems:"center", gap:8,
+                padding:"9px 16px", borderRadius:12,
+                background:"rgba(255,255,255,0.95)",
+                border:"1px solid #bfdbfe",
+                boxShadow:"0 6px 20px rgba(37,99,235,0.15)",
+              }}>
+                <span className="p-dot" />
+                <span style={{
+                  fontSize:10, fontWeight:700, letterSpacing:3.5,
+                  textTransform:"uppercase", color:"#1d4ed8",
+                }}>Expert Support</span>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* RIGHT CONTENT */}
-        <div className="lg:w-1/2 w-full flex flex-col gap-7">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8] self-start">
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-            <p className="text-[14px] font-bold tracking-[4px] uppercase text-[#2a4771]">Premium TV Services</p>
-          </div>
+              {/* Response badge */}
+              <div className="resp-badge" style={{
+                position:"absolute", bottom:16, right:16,
+                padding:"10px 18px", borderRadius:14,
+                background:"rgba(255,255,255,0.96)",
+                border:"1px solid #bfdbfe",
+                boxShadow:"0 8px 24px rgba(37,99,235,0.18)",
+              }}>
+                <p style={{ margin:"0 0 3px", fontSize:9, fontWeight:700, letterSpacing:3, textTransform:"uppercase", color:"#2563eb" }}>Response Time</p>
+                <p style={{ margin:0, fontFamily:"'Bebas Neue',sans-serif", fontSize:26, lineHeight:1, color:"#0f172a", letterSpacing:1 }}>Under 3 Hrs</p>
+              </div>
+            </div>
 
-          <h2 className="text-4xl md:text-6xl uppercase leading-none tracking-widest text-gray-900">
-            Get Started with the{" "}
-            <span className="relative text-[#2a4771]">
-              Best TV Services
-              <span className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" />
-            </span>{" "}Today!
-          </h2>
-
-          <div className="flex items-center gap-3">
-            <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-            <p className="text-gray-600 text-md font-medium tracking-[3px] uppercase italic">Experts Ready to Serve You</p>
-          </div>
-
-          <div className="w-full h-[1px] bg-gradient-to-r from-[#2a4771]/30 via-[#c5d3e8] to-transparent" />
-
-          <p className="text-gray-500 text-md leading-relaxed">
-            Ready to enhance your TV viewing experience? Contact our experts to find the perfect service for your home. Whether you need a{" "}
-            <span className="text-gray-800 font-semibold">comprehensive repair</span> or a{" "}
-            <span className="font-bold text-[#2a4771]">flexible same-day solution</span>, we help you get back to watching — fast.
-          </p>
-
-          {/* Features */}
-          <div className="flex flex-col gap-4">
-            {features.map((feature) => {
-              const Icon = feature.icon;
-              return (
-                <div key={feature.id}
-                  className="group flex items-start gap-4 rounded-2xl px-5 py-4 cursor-default transition-all duration-300
-                    bg-[#eef2f8] border border-[#c5d3e8]
-                    hover:bg-[#2a4771] hover:border-[#2a4771]
-                    hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(42,71,113,0.2)]">
-                  <div className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center mt-0.5 transition-all duration-300
-                    bg-[#2a4771]/10 border border-[#2a4771]/20
-                    group-hover:bg-white/20 group-hover:border-white/30">
-                    <Icon size={18} className="text-[#2a4771] group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <div className="flex flex-col gap-1 flex-1">
-                    <h3 className="text-lg uppercase tracking-wide leading-none transition-colors duration-300
-                      text-gray-800 group-hover:text-white"
-                    >{feature.title}</h3>
-                    <p className="text-md leading-relaxed transition-colors duration-300
-                      text-gray-400 group-hover:text-white/80">{feature.description}</p>
-                  </div>
-                  <div className="ml-auto shrink-0 self-center opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                    <span className="relative inline-block w-4 h-px bg-white">
-                      <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-white rotate-45 inline-block" />
-                    </span>
-                  </div>
+            {/* Mini strip */}
+            <div style={{ marginTop:16, display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:10 }}>
+              {miniStrip.map((item) => (
+                <div
+                  key={item.label}
+                  className="strip-pill"
+                  onMouseEnter={() => setHovStrip(item.label)}
+                  onMouseLeave={() => setHovStrip(null)}
+                  style={{
+                    background: hovStrip === item.label ? item.accent : item.bg,
+                    border: `1.5px solid ${hovStrip === item.label ? item.accent : item.border}`,
+                    boxShadow: hovStrip === item.label ? `0 8px 24px ${item.accent}30` : "0 2px 8px rgba(15,23,42,0.06)",
+                  }}
+                >
+                  <p style={{
+                    margin:0, fontSize:12, fontWeight:700,
+                    letterSpacing:2, textTransform:"uppercase",
+                    color: hovStrip === item.label ? "#fff" : item.accent,
+                    transition:"color .3s",
+                  }}>{item.label}</p>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
 
-          <div className="w-full h-[1px] bg-gradient-to-r from-[#2a4771]/30 via-[#c5d3e8] to-transparent" />
+          {/* ── RIGHT CONTENT ── */}
+          <div
+            ref={rightRef}
+            className={`tvs-right ${rightInView ? "in" : ""}`}
+            style={{ flex:"1 1 340px", minWidth:300, display:"flex", flexDirection:"column", gap:22 }}
+          >
 
-          <div className="flex items-center gap-5 flex-wrap">
-            <button className="px-8 py-3.5 text-white text-xs font-bold tracking-[3px] uppercase rounded-full transition-all duration-300
-              bg-[#2a4771] shadow-[0_8px_28px_rgba(42,71,113,0.35)]
-              hover:bg-[#3d5f96] hover:shadow-[0_12px_36px_rgba(42,71,113,0.5)] hover:-translate-y-0.5">
-              Contact Our Experts
-            </button>
-            <button className="group/sec flex items-center gap-2 text-gray-600 hover:text-[#2a4771] text-md tracking-[2px] uppercase font-semibold transition-all duration-300">
-              Call Us Now
-              <span className="relative inline-block w-6 h-px bg-gray-300 group-hover/sec:bg-[#2a4771] group-hover/sec:w-9 transition-all duration-300">
-                <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-gray-300 group-hover/sec:border-[#2a4771] rotate-45 inline-block transition-colors duration-300" />
+            {/* Eyebrow */}
+            <div className={`tvs-reveal d0 ${rightInView ? "in" : ""}`} style={{
+              display:"inline-flex", alignItems:"center", gap:9,
+              padding:"6px 18px", borderRadius:999,
+              border:"1px solid #bfdbfe", background:"#eff6ff",
+              alignSelf:"flex-start",
+            }}>
+              <span className="p-dot" />
+              <span style={{ fontSize:11, fontWeight:700, letterSpacing:4, textTransform:"uppercase", color:"#1d4ed8" }}>
+                Premium TV Services
               </span>
-            </button>
+            </div>
+
+            {/* Heading */}
+            <div className={`tvs-reveal d1 ${rightInView ? "in" : ""}`}>
+              <h2 style={{
+                fontFamily:"'Bebas Neue',sans-serif",
+                fontSize:"clamp(38px,5vw,62px)",
+                color:"#0f172a", textTransform:"uppercase",
+                lineHeight:1.05, letterSpacing:5, margin:0,
+              }}>
+                Get Started with the{" "}
+                <span style={{ position:"relative", color:"#2563eb" }}>
+                  Best TV Services
+                  <span className={`draw-u ${rightInView ? "on" : ""}`} />
+                </span>{" "}Today!
+              </h2>
+            </div>
+
+            {/* Tagline */}
+            <div className={`tvs-reveal d2 ${rightInView ? "in" : ""}`} style={{ display:"flex", alignItems:"center", gap:10 }}>
+              <span style={{ width:28, height:2, background:"linear-gradient(90deg,#2563eb,transparent)", borderRadius:9999, flexShrink:0 }} />
+              <p style={{ margin:0, color:"#64748b", fontSize:12, fontWeight:600, letterSpacing:3.5, textTransform:"uppercase", fontStyle:"italic" }}>
+                Experts Ready to Serve You
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div className={`div-draw ${rightInView ? "on" : ""}`} />
+
+            {/* Body */}
+            <div className={`tvs-reveal d2 ${rightInView ? "in" : ""}`}>
+              <p style={{ margin:0, color:"#64748b", fontSize:15, lineHeight:1.8 }}>
+                Ready to enhance your TV viewing experience? Contact our experts to find the perfect service for your home. Whether you need a{" "}
+                <strong style={{ color:"#1e293b" }}>comprehensive repair</strong> or a{" "}
+                <strong style={{ color:"#2563eb" }}>flexible same-day solution</strong>, we help you get back to watching — fast.
+              </p>
+            </div>
+
+            {/* Feature rows */}
+            <div className={`tvs-reveal d3 ${rightInView ? "in" : ""}`} style={{ display:"flex", flexDirection:"column", gap:10 }}>
+              {features.map((feat, i) => {
+                const Icon = feat.icon;
+                const isHov = hovFeat === feat.id;
+                return (
+                  <div
+                    key={feat.id}
+                    className="feat-row"
+                    onMouseEnter={() => setHovFeat(feat.id)}
+                    onMouseLeave={() => setHovFeat(null)}
+                    style={{
+                      background: isHov
+                        ? `linear-gradient(135deg,${feat.light},#fff)`
+                        : "#fff",
+                      border: `1.5px solid ${isHov ? feat.border : "#e2e8f0"}`,
+                      boxShadow: isHov
+                        ? `0 12px 36px ${feat.accent}22, 0 0 0 1px ${feat.border}`
+                        : "0 2px 12px rgba(15,23,42,0.06)",
+                    }}
+                  >
+                    <div className="feat-icon-box" style={{
+                      background: isHov ? feat.iconBg : "#f1f5f9",
+                      border:`1px solid ${isHov ? feat.border : "#e2e8f0"}`,
+                    }}>
+                      <Icon size={18} color={isHov ? feat.accent : "#64748b"} style={{ transition:"color .35s" }} />
+                    </div>
+                    <div style={{ flex:1 }}>
+                      <h3 style={{
+                        margin:"0 0 4px",
+                        fontFamily:"'Bebas Neue',sans-serif",
+                        fontSize:18, letterSpacing:1.5, textTransform:"uppercase",
+                        color: isHov ? feat.accent : "#1e293b",
+                        transition:"color .35s",
+                      }}>{feat.title}</h3>
+                      <p style={{
+                        margin:0, fontSize:13.5, lineHeight:1.7, fontWeight:300,
+                        color: isHov ? "#475569" : "#94a3b8",
+                        transition:"color .35s",
+                      }}>{feat.description}</p>
+                    </div>
+                    <div style={{
+                      flexShrink:0, alignSelf:"center",
+                      width:32, height:32, borderRadius:"50%",
+                      display:"flex", alignItems:"center", justifyContent:"center",
+                      background: isHov ? `${feat.accent}18` : "transparent",
+                      border:`1px solid ${isHov ? feat.border : "transparent"}`,
+                      opacity: isHov ? 1 : 0,
+                      transform: isHov ? "translateX(0) rotate(0)" : "translateX(8px) rotate(-45deg)",
+                      transition:"all .4s cubic-bezier(.22,1,.36,1)",
+                    }}>
+                      <ArrowUpRight size={15} color={feat.accent} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Divider */}
+            <div className={`div-draw ${rightInView ? "on" : ""}`} style={{ transitionDelay:".5s" }} />
+
+            {/* CTA Buttons */}
+            <div className={`tvs-reveal d4 ${rightInView ? "in" : ""}`} style={{
+              display:"flex", alignItems:"center", gap:12, flexWrap:"wrap",
+            }}>
+              <button className="btn-primary">
+                <MessageSquare size={15} />
+                Contact Our Experts
+              </button>
+              <button className="btn-ghost">
+                <Phone size={14} />
+                Call Us Now
+                <ArrowUpRight size={14} />
+              </button>
+            </div>
+
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
