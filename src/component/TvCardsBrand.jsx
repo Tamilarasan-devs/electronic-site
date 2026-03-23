@@ -99,7 +99,7 @@ function BrandCard({ brand, accentIndex, size = "md" }) {
       {/* Index */}
       <span style={{
         position: "absolute", top: 8, right: 10,
-        fontSize: 9, fontFamily: "monospace", fontWeight: 700,
+        fontSize: 9,  fontWeight: 700,
         color: hov ? "rgba(255,255,255,0.4)" : "rgba(96,165,250,0.2)",
         letterSpacing: 1, transition: "color .35s", userSelect: "none",
       }}>
@@ -136,7 +136,7 @@ function BrandCard({ brand, accentIndex, size = "md" }) {
           alignItems: "center", justifyContent: "center", borderRadius: 14,
         }}>
           <span style={{
-            fontFamily: "'Bebas Neue', sans-serif",
+            
             fontSize: 17, fontWeight: 800,
             color: hov ? "#fff" : a.accent, letterSpacing: 2,
           }}>
@@ -148,7 +148,6 @@ function BrandCard({ brand, accentIndex, size = "md" }) {
       {/* Brand name */}
       <p style={{
         margin: 0,
-        fontFamily: "'Barlow', sans-serif",
         fontSize: isLg ? 11 : 10,
         fontWeight: 700, letterSpacing: 2,
         textTransform: "uppercase",
@@ -228,9 +227,6 @@ export default function TVBrandCards() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,600&display=swap');
-
-        .tvb * { box-sizing: border-box; }
 
         /* Dot bg pulse */
         @keyframes dotPulse { 0%,100%{opacity:.15} 50%{opacity:.3} }
@@ -296,7 +292,7 @@ export default function TVBrandCards() {
         .btn-p {
           display: inline-flex; align-items: center; gap: 8px;
           padding: 13px 26px; border-radius: 999px;
-          font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700;
+           font-size: 12px; font-weight: 700;
           letter-spacing: 3px; text-transform: uppercase;
           color: #fff; border: none; cursor: pointer;
           position: relative; overflow: hidden;
@@ -312,7 +308,7 @@ export default function TVBrandCards() {
         .btn-g {
           display: inline-flex; align-items: center; gap: 8px;
           padding: 13px 22px; border-radius: 999px;
-          font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700;
+        font-size: 12px; font-weight: 700;
           letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
           background: rgba(96,165,250,0.12); color: #93c5fd;
           border: 1.5px solid rgba(96,165,250,0.25);
@@ -328,7 +324,6 @@ export default function TVBrandCards() {
         background: "#0c1e36",
         padding: "96px 0 80px",
         position: "relative", overflow: "hidden",
-        fontFamily: "'Barlow', sans-serif",
       }}>
 
         {/* Dot bg */}
@@ -383,7 +378,6 @@ export default function TVBrandCards() {
             {/* Heading */}
             <div className={`tvb-up td1 ${headerInView ? "on" : ""}`}>
               <h2 style={{
-                fontFamily: "'Bebas Neue', sans-serif",
                 fontSize: "clamp(52px, 8vw, 90px)",
                 color: "#f1f5f9", textTransform: "uppercase",
                 lineHeight: 1, letterSpacing: 8, margin: 0,
@@ -462,7 +456,6 @@ export default function TVBrandCards() {
             <div style={{ position: "relative", paddingLeft: 16 }}>
               <p style={{
                 margin: "0 0 5px",
-                fontFamily: "'Bebas Neue', sans-serif",
                 fontSize: 27, letterSpacing: 2, color: "#f1f5f9",
               }}>
                 Don't see your brand listed?

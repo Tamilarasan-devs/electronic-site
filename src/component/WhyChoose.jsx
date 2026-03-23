@@ -97,11 +97,9 @@ export default function WhyChoose() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,600&display=swap');
+       
 
-        .wc * { box-sizing: border-box; }
 
-        /* ── Scroll reveal ── */
         .wc-reveal {
           opacity: 0; transform: translateY(48px);
           transition: opacity 0.75s cubic-bezier(.22,1,.36,1), transform 0.75s cubic-bezier(.22,1,.36,1);
@@ -174,7 +172,7 @@ export default function WhyChoose() {
         /* Watermark */
         .watermark {
           position:absolute; bottom:4px; right:14px;
-          font-family:'Bebas Neue',sans-serif; font-size:130px; line-height:1;
+          font-size:130px; line-height:1;
           pointer-events:none; user-select:none; color:rgba(255,255,255,0.04);
         }
 
@@ -201,7 +199,6 @@ export default function WhyChoose() {
         padding:"96px 24px",
         position:"relative",
         overflow:"hidden",
-        fontFamily:"'Barlow',sans-serif",
       }}>
 
         {/* Dot bg */}
@@ -260,7 +257,6 @@ export default function WhyChoose() {
 
             <div className={`wc-reveal d1 ${headerInView ? "in" : ""}`}>
               <h2 style={{
-                fontFamily:"'Bebas Neue',sans-serif",
                 fontSize:"clamp(52px,8vw,88px)",
                 color:"#f1f5f9",
                 textTransform:"uppercase",
@@ -354,7 +350,6 @@ export default function WhyChoose() {
                   {/* Text */}
                   <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
                     <h3 style={{
-                      fontFamily:"'Bebas Neue',sans-serif",
                       fontSize:26, letterSpacing:2,
                       textTransform:"uppercase", lineHeight:1.15,
                       color: isHov ? "#fff" : "#e2e8f0",
@@ -376,7 +371,6 @@ export default function WhyChoose() {
                   <div style={{ marginTop:"auto", display:"flex", alignItems:"flex-end", justifyContent:"space-between" }}>
                     <div>
                       <div style={{
-                        fontFamily:"'Bebas Neue',sans-serif",
                         fontSize:58, lineHeight:1,
                         color: isHov ? item.accentColor : "#f1f5f9",
                         transition:"color .4s",
@@ -441,7 +435,6 @@ export default function WhyChoose() {
                   </div>
                   <div>
                     <div style={{
-                      fontFamily:"'Barlow',sans-serif",
                       fontSize:15, fontWeight:700,
                       color: isHov ? "#fff" : "#e2e8f0",
                       transition:"color .4s",

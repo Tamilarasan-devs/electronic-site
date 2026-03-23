@@ -1,377 +1,285 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Facebook, Twitter, Instagram, Youtube,
   Phone, MapPin, Mail, Tv2, ArrowUpRight,
-  ChevronRight, Zap
+  ChevronRight, Zap, Clock
 } from "lucide-react";
 
 const quickLinks = ["Home", "About Us", "Services", "Brands", "Reviews", "Contact"];
-const services   = ["Panel Repair", "PCB Repair", "Spare Parts", "Home Service", "Free Diagnosis"];
-const brands     = ["Samsung", "LG", "Sony", "Philips", "Panasonic", "MI", "OnePlus", "TCL"];
+const services = ["Panel Repair", "PCB Repair", "Spare Parts", "Home Service", "Free Diagnosis"];
+const brands = ["Samsung", "LG", "Sony", "Philips", "Panasonic", "MI", "OnePlus", "TCL"];
 
-const socials = [
-  { Icon: Facebook,  href: "#", label: "Facebook",  accent: "#60a5fa" },
-  { Icon: Twitter,   href: "#", label: "Twitter",   accent: "#22d3ee" },
-  { Icon: Instagram, href: "#", label: "Instagram", accent: "#f472b6" },
-  { Icon: Youtube,   href: "#", label: "YouTube",   accent: "#f87171" },
+const brandColors = [
+  "hover:text-blue-400 hover:border-blue-400/50 hover:bg-blue-400/10",
+  "hover:text-cyan-400 hover:border-cyan-400/50 hover:bg-cyan-400/10",
+  "hover:text-violet-400 hover:border-violet-400/50 hover:bg-violet-400/10",
+  "hover:text-emerald-400 hover:border-emerald-400/50 hover:bg-emerald-400/10",
+  "hover:text-pink-400 hover:border-pink-400/50 hover:bg-pink-400/10",
+  "hover:text-orange-400 hover:border-orange-400/50 hover:bg-orange-400/10",
+  "hover:text-yellow-400 hover:border-yellow-400/50 hover:bg-yellow-400/10",
+  "hover:text-red-400 hover:border-red-400/50 hover:bg-red-400/10",
 ];
 
-function useInView(threshold = 0.1) {
+const socials = [
+  { Icon: Facebook,  label: "Facebook",  hover: "hover:text-blue-400  hover:border-blue-400/40  hover:bg-blue-400/10  hover:shadow-blue-400/20"  },
+  { Icon: Twitter,   label: "Twitter",   hover: "hover:text-cyan-400   hover:border-cyan-400/40   hover:bg-cyan-400/10   hover:shadow-cyan-400/20"   },
+  { Icon: Instagram, label: "Instagram", hover: "hover:text-pink-400   hover:border-pink-400/40   hover:bg-pink-400/10   hover:shadow-pink-400/20"   },
+  { Icon: Youtube,   label: "YouTube",   hover: "hover:text-red-400    hover:border-red-400/40    hover:bg-red-400/10    hover:shadow-red-400/20"    },
+];
+
+const contactItems = [
+  { Icon: Phone,  text: "+91 9514698694 / 9361888173",                              color: "text-blue-400",    bg: "bg-blue-400/10 border-blue-400/20"    },
+  { Icon: Mail,   text: "kjelectronicsled@gmail.com",                               color: "text-cyan-400",    bg: "bg-cyan-400/10 border-cyan-400/20"    },
+  { Icon: MapPin, text: "32/7 Nethaji Road, PN Pudur, Coimbatore 641041",           color: "text-violet-400",  bg: "bg-violet-400/10 border-violet-400/20"  },
+  { Icon: Clock,  text: "Mon–Fri 9:30 AM–10:00 PM · Sat 9:30 AM–5:00 PM",         color: "text-emerald-400", bg: "bg-emerald-400/10 border-emerald-400/20" },
+];
+
+function useInView(threshold = 0.05) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setInView(true); }, { threshold });
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setInView(true); },
+      { threshold }
+    );
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
   return [ref, inView];
 }
 
-function LinkItem({ label, delay = 0, inView }) {
-  const [hov, setHov] = useState(false);
+function SectionHeading({ children }) {
+  return (
+    <div className="flex items-center gap-2.5 mb-5">
+      <span className="relative flex w-2 h-2 flex-shrink-0">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+        <span className="relative inline-flex rounded-full w-2 h-2 bg-blue-400" />
+      </span>
+      <h3 className="text-white font-bold text-xs tracking-[0.25em] uppercase">{children}</h3>
+    </div>
+  );
+}
+
+function LinkItem({ label, delay, inView }) {
   return (
     <li
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
+      className="group flex items-center gap-2 py-1.5 cursor-pointer"
       style={{
-        display: "flex", alignItems: "center", gap: 8,
-        padding: "6px 0", cursor: "pointer",
         opacity: inView ? 1 : 0,
-        transform: inView ? "translateX(0)" : "translateX(-20px)",
-        transition: `opacity .6s cubic-bezier(.22,1,.36,1) ${delay}ms, transform .6s cubic-bezier(.22,1,.36,1) ${delay}ms`,
+        transform: inView ? "translateX(0)" : "translateX(-14px)",
+        transition: `opacity 0.55s ease ${delay}ms, transform 0.55s ease ${delay}ms`,
       }}
     >
       <ChevronRight
-        size={13}
-        style={{
-          color: hov ? "#60a5fa" : "rgba(96,165,250,0.3)",
-          transform: hov ? "translateX(4px)" : "none",
-          transition: "all .3s cubic-bezier(.22,1,.36,1)",
-          flexShrink: 0,
-        }}
+        size={18}
+        className="text-blue-400/80 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0"
       />
-      <span style={{
-        fontSize: 14, fontWeight: hov ? 600 : 400,
-        color: hov ? "#e2e8f0" : "rgba(148,163,184,0.85)",
-        transition: "color .3s, font-weight .2s",
-        letterSpacing: 0.3,
-      }}>
+      <span className="text-white group-hover:text-white text-sm group-hover:font-medium transition-all duration-300 tracking-wide">
         {label}
       </span>
     </li>
   );
 }
 
-function SocialBtn({ Icon, href, label, accent }) {
-  const [hov, setHov] = useState(false);
-  return (
-    <a
-      href={href}
-      aria-label={label}
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
-      style={{
-        width: 42, height: 42, borderRadius: 12,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        background: hov ? `${accent}22` : "rgba(96,165,250,0.08)",
-        border: `1.5px solid ${hov ? accent + "55" : "rgba(96,165,250,0.15)"}`,
-        color: hov ? accent : "rgba(148,163,184,0.7)",
-        textDecoration: "none",
-        transition: "all .35s cubic-bezier(.22,1,.36,1)",
-        transform: hov ? "translateY(-5px) scale(1.1)" : "none",
-        boxShadow: hov ? `0 8px 20px ${accent}30` : "none",
-      }}
-    >
-      <Icon size={16} />
-    </a>
-  );
-}
-
 export default function Footer() {
-  const [colRef, colInView] = useInView(0.1);
-  const [botRef, botInView] = useInView(0.2);
-  const [hovLogo, setHovLogo] = useState(false);
+  const [colRef, colInView] = useInView(0.05);
+  const [botRef, botInView] = useInView(0.1);
+  const [logoHov, setLogoHov] = useState(false);
 
   return (
     <>
       <style>{`
-        .ft * { box-sizing: border-box; }
+        @keyframes barGrow    { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+        @keyframes shimmer    { 0% { background-position: 0% 0 } 100% { background-position: 200% 0 } }
+        @keyframes dotPulse   { 0%,100% { opacity:.10 } 50% { opacity:.22 } }
 
-        /* Dot bg */
-        @keyframes dotPulse { 0%,100%{opacity:.15} 50%{opacity:.3} }
-        .ft-dots { animation: dotPulse 6s ease-in-out infinite; }
-
-        /* Divider draw */
-        .ft-div-draw {
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(96,165,250,.25), rgba(167,139,250,.2), transparent);
-          width: 0; transition: width 1.2s cubic-bezier(.22,1,.36,1) .2s;
-        }
-        .ft-div-draw.on { width: 100%; }
-
-        /* Top bar */
-        @keyframes barGrow { from{transform:scaleX(0)} to{transform:scaleX(1)} }
-        .ft-top-bar {
-          height: 4px;
-          background: linear-gradient(90deg, #60a5fa, #22d3ee, #a78bfa, #f472b6);
+        .kj-topbar {
+          height: 3px;
+          background: linear-gradient(90deg,#60a5fa,#22d3ee,#a78bfa,#f472b6,#60a5fa);
+          background-size: 200% 100%;
           transform-origin: left;
-          animation: barGrow .9s cubic-bezier(.22,1,.36,1) .2s both;
+          animation: barGrow .9s cubic-bezier(.22,1,.36,1) .15s both,
+                     shimmer 4s linear 1.05s infinite;
         }
+        .kj-dotbg {
+          background-image: radial-gradient(circle,rgba(96,165,250,.22) 1px,transparent 1px);
+          background-size: 28px 28px;
+          animation: dotPulse 6s ease-in-out infinite;
+        }
+        .kj-divider {
+          height: 1px;
+          background: linear-gradient(90deg,transparent,rgba(96,165,250,.28),rgba(167,139,250,.22),transparent);
+          width: 0;
+          transition: width 1.2s cubic-bezier(.22,1,.36,1) .2s;
+        }
+        .kj-divider.on { width: 100%; }
 
-        /* Brand pill hover */
-        .brand-tag {
-          font-size: 11px; font-weight: 700;
-          letter-spacing: 2px; text-transform: uppercase;
-          border-radius: 999px; padding: 4px 12px;
-          cursor: default;
-          transition: all .3s cubic-bezier(.22,1,.36,1);
-        }
+        .kj-col  { opacity:0; transform:translateY(30px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+        .kj-col.on { opacity:1; transform:translateY(0); }
 
-        /* Contact row */
-        .contact-row {
-          display: flex; align-items: center; gap: 12; cursor: default;
-          transition: transform .3s cubic-bezier(.22,1,.36,1);
-        }
-        .contact-row:hover { transform: translateX(4px); }
-
-        /* Scroll-to-top btn */
-        .back-top {
-          width: 40px; height: 40px; border-radius: 12px;
-          display: flex; align-items: center; justify-content: center;
-          background: rgba(96,165,250,0.12);
-          border: 1.5px solid rgba(96,165,250,0.2);
-          cursor: pointer;
-          transition: all .35s cubic-bezier(.22,1,.36,1);
-        }
-        .back-top:hover {
-          background: rgba(96,165,250,0.25);
-          border-color: rgba(96,165,250,0.4);
-          transform: translateY(-4px);
-          box-shadow: 0 8px 20px rgba(96,165,250,0.2);
-        }
-
-        /* Bottom reveal */
-        .bt-reveal {
-          opacity: 0; transform: translateY(24px);
-          transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
-        }
-        .bt-reveal.on { opacity: 1; transform: translateY(0); }
-
-        /* Pulse dot */
-        @keyframes pRing { 0%{transform:scale(1);opacity:.9} 80%{transform:scale(2.4);opacity:0} 100%{transform:scale(2.4);opacity:0} }
-        .pdot { position:relative;width:7px;height:7px;border-radius:50%;background:#60a5fa;flex-shrink:0; }
-        .pdot::after { content:'';position:absolute;inset:0;border-radius:50%;background:#60a5fa;animation:pRing 2s ease-out infinite; }
+        .kj-bot  { opacity:0; transform:translateY(18px); transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
+        .kj-bot.on { opacity:1; transform:translateY(0); }
       `}</style>
 
-      <footer className="ft" style={{
-        background: "#0a1628",
-        position: "relative", overflow: "hidden",
-      }}>
+      <footer className="relative overflow-hidden bg-[#070c18]">
 
-        {/* Top gradient bar */}
-        <div className="ft-top-bar" />
+        {/* ── Top rainbow bar ── */}
+        <div className="kj-topbar" />
 
-        {/* Dot bg */}
-        <div className="ft-dots" style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          backgroundImage: "radial-gradient(circle, rgba(96,165,250,0.35) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }} />
+        {/* ── Dot grid ── */}
+        <div className="kj-dotbg absolute inset-0 pointer-events-none" />
 
-        {/* Ambient glows */}
-        <div style={{
-          position: "absolute", top: 0, left: "20%", width: 600, height: 400, borderRadius: "50%",
-          background: "radial-gradient(ellipse,rgba(96,165,250,0.07) 0%,transparent 65%)",
-          pointerEvents: "none",
-        }} />
-        <div style={{
-          position: "absolute", bottom: 0, right: "10%", width: 500, height: 400, borderRadius: "50%",
-          background: "radial-gradient(ellipse,rgba(167,139,250,0.06) 0%,transparent 70%)",
-          pointerEvents: "none",
-        }} />
+        {/* ── Ambient glows ── */}
+        <div className="absolute top-0 left-1/4 w-[640px] h-[420px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(ellipse,rgba(37,99,235,.09) 0%,transparent 65%)" }} />
+        <div className="absolute bottom-0 right-[8%] w-[480px] h-[380px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(ellipse,rgba(124,58,237,.07) 0%,transparent 70%)" }} />
 
-        {/* ── MAIN CONTENT ── */}
+        {/* ════════════════════════════════
+            MAIN GRID
+        ════════════════════════════════ */}
         <div
           ref={colRef}
-          style={{
-            position: "relative", zIndex: 1,
-            maxWidth: 1200, margin: "0 auto",
-            padding: "64px 24px 48px",
-            display: "grid",
-            gridTemplateColumns: "2fr 1fr 1fr 1.5fr",
-            gap: 48,
-          }}
+          className="relative z-10 max-w-[1200px] mx-auto px-5 pt-16 pb-12
+                     grid grid-cols-1 gap-10
+                     sm:grid-cols-2
+                     lg:grid-cols-[2fr_1fr_1fr_1.6fr]"
         >
 
-          {/* ── COL 1: Brand ── */}
-          <div style={{
-            opacity: colInView ? 1 : 0, transform: colInView ? "translateY(0)" : "translateY(36px)",
-            transition: "opacity .7s cubic-bezier(.22,1,.36,1) .1s, transform .7s cubic-bezier(.22,1,.36,1) .1s",
-          }}>
+          {/* ── COL 1  Brand + Contact ── */}
+          <div
+            className={`kj-col sm:col-span-2 lg:col-span-1 ${colInView ? "on" : ""}`}
+            style={{ transitionDelay: "80ms" }}
+          >
             {/* Logo */}
             <div
-              onMouseEnter={() => setHovLogo(true)}
-              onMouseLeave={() => setHovLogo(false)}
-              style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 20, cursor: "default" }}
+              className="inline-flex items-center gap-3 mb-5 cursor-default select-none"
+              onMouseEnter={() => setLogoHov(true)}
+              onMouseLeave={() => setLogoHov(false)}
             >
-              <div style={{
-                width: 44, height: 44, borderRadius: 14,
-                background: hovLogo ? "linear-gradient(135deg,#2563eb,#1d4ed8)" : "rgba(96,165,250,0.12)",
-                border: `1.5px solid ${hovLogo ? "#3b82f6" : "rgba(96,165,250,0.2)"}`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                transition: "all .35s cubic-bezier(.22,1,.36,1)",
-                transform: hovLogo ? "rotate(-6deg) scale(1.08)" : "none",
-                boxShadow: hovLogo ? "0 8px 22px rgba(37,99,235,0.35)" : "none",
-              }}>
-                <Tv2 size={22} color={hovLogo ? "#fff" : "#60a5fa"} />
+              <div
+                className={`w-11 h-11 rounded-[14px] flex items-center justify-center flex-shrink-0 border transition-all duration-300
+                  ${logoHov
+                    ? "bg-gradient-to-br from-blue-600 to-blue-800 border-blue-500 shadow-[0_8px_24px_rgba(37,99,235,.42)] -rotate-6 scale-110"
+                    : "bg-blue-400/10 border-blue-400/20"}`}
+              >
+                <Tv2 size={21} className={logoHov ? "text-white" : "text-blue-400"} />
               </div>
               <div>
-                <span style={{
-                  fontSize: 28, letterSpacing: 4,
-                  color: "#f1f5f9", lineHeight: 1,
-                }}>KJ Electronics</span>
-                <div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "rgba(96,165,250,0.6)", marginTop: 1 }}>
+                <p className="text-white font-extrabold text-2xl tracking-[0.12em] leading-none">
+                  KJ Electronics
+                </p>
+                <p className="text-blue-400 text-[9px] tracking-[0.45em] uppercase font-semibold mt-1">
                   Coimbatore
-                </div>
+                </p>
               </div>
             </div>
 
-            <p style={{
-              margin: "0 0 24px", fontSize: 14, lineHeight: 1.8,
-              color: "rgba(148,163,184,0.8)", maxWidth: 300, fontWeight: 400,
-            }}>
-              Coimbatore's most trusted LED &amp; LCD TV repair center — expert technicians, genuine parts, and same-day service since 2014.
+            {/* Tagline */}
+            <p className="text-white text-sm leading-[1.85] mb-6 max-w-[300px]">
+              Coimbatore's most trusted LED &amp; LCD TV repair center — expert
+              technicians, genuine parts, and same-day service since 2014.
             </p>
 
-            {/* Contact info */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 28 }}>
-              {[
-                { icon: Phone,  text: "+91 98765 43210", accent: "#60a5fa" },
-                { icon: Mail,   text: "kjelectronics@gmail.com", accent: "#22d3ee" },
-                { icon: MapPin, text: "Coimbatore, Tamil Nadu", accent: "#a78bfa" },
-              ].map(({ icon: Icon, text, accent }) => (
-                <div key={text} className="contact-row" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <div style={{
-                    width: 32, height: 32, borderRadius: 10,
-                    background: `${accent}18`,
-                    border: `1px solid ${accent}33`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    flexShrink: 0,
-                  }}>
-                    <Icon size={14} color={accent} />
+            {/* Contact */}
+            <div className="flex flex-col gap-3 mb-7">
+              {contactItems.map(({ Icon, text, color, bg }) => (
+                <div
+                  key={text}
+                  className="flex items-start gap-3 hover:translate-x-1 transition-transform duration-300 cursor-default"
+                >
+                  <div className={`w-8 h-8 rounded-[10px] border flex items-center justify-center flex-shrink-0 mt-0.5 ${bg}`}>
+                    <Icon size={13} className={color} />
                   </div>
-                  <span style={{ fontSize: 13, color: "rgba(148,163,184,0.8)", fontWeight: 400 }}>{text}</span>
+                  <span className="text-white text-[13px] leading-relaxed">{text}</span>
                 </div>
               ))}
             </div>
 
-            {/* Socials */}
-            <div style={{ display: "flex", gap: 10 }}>
-              {socials.map((s) => (
-                <SocialBtn key={s.label} {...s} />
+            {/* Social buttons */}
+            <div className="flex gap-2.5 flex-wrap">
+              {socials.map(({ Icon, label, hover }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className={`w-[42px] h-[42px] rounded-xl flex items-center justify-center
+                    border border-white/10 bg-white/5 text-white
+                    transition-all duration-300 hover:-translate-y-1.5 hover:scale-110 hover:shadow-lg
+                    ${hover}`}
+                >
+                  <Icon size={16} />
+                </a>
               ))}
             </div>
           </div>
 
-          {/* ── COL 2: Quick Links ── */}
-          <div style={{
-            opacity: colInView ? 1 : 0, transform: colInView ? "translateY(0)" : "translateY(36px)",
-            transition: "opacity .7s cubic-bezier(.22,1,.36,1) .2s, transform .7s cubic-bezier(.22,1,.36,1) .2s",
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 22 }}>
-              <span className="pdot" />
-              <span style={{ fontSize: 18, letterSpacing: 3, color: "#f1f5f9" }}>
-                Quick Links
-              </span>
-            </div>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+          {/* ── COL 2  Quick Links ── */}
+          <div
+            className={`kj-col ${colInView ? "on" : ""}`}
+            style={{ transitionDelay: "180ms" }}
+          >
+            <SectionHeading>Quick Links</SectionHeading>
+            <ul className="space-y-0">
               {quickLinks.map((link, i) => (
-                <LinkItem key={link} label={link} delay={i * 55} inView={colInView} />
+                <LinkItem key={link} label={link} delay={i * 50} inView={colInView} />
               ))}
             </ul>
           </div>
 
-          {/* ── COL 3: Services ── */}
-          <div style={{
-            opacity: colInView ? 1 : 0, transform: colInView ? "translateY(0)" : "translateY(36px)",
-            transition: "opacity .7s cubic-bezier(.22,1,.36,1) .3s, transform .7s cubic-bezier(.22,1,.36,1) .3s",
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 22 }}>
-              <span className="pdot" />
-              <span style={{ fontSize: 18, letterSpacing: 3, color: "#f1f5f9" }}>
-                Services
-              </span>
-            </div>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+          {/* ── COL 3  Services ── */}
+          <div
+            className={`kj-col ${colInView ? "on" : ""}`}
+            style={{ transitionDelay: "280ms" }}
+          >
+            <SectionHeading>Services</SectionHeading>
+            <ul className="space-y-0">
               {services.map((s, i) => (
-                <LinkItem key={s} label={s} delay={i * 55 + 100} inView={colInView} />
+                <LinkItem key={s} label={s} delay={i * 50 + 80} inView={colInView} />
               ))}
             </ul>
           </div>
 
-          {/* ── COL 4: Brands + Newsletter ── */}
-          <div style={{
-            opacity: colInView ? 1 : 0, transform: colInView ? "translateY(0)" : "translateY(36px)",
-            transition: "opacity .7s cubic-bezier(.22,1,.36,1) .4s, transform .7s cubic-bezier(.22,1,.36,1) .4s",
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 18 }}>
-              <span className="pdot" />
-              <span style={{  fontSize: 18, letterSpacing: 3, color: "#f1f5f9" }}>
-                Brands We Fix
-              </span>
+          {/* ── COL 4  Brands + CTA ── */}
+          <div
+            className={`kj-col sm:col-span-2 lg:col-span-1 ${colInView ? "on" : ""}`}
+            style={{ transitionDelay: "360ms" }}
+          >
+            <SectionHeading>Brands We Fix</SectionHeading>
+
+            <div className="flex flex-wrap gap-2 mb-7">
+              {brands.map((b, i) => (
+                <span
+                  key={b}
+                  className={`text-[10px] font-bold tracking-[0.18em] uppercase rounded-full
+                    px-3 py-1 border border-white/10 bg-white/5 text-white/55
+                    cursor-default transition-all duration-300 hover:-translate-y-0.5
+                    ${brandColors[i % brandColors.length]}`}
+                >
+                  {b}
+                </span>
+              ))}
             </div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 28 }}>
-              {brands.map((b, i) => {
-                const [hov, setHov] = useState(false);
-                const accents = ["#60a5fa","#22d3ee","#a78bfa","#34d399","#f472b6","#fb923c","#fbbf24","#f87171"];
-                const a = accents[i % accents.length];
-                return (
-                  <span
-                    key={b}
-                    className="brand-tag"
-                    onMouseEnter={() => setHov(true)}
-                    onMouseLeave={() => setHov(false)}
-                    style={{
-                      background: hov ? `${a}22` : "rgba(96,165,250,0.08)",
-                      border: `1px solid ${hov ? a + "55" : "rgba(96,165,250,0.15)"}`,
-                      color: hov ? a : "rgba(148,163,184,0.7)",
-                      transform: hov ? "translateY(-3px)" : "none",
-                      boxShadow: hov ? `0 6px 16px ${a}25` : "none",
-                    }}
-                  >
-                    {b}
-                  </span>
-                );
-              })}
-            </div>
-
-            {/* Mini CTA */}
-            <div style={{
-              borderRadius: 18, padding: "18px 20px",
-              background: "linear-gradient(135deg, rgba(37,99,235,0.18), rgba(124,58,237,0.12))",
-              border: "1px solid rgba(96,165,250,0.2)",
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 8 }}>
-                <Zap size={13} color="#fbbf24" />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: "#fbbf24" }}>
+            {/* Free Diagnosis CTA */}
+            <div className="rounded-2xl p-5 border border-blue-400/20 bg-gradient-to-br from-blue-600/15 to-violet-600/10 backdrop-blur-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <Zap size={13} className="text-yellow-400" />
+                <span className="text-yellow-400 text-[10px] font-bold tracking-[0.3em] uppercase">
                   Free Diagnosis
                 </span>
               </div>
-              <p style={{ margin: "0 0 12px", fontSize: 13, color: "rgba(226,232,240,0.8)", lineHeight: 1.6 }}>
+              <p className="text-white/60 text-[13px] leading-relaxed mb-4">
                 Walk in or call — we assess your TV for free before any repair begins.
               </p>
-              <button style={{
-                display: "inline-flex", alignItems: "center", gap: 7,
-                padding: "9px 18px", borderRadius: 999,
-                background: "linear-gradient(135deg,#2563eb,#1d4ed8)",
-                color: "#fff", border: "none", cursor: "pointer",
-                fontSize: 11, fontWeight: 700, letterSpacing: 2.5, textTransform: "uppercase",
-                boxShadow: "0 6px 20px rgba(37,99,235,.35)",
-                transition: "transform .3s, box-shadow .3s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 10px 28px rgba(37,99,235,.48)"; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(37,99,235,.35)"; }}
+              <button
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full
+                  bg-gradient-to-r from-blue-600 to-blue-700 text-white
+                  text-[11px] font-bold tracking-[0.2em] uppercase
+                  shadow-[0_6px_20px_rgba(37,99,235,.4)]
+                  hover:shadow-[0_10px_28px_rgba(37,99,235,.55)]
+                  hover:-translate-y-0.5 transition-all duration-300
+                  border-0 cursor-pointer"
               >
                 Book Repair
                 <ArrowUpRight size={13} />
@@ -380,70 +288,60 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── DIVIDER ── */}
-        <div style={{ position: "relative", zIndex: 1, padding: "0 24px" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-            <div
-              className={`ft-div-draw ${colInView ? "on" : ""}`}
-            />
+        {/* ── Divider ── */}
+        <div className="relative z-10 px-5">
+          <div className="max-w-[1200px] mx-auto">
+            <div className={`kj-divider ${colInView ? "on" : ""}`} />
           </div>
         </div>
 
-        {/* ── BOTTOM BAR ── */}
-        <div
-          ref={botRef}
-          style={{
-            position: "relative", zIndex: 1,
-            maxWidth: 1200, margin: "0 auto",
-            padding: "20px 24px 28px",
-            display: "flex", alignItems: "center",
-            justifyContent: "space-between", flexWrap: "wrap", gap: 16,
-          }}
-        >
-          <div className={`bt-reveal ${botInView ? "on" : ""}`} style={{ transitionDelay: ".1s" }}>
-            <p style={{ margin: 0, fontSize: 13, color: "rgba(100,116,139,0.8)" }}>
-              © 2026{" "}
-              <span style={{ color: "#60a5fa", fontWeight: 600 }}>KJ Electronics</span>
-              {" · "}Coimbatore, Tamil Nadu. All rights reserved.
-            </p>
-          </div>
+        {/* ════════════════════════════════
+            BOTTOM BAR
+        ════════════════════════════════ */}
+        <div ref={botRef} className="relative z-10 max-w-[1200px] mx-auto px-5 pt-5 pb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 flex-wrap">
 
-          <div className={`bt-reveal ${botInView ? "on" : ""}`} style={{
-            transitionDelay: ".2s",
-            display: "flex", alignItems: "center", gap: 20,
-          }}>
-            {["Privacy Policy", "Terms of Service", "Support"].map((item, i) => {
-              const [hov, setHov] = useState(false);
-              return (
+            {/* Copyright */}
+            <div className={`kj-bot ${botInView ? "on" : ""}`} style={{ transitionDelay: "80ms" }}>
+              <p className="text-white/25 text-[13px]">
+                © 2026{" "}
+                <span className="text-blue-400 font-semibold">KJ Electronics</span>
+                {" · "}Coimbatore, Tamil Nadu. All rights reserved.
+              </p>
+            </div>
+
+            {/* Policy links */}
+            <div
+              className={`kj-bot flex flex-wrap items-center gap-5 ${botInView ? "on" : ""}`}
+              style={{ transitionDelay: "180ms" }}
+            >
+              {["Privacy Policy", "Terms of Service", "Support"].map((item) => (
                 <span
                   key={item}
-                  onMouseEnter={() => setHov(true)}
-                  onMouseLeave={() => setHov(false)}
-                  style={{
-                    fontSize: 12, fontWeight: hov ? 600 : 400,
-                    color: hov ? "#93c5fd" : "rgba(100,116,139,0.75)",
-                    cursor: "pointer", letterSpacing: 0.5,
-                    transition: "color .25s, font-weight .2s",
-                    textDecoration: hov ? "underline" : "none",
-                  }}
+                  className="text-white/30 hover:text-blue-300 text-xs tracking-wide cursor-pointer transition-colors duration-200 hover:underline"
                 >
                   {item}
                 </span>
-              );
-            })}
-          </div>
+              ))}
+            </div>
 
-          {/* Back to top */}
-          <div className={`bt-reveal ${botInView ? "on" : ""}`} style={{ transitionDelay: ".3s" }}>
-            <button
-              className="back-top"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              title="Back to top"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(96,165,250,0.8)" strokeWidth="2.5">
-                <path d="M12 19V5M5 12l7-7 7 7" />
-              </svg>
-            </button>
+            {/* Back to top */}
+            <div className={`kj-bot ${botInView ? "on" : ""}`} style={{ transitionDelay: "280ms" }}>
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                title="Back to top"
+                className="w-10 h-10 rounded-xl flex items-center justify-center
+                  bg-white/5 border border-white/10 text-blue-400/60
+                  hover:bg-blue-400/15 hover:border-blue-400/35
+                  hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(96,165,250,.2)]
+                  transition-all duration-300 cursor-pointer"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 19V5M5 12l7-7 7 7" />
+                </svg>
+              </button>
+            </div>
+
           </div>
         </div>
       </footer>

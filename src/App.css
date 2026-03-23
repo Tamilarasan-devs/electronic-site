@@ -1,13 +1,29 @@
 @import "tailwindcss";
-/* @font-face {
-  font-family: "LemonMilk";
-  src: url("./assets/font/LemonMilkMedium-mLZYV.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;
-} */
+
 @font-face {
   font-family: "FredokaOne";
-  src: url("./assets/FredokaOne-Regular/FredokaOne-Regular.ttf") format("opentype");
+  src: url("./assets/FredokaOne-Regular/FredokaOne-Regular.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
+}
+@font-face {
+  font-family: "Medicinal";
+  src: url("./assets/medicinal_compound/Medicinal\ Compound.otf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Sex";
+  src: url("./assets/sex_face_small_caps/Sex\ Face\ Small\ Caps.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nexsa";
+  src: url("./assets/Nexsa\ PERSONAL\ USE\ ONLY!.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+body {
+  font-family: "Medicinal";
 }

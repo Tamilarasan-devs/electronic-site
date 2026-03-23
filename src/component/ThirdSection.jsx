@@ -57,9 +57,7 @@ export default function KJElectronics() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,900;1,600&display=swap');
-
-        .kj-root { font-family: 'Barlow', sans-serif; }
+        
 
         /* Animations */
         @keyframes pulseRing {

@@ -51,9 +51,7 @@ export default function TVServices() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,600&display=swap');
 
-        .tvs * { box-sizing: border-box; }
 
         /* ── Scroll reveal ── */
         .tvs-left  { opacity:0; transform:translateX(-48px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
@@ -179,7 +177,7 @@ export default function TVServices() {
         .btn-primary {
           display:inline-flex; align-items:center; gap:9px;
           padding:13px 28px; border-radius:999px;
-          font-family:'Barlow',sans-serif; font-size:12px; font-weight:700;
+         font-size:12px; font-weight:700;
           letter-spacing:3px; text-transform:uppercase;
           color:#fff; border:none; cursor:pointer; position:relative; overflow:hidden;
           background:linear-gradient(135deg,#2563eb,#1d4ed8);
@@ -197,7 +195,7 @@ export default function TVServices() {
         .btn-ghost {
           display:inline-flex; align-items:center; gap:9px;
           padding:13px 22px; border-radius:999px;
-          font-family:'Barlow',sans-serif; font-size:12px; font-weight:700;
+           font-size:12px; font-weight:700;
           letter-spacing:3px; text-transform:uppercase; cursor:pointer;
           background:#eff6ff; color:#1d4ed8;
           border:1.5px solid #bfdbfe;
@@ -215,7 +213,7 @@ export default function TVServices() {
       <section className="tvs" style={{
         width:"100%", background:"#f8faff",
         padding:"96px 24px", position:"relative", overflow:"hidden",
-        fontFamily:"'Barlow',sans-serif",
+        
       }}>
 
         {/* Dot bg */}
@@ -300,7 +298,7 @@ export default function TVServices() {
                 boxShadow:"0 8px 24px rgba(37,99,235,0.18)",
               }}>
                 <p style={{ margin:"0 0 3px", fontSize:9, fontWeight:700, letterSpacing:3, textTransform:"uppercase", color:"#2563eb" }}>Response Time</p>
-                <p style={{ margin:0, fontFamily:"'Bebas Neue',sans-serif", fontSize:26, lineHeight:1, color:"#0f172a", letterSpacing:1 }}>Under 3 Hrs</p>
+                <p style={{ margin:0, fontSize:26, lineHeight:1, color:"#0f172a", letterSpacing:1 }}>Under 3 Hrs</p>
               </div>
             </div>
 
@@ -352,7 +350,7 @@ export default function TVServices() {
             {/* Heading */}
             <div className={`tvs-reveal d1 ${rightInView ? "in" : ""}`}>
               <h2 style={{
-                fontFamily:"'Bebas Neue',sans-serif",
+                
                 fontSize:"clamp(38px,5vw,62px)",
                 color:"#0f172a", textTransform:"uppercase",
                 lineHeight:1.05, letterSpacing:5, margin:0,
@@ -415,7 +413,6 @@ export default function TVServices() {
                     <div style={{ flex:1 }}>
                       <h3 style={{
                         margin:"0 0 4px",
-                        fontFamily:"'Bebas Neue',sans-serif",
                         fontSize:18, letterSpacing:1.5, textTransform:"uppercase",
                         color: isHov ? feat.accent : "#1e293b",
                         transition:"color .35s",

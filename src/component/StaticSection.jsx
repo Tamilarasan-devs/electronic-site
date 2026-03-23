@@ -90,10 +90,6 @@ export default function StatsSection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,600&display=swap');
-
-        .ss * { box-sizing: border-box; }
-
         /* ── Scroll reveal ── */
         .ss-reveal {
           opacity: 0; transform: translateY(44px);
@@ -177,7 +173,7 @@ export default function StatsSection() {
         /* Watermark */
         .s-wm {
           position:absolute; bottom:4px; right:12px;
-          font-family:'Bebas Neue',sans-serif; font-size:110px; line-height:1;
+       font-size:110px; line-height:1;
           pointer-events:none; user-select:none; transition:opacity .4s;
         }
 
@@ -195,7 +191,7 @@ export default function StatsSection() {
         .btn-book {
           display:inline-flex; align-items:center; gap:8px;
           padding:13px 28px; border-radius:999px;
-          font-family:'Barlow',sans-serif; font-size:12px; font-weight:700;
+   font-size:12px; font-weight:700;
           letter-spacing:3px; text-transform:uppercase;
           color:#fff; border:none; cursor:pointer; overflow:hidden; position:relative;
           transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
@@ -211,7 +207,7 @@ export default function StatsSection() {
         .btn-call {
           display:inline-flex; align-items:center; gap:8px;
           padding:13px 22px; border-radius:999px;
-          font-family:'Barlow',sans-serif; font-size:12px; font-weight:700;
+ font-size:12px; font-weight:700;
           letter-spacing:3px; text-transform:uppercase; cursor:pointer;
           border:none;
           transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
@@ -224,7 +220,6 @@ export default function StatsSection() {
       <section className="ss" style={{
         width:"100%", background:"#f8faff",
         padding:"96px 24px", position:"relative", overflow:"hidden",
-        fontFamily:"'Barlow',sans-serif",
       }}>
 
         {/* Dot bg */}
@@ -284,7 +279,7 @@ export default function StatsSection() {
 
             <div className={`ss-reveal d1 ${headerInView ? "in" : ""}`}>
               <h2 style={{
-                fontFamily:"'Bebas Neue',sans-serif",
+                
                 fontSize:"clamp(50px,8vw,88px)",
                 color:"#0f172a", textTransform:"uppercase",
                 lineHeight:1, letterSpacing:8, margin:0,
@@ -375,7 +370,7 @@ export default function StatsSection() {
                   {/* Values */}
                   <div style={{ display:"flex", flexDirection:"column", gap:5 }}>
                     <div style={{
-                      fontFamily:"'Bebas Neue',sans-serif",
+                      
                       fontSize:"clamp(52px,6vw,68px)", lineHeight:1,
                       color: isHov ? stat.accent : "#0f172a",
                       transition:"color .4s",
@@ -440,7 +435,7 @@ export default function StatsSection() {
             <div style={{ position:"relative", paddingLeft:16 }}>
               <p style={{
                 margin:"0 0 4px",
-                fontFamily:"'Bebas Neue',sans-serif",
+                
                 fontSize:26, letterSpacing:2, color:"#0f172a",
               }}>
                 Ready to join our success story?
