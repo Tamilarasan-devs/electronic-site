@@ -19,7 +19,7 @@ const cards = [
     tag: "Doorstep Service",
     title: "Technicians At Your Location",
     desc: "Expert technicians arrive at your door, diagnose on-site, and fix issues without transporting your TV.",
-    img: "https://images.unsplash.com/photo-1581093458791-9d15482442f1?auto=format&fit=crop&w=800&q=80",
+    img: "https://repairkro.com/wp-content/uploads/2023/11/blog-1.webp",
     alt: "Technician Visit",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">

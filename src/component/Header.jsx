@@ -77,7 +77,7 @@ export default function Header() {
       `}</style>
 
       <header
-        className={`w-full sticky top-0 z-50 font-outfit bg-white/95 backdrop-blur-md border-b border-slate-100 transition-all duration-300 ${
+        className={`w-full sticky top-0 z-50  bg-white/95 backdrop-blur-md border-b border-slate-100 transition-all duration-300 ${
           scrolled ? "shadow-[0_4px_32px_rgba(15,23,42,0.09)]" : "shadow-none"
         }`}
       >
@@ -93,7 +93,7 @@ export default function Header() {
               <TvIcon />
             </div>
             <div className="flex flex-col">
-              <span className="font-syne text-[17px] font-extrabold leading-none tracking-tight text-slate-900">
+              <span className="text-[17px] font-extrabold leading-none tracking-tight text-slate-900">
                 KJ <span className="text-amber-500">Electronics</span>
               </span>
               
@@ -106,7 +106,7 @@ export default function Header() {
               <Link
                 key={path}
                 to={path}
-                className={`font-syne text-[14px] font-bold tracking-[2px] uppercase px-[18px] py-[7px] rounded-full no-underline transition-all duration-200
+                className={` text-[14px]  tracking-[2px] font-bold uppercase px-[18px] py-[7px] rounded-full no-underline transition-all duration-200
                   ${isActive(path)
                     ? "bg-white text-slate-900 shadow-[0_1px_6px_rgba(15,23,42,0.10)]"
                     : "text-slate-400 hover:bg-white/70 hover:text-slate-700"
@@ -129,7 +129,7 @@ export default function Header() {
             {/* Book Repair → navigates to /contact */}
             <Link
               to="/contact"
-              className="cta-shine flex items-center gap-2 px-6 py-[9px] rounded-full bg-slate-900 text-white font-syne text-[10.5px] font-bold tracking-[2px] uppercase no-underline shadow-[0_4px_18px_rgba(15,23,42,0.20)] hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(15,23,42,0.30)] active:translate-y-0 transition-all duration-200"
+              className="cta-shine flex items-center gap-2 px-6 py-[9px] rounded-full bg-slate-900 text-white  text-[10.5px]  tracking-[2px] uppercase no-underline shadow-[0_4px_18px_rgba(15,23,42,0.20)] hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(15,23,42,0.30)] active:translate-y-0 transition-all duration-200"
             >
               Book Repair
               <ArrowIcon />
@@ -167,7 +167,7 @@ export default function Header() {
               <Link
                 key={path}
                 to={path}
-                className={`flex items-center justify-between py-3.5 font-syne text-[11.5px] font-bold tracking-[2.5px] uppercase no-underline transition-colors duration-150
+                className={`flex items-center justify-between py-3.5  text-[11.5px] font-bold tracking-[2.5px] uppercase no-underline transition-colors duration-150
                   ${i < navLinks.length - 1 ? "border-b border-slate-100" : ""}
                   ${isActive(path)
                     ? "text-amber-500"
