@@ -127,34 +127,34 @@ export default function OurServices() {
           {/* Eyebrow chip */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8]">
             <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-            <p className="text-[16px] font-bold tracking-[4px] uppercase text-[#2a4771]">What We Fix</p>
+            <p className="text-[16px] font-bold tracking-[4px] uppercase text-[#890b44]">What We Fix</p>
           </div>
 
           {/* Main heading */}
           <h2
-            className="text-5xl md:text-7xl text-gray-900 uppercase leading-none tracking-widest"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            className="text-5xl md:text-7xl text-white uppercase leading-none tracking-widest"
+            
           >
             Our{" "}
-            <span className="relative text-blue-300">
+            <span className="relative text-[#890b44]">
               Services
-              <span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" />
+              <span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#890b44] to-[#890b44]" />
             </span>
           </h2>
 
           {/* Tagline row */}
           <div className="flex items-center gap-3 mt-1">
-            <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-            <p className="text-white text-lg font-medium tracking-[3px] uppercase italic">
+            <span className="w-8 h-[2px] rounded-full bg-[#890b44]" />
+            <p className="text-white text-lg font-bold tracking-[3px] uppercase italic">
               Professional LED TV Repair for All Major Brands
             </p>
-            <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
+            <span className="w-8 h-[2px] rounded-full bg-[#890b44]" />
           </div>
 
           {/* Count badge */}
           <div className="mt-2 px-5 py-2 rounded-full border border-[#c5d3e8] bg-[#eef2f8] flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2a4771] animate-pulse" />
-            <span className="text-[#2a4771] text-[14px] tracking-[2px] uppercase font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#890b44] animate-pulse" />
+            <span className="text-[#890b44] text-[14px] tracking-[2px] uppercase font-semibold">
               {services.length} Brands Covered
             </span>
           </div>
@@ -168,7 +168,7 @@ export default function OurServices() {
       className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm"
     >
       {/* Service Name */}
-      <h3 className="text-md font-semibold text-gray-700 leading-snug">
+      <h3 className="text-md font-semibold text-[#890b44] leading-snug">
         {service.name}
       </h3>
 
@@ -209,7 +209,7 @@ export default function OurServices() {
 
           <div className="relative flex items-center gap-4 shrink-0">
             <button className="px-7 py-3 text-white text-xs font-bold tracking-[3px] uppercase rounded-full transition-all duration-300
-              bg-[#2a4771] shadow-[0_8px_28px_rgba(42,71,113,0.30)]
+              bg-[#890b44] shadow-[0_8px_28px_rgba(42,71,113,0.30)]
               hover:bg-[#3d5f96] hover:shadow-[0_12px_36px_rgba(42,71,113,0.45)] hover:-translate-y-0.5">
               Book a Repair
             </button>

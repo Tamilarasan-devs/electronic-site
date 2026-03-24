@@ -96,366 +96,118 @@ export default function WhyChoose() {
 
   return (
     <>
-      <style>{`
-       
 
+      <section className="w-full bg-white py-24 px-6 lg:px-16">
 
-        .wc-reveal {
-          opacity: 0; transform: translateY(48px);
-          transition: opacity 0.75s cubic-bezier(.22,1,.36,1), transform 0.75s cubic-bezier(.22,1,.36,1);
-        }
-        .wc-reveal.in { opacity: 1; transform: translateY(0); }
-        .d0 { transition-delay: 0s    !important; }
-        .d1 { transition-delay: 0.12s !important; }
-        .d2 { transition-delay: 0.22s !important; }
-        .d3 { transition-delay: 0.32s !important; }
-        .d4 { transition-delay: 0.44s !important; }
-        .d5 { transition-delay: 0.56s !important; }
+  <div className="max-w-6xl mx-auto">
 
-        /* Dot bg breathe */
-        @keyframes dotBreathe { 0%,100%{opacity:.2} 50%{opacity:.4} }
-        .dot-bg { animation: dotBreathe 6s ease-in-out infinite; }
+    {/* HEADER */}
+    <div
+      ref={headerRef}
+      className={`text-center mb-20 transition-all duration-700 ${
+        headerInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      <p className="text-lg uppercase tracking-[0.2em] text-[#890b44] font-semibold mb-3">
+        Why choose us
+      </p>
 
-        /* Pulse ring */
-        @keyframes pulseRing {
-          0%   { transform:scale(1); opacity:.9; }
-          80%  { transform:scale(2.6); opacity:0; }
-          100% { transform:scale(2.6); opacity:0; }
-        }
-        .pulse-dot {
-          position:relative; width:8px; height:8px;
-          border-radius:50%; background:#60a5fa; flex-shrink:0;
-        }
-        .pulse-dot::after {
-          content:''; position:absolute; inset:0;
-          border-radius:50%; background:#60a5fa;
-          animation: pulseRing 2s ease-out infinite;
-        }
+      <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+        Expert care for every{" "}
+        <span className="text-[#890b44] italic">screen</span>
+      </h2>
+    </div>
 
-        /* Heading underline draw */
-        .draw-line {
-          position:absolute; bottom:-5px; left:0; right:0;
-          height:3px; border-radius:9999px;
-          background:linear-gradient(90deg,#60a5fa,#a78bfa);
-          transform:scaleX(0); transform-origin:left;
-          transition:transform .9s cubic-bezier(.22,1,.36,1) .5s;
-        }
-        .draw-line.drawn { transform:scaleX(1); }
+    {/* FEATURE CARDS */}
+    <div
+      ref={cardsRef}
+      className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+    >
+      {features.map((item, i) => {
+        const Icon = item.icon;
 
-        /* Card shimmer sweep */
-        .feat-card::after {
-          content:''; position:absolute;
-          top:0; left:-100%; width:55%; height:100%;
-          background:linear-gradient(105deg,transparent,rgba(255,255,255,0.065),transparent);
-          transition:left .65s ease; pointer-events:none;
-          z-index:1;
-        }
-        .feat-card:hover::after { left:150%; }
+        return (
+          <div
+            key={item.id}
+            className={`group border border-[#f3d6e3] bg-[#fdf2f7] rounded-2xl p-6 flex flex-col gap-5
+            transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2
+            ${cardsInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
 
-        /* Icon box */
-        .icon-box {
-          width:56px; height:56px; border-radius:16px;
-          display:flex; align-items:center; justify-content:center;
-          transition:transform .45s cubic-bezier(.22,1,.36,1), background .4s, border-color .4s;
-        }
-        .feat-card:hover .icon-box { transform:rotate(-8deg) scale(1.12); }
+            {/* ICON + TAG */}
+            <div className="flex items-center justify-between">
+              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-white border border-[#f3d6e3] text-[#890b44] group-hover:scale-110 transition">
+                <Icon size={22} />
+              </div>
 
-        /* Arrow orb */
-        .arrow-orb {
-          width:40px; height:40px; border-radius:50%;
-          display:flex; align-items:center; justify-content:center;
-          opacity:0; transform:translateY(10px) rotate(-45deg);
-          transition:opacity .4s, transform .4s cubic-bezier(.22,1,.36,1);
-        }
-        .feat-card:hover .arrow-orb { opacity:1; transform:translateY(0) rotate(0); }
-
-        /* Watermark */
-        .watermark {
-          position:absolute; bottom:4px; right:14px;
-          font-size:130px; line-height:1;
-          pointer-events:none; user-select:none; color:rgba(255,255,255,0.04);
-        }
-
-        /* Trust card shimmer */
-        .trust-card::after {
-          content:''; position:absolute;
-          top:0; left:-100%; width:55%; height:100%;
-          background:linear-gradient(105deg,transparent,rgba(255,255,255,0.055),transparent);
-          transition:left .55s ease; pointer-events:none;
-        }
-        .trust-card:hover::after { left:140%; }
-
-        .trust-icon-wrap {
-          width:46px; height:46px; border-radius:14px; flex-shrink:0;
-          display:flex; align-items:center; justify-content:center;
-          transition:transform .4s cubic-bezier(.22,1,.36,1), background .4s, border-color .4s;
-        }
-        .trust-card:hover .trust-icon-wrap { transform:scale(1.12) rotate(-6deg); }
-      `}</style>
-
-      <section className="wc" style={{
-        width:"100%",
-        background:"#0a1628",
-        padding:"96px 24px",
-        position:"relative",
-        overflow:"hidden",
-      }}>
-
-        {/* Dot bg */}
-        <div className="dot-bg" style={{
-          position:"absolute", inset:0, pointerEvents:"none",
-          backgroundImage:"radial-gradient(circle, rgba(96,165,250,0.3) 1px, transparent 1px)",
-          backgroundSize:"28px 28px",
-        }} />
-
-        {/* Top gradient bar */}
-        <div style={{
-          position:"absolute", top:0, left:0, right:0, height:3,
-          background:"linear-gradient(90deg,#3b82f6,#06b6d4,#8b5cf6)",
-        }} />
-
-        {/* Ambient glows */}
-        <div style={{
-          position:"absolute", top:"-5%", left:"50%", transform:"translateX(-50%)",
-          width:1000, height:600, borderRadius:"50%",
-          background:"radial-gradient(ellipse,rgba(59,130,246,0.1) 0%,transparent 65%)",
-          pointerEvents:"none",
-        }} />
-        <div style={{
-          position:"absolute", bottom:0, left:0,
-          width:500, height:500, borderRadius:"50%",
-          background:"radial-gradient(ellipse,rgba(6,182,212,0.08) 0%,transparent 70%)",
-          pointerEvents:"none",
-        }} />
-        <div style={{
-          position:"absolute", bottom:0, right:0,
-          width:500, height:500, borderRadius:"50%",
-          background:"radial-gradient(ellipse,rgba(139,92,246,0.08) 0%,transparent 70%)",
-          pointerEvents:"none",
-        }} />
-
-        <div style={{ position:"relative", maxWidth:1200, margin:"0 auto" }}>
-
-          {/* ── HEADER ── */}
-          <div ref={headerRef} style={{
-            textAlign:"center", marginBottom:80,
-            display:"flex", flexDirection:"column", alignItems:"center", gap:18,
-          }}>
-            <div className={`wc-reveal d0 ${headerInView ? "in" : ""}`} style={{
-              display:"inline-flex", alignItems:"center", gap:10,
-              padding:"7px 20px", borderRadius:999,
-              border:"1px solid rgba(96,165,250,0.25)",
-              background:"rgba(30,58,138,0.3)",
-              backdropFilter:"blur(8px)",
-            }}>
-              <span className="pulse-dot" />
-              <span style={{
-                fontSize:11, fontWeight:700, letterSpacing:5,
-                textTransform:"uppercase", color:"#93c5fd",
-              }}>Our Promise</span>
+              <span className="text-[10px] tracking-widest uppercase px-3 py-1 rounded-full bg-white border border-[#f3d6e3] text-[#890b44] font-semibold">
+                {item.tag}
+              </span>
             </div>
 
-            <div className={`wc-reveal d1 ${headerInView ? "in" : ""}`}>
-              <h2 style={{
-                fontSize:"clamp(52px,8vw,88px)",
-                color:"#f1f5f9",
-                textTransform:"uppercase",
-                lineHeight:1, letterSpacing:8, margin:0,
-              }}>
-                Why{" "}
-                <span style={{ position:"relative", color:"#60a5fa" }}>
-                  Choose
-                  <span className={`draw-line ${headerInView ? "drawn" : ""}`} />
-                </span>{" "}
-                Us
-              </h2>
-            </div>
+            {/* TITLE */}
+            <h3 className="text-xl font-semibold text-gray-900">
+              {item.title}
+            </h3>
 
-            <div className={`wc-reveal d2 ${headerInView ? "in" : ""}`} style={{
-              display:"flex", alignItems:"center", gap:12,
-            }}>
-              <span style={{ width:32, height:2, background:"linear-gradient(90deg,#3b82f6,transparent)", borderRadius:9999 }} />
-              <p style={{
-                margin:0, color:"rgba(148,163,184,0.8)", fontSize:13, fontWeight:600,
-                letterSpacing:4, textTransform:"uppercase", fontStyle:"italic",
-              }}>
-                Experience Unmatched Service &amp; Expertise
+            {/* DESCRIPTION */}
+            <p className="text-sm text-gray-600 leading-relaxed">
+              {item.description}
+            </p>
+
+            {/* STAT */}
+            <div className="mt-auto">
+              <p className="text-4xl font-bold text-[#890b44]">
+                <AnimatedCounter
+                  target={item.stat}
+                  inView={cardsInView}
+                  delay={i * 150}
+                />
               </p>
-              <span style={{ width:32, height:2, background:"linear-gradient(90deg,transparent,#8b5cf6)", borderRadius:9999 }} />
+              <p className="text-xs uppercase tracking-widest text-gray-500">
+                {item.statLabel}
+              </p>
             </div>
           </div>
+        );
+      })}
+    </div>
 
-          {/* ── CARDS ── */}
-          <div ref={cardsRef} style={{
-            display:"grid",
-            gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",
-            gap:24,
-          }}>
-            {features.map((item, i) => {
-              const Icon = item.icon;
-              const isHov = hoveredCard === item.id;
-              return (
-                <div
-                  key={item.id}
-                  className={`feat-card wc-reveal d${i + 2} ${cardsInView ? "in" : ""}`}
-                  onMouseEnter={() => setHoveredCard(item.id)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  style={{
-                    position:"relative",
-                    borderRadius:28,
-                    padding:"36px 32px",
-                    display:"flex", flexDirection:"column", gap:22,
-                    cursor:"default", overflow:"hidden",
-                    background: isHov
-                      ? `linear-gradient(145deg, ${item.hoverFrom}, ${item.hoverTo})`
-                      : "linear-gradient(145deg, #1a2f50, #12233d)",
-                    border: `1.5px solid ${isHov ? item.accentColor + "55" : "rgba(96,165,250,0.15)"}`,
-                    boxShadow: isHov
-                      ? `0 32px 80px ${item.hoverGlow}, 0 0 0 1px ${item.accentColor}22`
-                      : "0 8px 32px rgba(0,0,0,0.5)",
-                    transition:"transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease, background .5s ease, border-color .4s",
-                    transform: isHov ? "translateY(-10px) scale(1.015)" : "translateY(0) scale(1)",
-                  }}
-                >
-                  <span className="watermark">0{item.id}</span>
+    {/* TRUST STRIP */}
+    <div
+      ref={trustRef}
+      className="grid md:grid-cols-3 gap-6 mt-16"
+    >
+      {trustItems.map((item, i) => {
+        const Icon = item.icon;
 
-                  {/* Icon + tag */}
-                  <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-                    <div className="icon-box" style={{
-                      background: isHov ? `${item.accentColor}22` : "rgba(96,165,250,0.1)",
-                      border:`1px solid ${isHov ? item.accentColor + "44" : "rgba(96,165,250,0.2)"}`,
-                    }}>
-                      <Icon size={24} color={isHov ? item.accentColor : "#93c5fd"} />
-                    </div>
-                    <span style={{
-                      fontSize:10, fontWeight:700,
-                      letterSpacing:3, textTransform:"uppercase",
-                      borderRadius:999, padding:"5px 14px",
-                      background: isHov ? `${item.accentColor}22` : "rgba(96,165,250,0.1)",
-                      border:`1px solid ${isHov ? item.accentColor + "44" : "rgba(96,165,250,0.2)"}`,
-                      color: isHov ? item.accentColor : "#93c5fd",
-                      transition:"all .4s",
-                    }}>
-                      {item.tag}
-                    </span>
-                  </div>
+        return (
+          <div
+            key={item.label}
+            className={`flex items-center gap-4 p-5 rounded-xl border border-[#f3d6e3] bg-white
+            hover:shadow-md transition-all duration-300
+            ${trustInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
 
-                  {/* Divider */}
-                  <div style={{
-                    width:"100%", height:1,
-                    background: isHov ? `${item.accentColor}40` : "rgba(96,165,250,0.12)",
-                    transition:"background .4s",
-                  }} />
+            <div className="w-11 h-11 flex items-center justify-center rounded-lg bg-[#fdf2f7] border border-[#f3d6e3] text-[#890b44]">
+              <Icon size={20} />
+            </div>
 
-                  {/* Text */}
-                  <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
-                    <h3 style={{
-                      fontSize:26, letterSpacing:2,
-                      textTransform:"uppercase", lineHeight:1.15,
-                      color: isHov ? "#fff" : "#e2e8f0",
-                      margin:0, transition:"color .4s",
-                    }}>
-                      {item.title}
-                    </h3>
-                    <p style={{
-                      fontSize:14, lineHeight:1.8,
-                      fontWeight:300, margin:0,
-                      color: isHov ? "rgba(224,242,254,0.85)" : "rgba(148,163,184,0.85)",
-                      transition:"color .4s",
-                    }}>
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Stat + arrow */}
-                  <div style={{ marginTop:"auto", display:"flex", alignItems:"flex-end", justifyContent:"space-between" }}>
-                    <div>
-                      <div style={{
-                        fontSize:58, lineHeight:1,
-                        color: isHov ? item.accentColor : "#f1f5f9",
-                        transition:"color .4s",
-                      }}>
-                        <AnimatedCounter target={item.stat} inView={cardsInView} delay={i * 150} />
-                      </div>
-                      <div style={{
-                        fontSize:10, fontWeight:700,
-                        letterSpacing:3, textTransform:"uppercase",
-                        color: isHov ? `${item.accentColor}cc` : "rgba(148,163,184,0.7)",
-                        marginTop:4, transition:"color .4s",
-                      }}>
-                        {item.statLabel}
-                      </div>
-                    </div>
-                    <div className="arrow-orb" style={{
-                      background:`${item.accentColor}25`,
-                      border:`1px solid ${item.accentColor}55`,
-                    }}>
-                      <ArrowUpRight size={18} color={item.accentColor} />
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            <div>
+              <p className="font-semibold text-gray-900">
+                {item.label}
+              </p>
+              <p className="text-sm text-gray-500">
+                {item.sub}
+              </p>
+            </div>
           </div>
+        );
+      })}
+    </div>
 
-          {/* ── TRUST STRIP ── */}
-          <div ref={trustRef} style={{
-            marginTop:28,
-            display:"grid",
-            gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",
-            gap:16,
-          }}>
-            {trustItems.map((item, i) => {
-              const Icon = item.icon;
-              const isHov = hoveredTrust === item.label;
-              return (
-                <div
-                  key={item.label}
-                  className={`trust-card wc-reveal d${i + 1} ${trustInView ? "in" : ""}`}
-                  onMouseEnter={() => setHoveredTrust(item.label)}
-                  onMouseLeave={() => setHoveredTrust(null)}
-                  style={{
-                    display:"flex", alignItems:"center", gap:16,
-                    borderRadius:20, padding:"20px 24px",
-                    cursor:"default", overflow:"hidden", position:"relative",
-                    background: isHov
-                      ? `linear-gradient(135deg,${item.accent}28,${item.accent}12)`
-                      : "linear-gradient(135deg,#1a2f50,#12233d)",
-                    border:`1.5px solid ${isHov ? item.accent + "55" : "rgba(96,165,250,0.15)"}`,
-                    boxShadow: isHov ? `0 16px 40px ${item.accent}28` : "0 4px 16px rgba(0,0,0,0.4)",
-                    transition:"transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s, background .4s, border-color .4s",
-                    transform: isHov ? "translateY(-5px)" : "translateY(0)",
-                  }}
-                >
-                  <div className="trust-icon-wrap" style={{
-                    background: isHov ? `${item.accent}25` : "rgba(96,165,250,0.1)",
-                    border:`1px solid ${isHov ? item.accent + "50" : "rgba(96,165,250,0.2)"}`,
-                  }}>
-                    <Icon size={20} color={isHov ? item.accent : "#93c5fd"} />
-                  </div>
-                  <div>
-                    <div style={{
-                      fontSize:15, fontWeight:700,
-                      color: isHov ? "#fff" : "#e2e8f0",
-                      transition:"color .4s",
-                    }}>
-                      {item.label}
-                    </div>
-                    <div style={{
-                      fontSize:12.5,
-                      color: isHov ? "rgba(203,213,225,0.9)" : "rgba(148,163,184,0.75)",
-                      marginTop:2, transition:"color .4s",
-                    }}>
-                      {item.sub}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-      </section>
+  </div>
+</section>
     </>
   );
 }

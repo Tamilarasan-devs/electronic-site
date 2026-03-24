@@ -92,26 +92,27 @@ export default function SecondBanner() {
 
   return (
     <section ref={sectionRef} className="w-full py-24 px-6 
-bg-gradient-to-br from-[#0A1F44] via-[#1E3A8A] to-[#3B82F6]
      relative overflow-hidden">
 
       {/* Dot pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.35]"
-        style={{
-          backgroundImage: "radial-gradient(circle, #c7d4e8 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
+        // style={{
+        //   backgroundImage: "radial-gradient(circle, #890b44 1px, transparent 1px)",
+        //   backgroundSize: "28px 28px",
+        // }}
       />
 
       {/* Top gradient bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" />
+      <div className="absolute top-0 left-0 right-0 h-1 " />
 
       {/* Hairlines */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[1px]"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(42,71,113,0.25), transparent)" }} />
+        // style={{ background: "linear-gradient(90deg, transparent, rgba(42,71,113,0.25), transparent)" }} 
+        />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[1px]"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(42,71,113,0.25), transparent)" }} />
+        // style={{ background: "linear-gradient(90deg, transparent, rgba(42,71,113,0.25), transparent)" }} 
+        />
 
       {/* Soft bg glows */}
       <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-[120px] pointer-events-none opacity-20 bg-[#eef2f8]" />
@@ -121,19 +122,19 @@ bg-gradient-to-br from-[#0A1F44] via-[#1E3A8A] to-[#3B82F6]
       <div ref={headingRef} className="relative text-center mb-16 flex flex-col items-center gap-4">
 
         {/* Eyebrow chip */}
-        <div
+        {/* <div
           data-animate
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c5d3e8] bg-[#eef2f8]"
           style={{ opacity: 0, transform: "translateY(20px)", transition: "opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.2,0.64,1)" }}
         >
           <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-[#2a4771]" />
-          {/* <p className="text-[10px] font-bold tracking-[4px] uppercase text-[#2a4771]">Why Choose Us</p> */}
-        </div>
+          <p className="text-[10px] font-bold tracking-[4px] uppercase text-[#2a4771]">Why Choose Us</p>
+        </div> */}
 
         {/* Heading */}
         <h2
           data-animate
-          className="text-5xl md:text-6xl tracking-widest text-white  uppercase leading-none"
+          className="text-3xl md:text-6xl tracking-widest text-[#890b44]  uppercase leading-none"
           style={{
         
             opacity: 0,
@@ -142,7 +143,7 @@ bg-gradient-to-br from-[#0A1F44] via-[#1E3A8A] to-[#3B82F6]
           }}
         >
           What Sets Us{" "}
-          <span className="relative text-[#2a4771] text-blue-300">
+          <span className="relative text-black ">
             Apart
             <span className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#2a4771] to-[#3d5f96]" />
           </span>
@@ -155,7 +156,7 @@ bg-gradient-to-br from-[#0A1F44] via-[#1E3A8A] to-[#3B82F6]
           style={{ opacity: 0, transform: "translateY(20px)", transition: "opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.2,0.64,1)" }}
         >
           <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />
-          <p className="text-md font-bold tracking-[3px] uppercase italic text-blue-200">
+          <p className="text-3xl font-bold tracking-[3px] uppercase italic text-gray-700">
             Experience Unmatched Service &amp; Expertise
           </p>
           <span className="w-8 h-[2px] rounded-full bg-[#2a4771]" />

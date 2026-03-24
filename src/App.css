@@ -24,6 +24,12 @@
   font-weight: 500;
   font-style: normal;
 }
+@font-face {
+  font-family: "garet";
+  src: url("./assets/garet/Garet-Heavy.woff") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
 body {
-  font-family: "Medicinal";
+  font-family: "font-serif";
 }
