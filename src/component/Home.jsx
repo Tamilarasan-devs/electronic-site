@@ -7,6 +7,8 @@ import TvCardBrands from './TvCardsBrand'
 import StaticSection from './StaticSection'
 import TvServices from './TvServices'
 import WhyChoose from './WhyChoose'
+
+import Brand from './Brand'
 export default function Home() {
   return (
     <div className=''>
@@ -20,7 +22,8 @@ export default function Home() {
 <StaticSection/>
 
 <TvServices/>
-<TvCardBrands/>
+{/* <TvCardBrands/> */}
+<Brand/>
     </div>
   )
 }

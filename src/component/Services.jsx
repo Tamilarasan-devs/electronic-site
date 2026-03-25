@@ -175,7 +175,7 @@ function SectionHeader({ eyebrow, title, highlight, subtitle, inView, dark = fal
           borderColor: "rgba(137,11,68,0.25)",
         }}>
         <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-[#890b44]" />
-        <span className="text-[10px] font-black tracking-[5px] uppercase text-[#890b44]">{eyebrow}</span>
+        <span className="text-[15px] font-black tracking-[5px] uppercase text-[#890b44]">{eyebrow}</span>
       </div>
       <h2 className="leading-none tracking-[5px] m-0 font-black"
         style={{ fontSize: "clamp(40px,6.5vw,76px)", color: dark ? "#fff" : "#111" }}>
@@ -183,8 +183,8 @@ function SectionHeader({ eyebrow, title, highlight, subtitle, inView, dark = fal
         <span className="text-[#890b44]">{highlight}</span>
       </h2>
       {subtitle && (
-        <p className="m-0 text-[15px] max-w-[500px] leading-[1.7]"
-          style={{ color: dark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.45)" }}>
+        <p className="m-4 text-xl text-black max-w-[500px] leading-[1.7]">
+          {/* // style={{ color: dark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.45)" }} */}
           {subtitle}
         </p>
       )}
@@ -224,8 +224,8 @@ export default function Services() {
         @keyframes spinSlow   { from{transform:rotate(0)} to{transform:rotate(360deg)} }
         @keyframes pulse      { 0%,100%{opacity:0.4} 50%{opacity:1} }
 
-        .ha1 { animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .05s both; font-family:'Syne',sans-serif; }
-        .ha2 { animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .18s both; font-family:'Syne',sans-serif; }
+        .ha1 { animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .05s both; }
+        .ha2 { animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .18s both; }
         .ha3 { animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .32s both; }
         .ha4 { animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .46s both; }
         .ha5 { animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .6s  both; }
@@ -250,7 +250,6 @@ export default function Services() {
         .btn-primary {
           display:inline-flex; align-items:center; gap:8px;
           padding:14px 30px; border-radius:9999px;
-          font-family:'DM Sans',sans-serif;
           font-size:11.5px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
           color:#fff; border:none; cursor:pointer; overflow:hidden; position:relative;
           background: #890b44;
@@ -268,7 +267,6 @@ export default function Services() {
         .btn-outline {
           display:inline-flex; align-items:center; gap:8px;
           padding:14px 26px; border-radius:9999px;
-          font-family:'DM Sans',sans-serif;
           font-size:11.5px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
           cursor:pointer; background:#fff; color:#890b44; border:2px solid #890b44;
           transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s, background .3s;
@@ -281,7 +279,6 @@ export default function Services() {
           display:inline-flex; align-items:center; gap:8px;
           padding:14px 28px; border-radius:12px;
           background:#fff; color:#890b44; border:none;
-          font-family:'DM Sans',sans-serif;
           font-size:11.5px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
           cursor:pointer; white-space:nowrap;
           box-shadow:0 8px 24px rgba(0,0,0,0.15);
@@ -294,7 +291,6 @@ export default function Services() {
           padding:14px 28px; border-radius:12px;
           color:rgba(255,255,255,0.85); border:1.5px solid rgba(255,255,255,0.25);
           background:rgba(255,255,255,0.1);
-          font-family:'DM Sans',sans-serif;
           font-size:11.5px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
           cursor:pointer; white-space:nowrap; backdrop-filter:blur(8px);
           transition:background .3s, transform .3s;
@@ -313,8 +309,7 @@ export default function Services() {
           background-size: 48px 48px;
         }
 
-        h1, h2, h3 { font-family: 'Syne', sans-serif; }
-        .eyebrow-tag { font-family: 'DM Sans', sans-serif; }
+      
       `}</style>
 
       <div className="relative overflow-x-hidden" style={{ background: "#fff", minHeight: "100vh", color: "#111" }}>
@@ -383,8 +378,8 @@ export default function Services() {
               </div>
 
               <div className="ha4">
-                <p className="text-[15px] sm:text-[17px] leading-[1.8] max-w-[540px] mx-auto mb-10 font-light"
-                  style={{ color: "rgba(0,0,0,0.5)" }}>
+                <p className="text-[15px] sm:text-[19px] leading-[1.8] max-w-[540px] mx-auto mb-10 font-md"
+                  >
                   From a completely dead TV to a stubborn software glitch — click any card to read a full explanation of the problem and how we fix it.
                 </p>
               </div>
