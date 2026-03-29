@@ -220,15 +220,15 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <p className="text-[11px] font-bold tracking-[3px] uppercase mb-1 transition-colors duration-300 group-hover:!text-white"
+                  <p className="text-[14px] font-bold tracking-[3px] uppercase mb-1 transition-colors duration-300 group-hover:!text-white"
                     style={{ color: "#111111", margin: 0 }}
                     onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,0.65)"}
                     onMouseLeave={e => e.currentTarget.style.color = "#111111"}>
                     {info.label}
                   </p>
-                  <p className="text-sm font-bold leading-tight transition-colors duration-300 group-hover:!text-white"
+                  <p className="text-md font-bold leading-tight transition-colors duration-300 group-hover:!text-white"
                     style={{ color: "#111111", margin: "0 0 2px" }}>{info.value}</p>
-                  <p className="text-sm transition-colors duration-300 group-hover:!text-white"
+                  <p className="text-md transition-colors duration-300 group-hover:!text-white"
                     style={{  margin: 0 }}>{info.sub}</p>
                 </div>
 
@@ -269,7 +269,7 @@ export default function ContactPage() {
                 <div className="mb-8 pl-3">
                   <div className="flex items-center gap-2 mb-3">
                     <MessageSquare size={15} style={{ color: "#890b44" }} />
-                    <p className="text-[11px] font-bold tracking-[3px] uppercase" style={{ color: "#890b44", margin: 0 }}>
+                    <p className="text-[15px] font-bold tracking-[3px] uppercase" style={{ color: "#890b44", margin: 0 }}>
                       Send a Message
                     </p>
                   </div>
@@ -278,9 +278,9 @@ export default function ContactPage() {
                     Book a Repair{" "}
                     <span style={{ color: "#890b44" }}>Instantly</span>
                   </h2>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(17,17,17,0.55)" }}>
+                  <p className="text-lg leading-relaxed" style={{ color: "black" }}>
                     Fill in the details and our team will get back to you within{" "}
-                    <span className="font-bold" style={{ color: "#890b44" }}>30 minutes</span>.
+                    <span className="font-bold" style={{ color: "#890b44" }}> 30 minutes</span>.
                   </p>
                 </div>
 
@@ -289,7 +289,7 @@ export default function ContactPage() {
                   {/* Name + Phone */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#890b44" }}>
+                      <label className="text-[15px] font-bold tracking-[2px] uppercase" style={{ color: "#890b44" }}>
                         Your Name *
                       </label>
                       <input
@@ -304,7 +304,7 @@ export default function ContactPage() {
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#890b44" }}>
+                      <label className="text-[15px] font-bold tracking-[2px] uppercase" style={{ color: "#890b44" }}>
                         Phone Number *
                       </label>
                       <input
@@ -322,7 +322,7 @@ export default function ContactPage() {
 
                   {/* Service */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#890b44" }}>
+                    <label className="text-[15px] font-bold tracking-[2px] uppercase" style={{ color: "#890b44" }}>
                       Service Required *
                     </label>
                     <select
@@ -342,7 +342,7 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[11px] font-bold tracking-[2px] uppercase" style={{ color: "#890b44" }}>
+                    <label className="text-[15px] font-bold tracking-[2px] uppercase" style={{ color: "#890b44" }}>
                       Describe Your Issue
                     </label>
                     <textarea
@@ -363,7 +363,7 @@ export default function ContactPage() {
                   {/* Submit button — crimson */}
                   <button
                     type="submit"
-                    className="group relative w-full py-4 rounded-xl text-[11px] font-bold tracking-[3px] uppercase overflow-hidden transition-all duration-300 hover:-translate-y-0.5"
+                    className="group relative w-full py-4 rounded-xl text-[15px] font-bold tracking-[3px] uppercase overflow-hidden transition-all duration-300 hover:-translate-y-0.5"
                     style={{
                       background: "linear-gradient(135deg,#890b44,#5a0730)",
                       color: "#fff",
@@ -381,7 +381,7 @@ export default function ContactPage() {
                   </button>
 
                   {/* Privacy note */}
-                  <p className="text-center text-xs tracking-wide" style={{ color: "rgba(17,17,17,0.35)" }}>
+                  <p className="text-center text-md tracking-wide" style={{ color: "black" }}>
                     🔒 Your information is safe and will never be shared.
                   </p>
                 </form>
@@ -479,9 +479,9 @@ export default function ContactPage() {
                   <Phone size={17} style={{ color: "#890b44" }} className="group-hover:!text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <p className="text-[9px] font-bold tracking-[2px] uppercase mb-0.5 group-hover:!text-white/70 transition-colors duration-300"
+                  <p className="text-[14px] font-bold tracking-[2px] uppercase mb-0.5 group-hover:!text-white/70 transition-colors duration-300"
                     style={{ color: "#111111", margin: "0 0 2px" }}>Call Now</p>
-                  <p className="text-sm font-bold group-hover:!text-white transition-colors duration-300"
+                  <p className="text-md font-bold group-hover:!text-white transition-colors duration-300"
                     style={{ color: "#111111", margin: 0 }}>+91 9514698694</p>
                 </div>
               </a>
@@ -515,9 +515,9 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-[9px] font-bold tracking-[2px] uppercase mb-0.5 group-hover:!text-white/70 transition-colors duration-300"
+                  <p className="text-[14px] font-bold tracking-[2px] uppercase mb-0.5 group-hover:!text-white/70 transition-colors duration-300"
                     style={{ color: "#111111", margin: "0 0 2px" }}>WhatsApp</p>
-                  <p className="text-sm font-bold group-hover:!text-white transition-colors duration-300"
+                  <p className="text-md font-bold group-hover:!text-white transition-colors duration-300"
                     style={{ color: "#111111", margin: 0 }}>Chat With Us</p>
                 </div>
               </a>
@@ -542,14 +542,14 @@ export default function ContactPage() {
                 <Tv size={18} style={{ color: "#890b44" }} />
               </div>
               <div className="flex-1 min-w-0 pl-1 relative">
-                <p className="text-sm font-bold" style={{ color: "#111111", margin: "0 0 2px" }}>
+                <p className="text-lg font-bold" style={{ color: "#111111", margin: "0 0 2px" }}>
                   Same-Day Repair Service
                 </p>
-                <p className="text-xs" style={{ color: "rgba(17,17,17,0.5)", margin: 0 }}>
+                <p className="text-md" style={{ color: "black", margin: 0 }}>
                   Book before 2 PM — get your TV fixed today within 3 hours.
                 </p>
               </div>
-              <span className="shrink-0 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-[1px] uppercase"
+              <span className="shrink-0 px-3 py-1.5 rounded-full text-[14px] font-bold tracking-[1px] uppercase"
                 style={{ background: "#890b44", color: "#fff" }}>
                 3 hrs
               </span>
@@ -590,13 +590,13 @@ export default function ContactPage() {
                     const val = e.currentTarget.querySelector(".badge-val");
                     const lbl = e.currentTarget.querySelector(".badge-lbl");
                     if (val) val.style.color = i % 2 === 0 ? "#890b44" : "#111111";
-                    if (lbl) lbl.style.color = "rgba(17,17,17,0.45)";
+                    if (lbl) lbl.style.color = "black";
                   }}
                 >
                   <p className="badge-val text-xl font-black leading-none mb-1 transition-colors duration-300"
                     style={{ color: i % 2 === 0 ? "#890b44" : "#111111" }}>{b.val}</p>
-                  <p className="badge-lbl text-[9px] tracking-widest uppercase leading-tight transition-colors duration-300"
-                    style={{ color: "rgba(17,17,17,0.45)" }}>{b.lbl}</p>
+                  <p className="badge-lbl text-[14px] tracking-widest uppercase leading-tight transition-colors duration-300"
+                    style={{ color: "black" }}>{b.lbl}</p>
                 </div>
               ))}
             </div>

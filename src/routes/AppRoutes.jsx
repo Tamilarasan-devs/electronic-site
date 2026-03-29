@@ -8,9 +8,12 @@ import Home from "../component/Home";
 import ContactPage from "../component/ContactPage";
 import Brand from "../component/Brand";
 import Services from "../component/Services";
+import Gallery from "../component/Gallery";
+import ScrollToTop from "../component/ScrollTop";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
+        <ScrollToTop/>
       <Routes>
         <Route element={<Layout />}> 
           {/* Define nested routes here */}
@@ -21,6 +24,7 @@ export default function AppRoutes() {
           <Route path="/contact"  element={<ContactPage/> }/>
           <Route path="/brand" element={ <Brand/>} />
          <Route  path="/service" element={<Services/> }   />
+         <Route  path="/gallery" element={<Gallery/> }   />
         </Route>
       </Routes>
     </BrowserRouter>

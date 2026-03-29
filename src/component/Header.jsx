@@ -30,6 +30,7 @@ const navLinks = [
   { label: "About",   path: "/about"   },
   { label: "Service", path: "/service" },
   { label: "Brand",   path: "/brand"   },
+  { label: "Gallery", path: "/gallery" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -82,7 +83,7 @@ export default function Header() {
         }`}
       >
         {/* ── Amber accent bar ── */}
-        <div className="h-[3px] w-full bg-gradient-to-r from-amber-500 via-amber-400 to-orange-400" />
+        <div className="h-[3px] w-full bg-[#890b44]" />
 
         {/* ── Main row ── */}
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 flex items-center justify-between gap-4 py-3.5">
@@ -94,7 +95,7 @@ export default function Header() {
             </div>
             <div className="flex flex-col">
               <span className="text-[17px] font-extrabold leading-none tracking-tight text-slate-900">
-                KJ <span className="text-amber-500">Electronics</span>
+                KJ <span className="text-[#890b44]">Electronics</span>
               </span>
               
             </div>
@@ -108,7 +109,7 @@ export default function Header() {
                 to={path}
                 className={` text-[14px]  tracking-[2px] font-bold uppercase px-[18px] py-[7px] rounded-full no-underline transition-all duration-200
                   ${isActive(path)
-                    ? "bg-white text-slate-900 shadow-[0_1px_6px_rgba(15,23,42,0.10)]"
+                    ? "bg-white text-[#890b44] shadow-[0_1px_6px_rgba(15,23,42,0.10)]"
                     : "text-slate-400 hover:bg-white/70 hover:text-slate-700"
                   }`}
               >
@@ -129,7 +130,7 @@ export default function Header() {
             {/* Book Repair → navigates to /contact */}
             <Link
               to="/contact"
-              className="cta-shine flex items-center gap-2 px-6 py-[9px] rounded-full bg-slate-900 text-white  text-[10.5px]  tracking-[2px] uppercase no-underline shadow-[0_4px_18px_rgba(15,23,42,0.20)] hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(15,23,42,0.30)] active:translate-y-0 transition-all duration-200"
+              className="cta-shine flex items-center gap-2 px-6 py-[9px] rounded-full bg-[#890b44] text-white  text-[14px]  tracking-[2px] uppercase no-underline shadow-[0_4px_18px_rgba(15,23,42,0.20)] hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(15,23,42,0.30)] active:translate-y-0 transition-all duration-200"
             >
               Book Repair
               <ArrowIcon />

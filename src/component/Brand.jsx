@@ -302,6 +302,49 @@ export default function TVBrandCards() {
         .btn-g:hover { transform:translateY(-3px); background:#e0e0e0; box-shadow:0 10px 28px rgba(17,17,17,.15); }
         .btn-g svg   { transition:transform .3s cubic-bezier(.22,1,.36,1); }
         .btn-g:hover svg { transform:translateX(4px); }
+        .brand-info-card {
+  background: #fff;
+  padding: 26px 22px;
+  border-radius: 18px;
+  border: 1.5px solid rgba(17,17,17,0.08);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.06);
+  transition: all 0.35s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-info-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 40%, rgba(137,11,68,0.08), transparent 60%);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.brand-info-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 48px rgba(137,11,68,0.18);
+  border-color: rgba(137,11,68,0.3);
+}
+
+.brand-info-card:hover::before {
+  opacity: 1;
+}
+
+.brand-info-card h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #890b44;
+}
+
+.brand-info-card p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(17,17,17,0.65);
+}
       `}</style>
 
       <section style={{
@@ -356,7 +399,7 @@ export default function TVBrandCards() {
               boxShadow: "0 2px 12px rgba(137,11,68,0.08)",
             }}>
               <span className="pdot" />
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 5, textTransform: "uppercase", color: "#890b44" }}>
+              <span style={{ fontSize: 15, fontWeight: 700, letterSpacing: 5, textTransform: "uppercase", color: "#890b44" }}>
                 All Major Brands
               </span>
             </div>
@@ -380,7 +423,7 @@ export default function TVBrandCards() {
             {/* Subtitle */}
             <div className={`tvc-up td2 ${headerInView ? "on" : ""}`} style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <span style={{ width: 32, height: 2, background: "linear-gradient(90deg,#890b44,transparent)", borderRadius: 9999 }} />
-              <p style={{ margin: 0, color: "rgba(17,17,17,0.5)", fontSize: 13, fontWeight: 700, letterSpacing: 4, textTransform: "uppercase", fontStyle: "italic" }}>
+              <p style={{ margin: 0, marginTop:4, color: "black", fontSize: 17, fontWeight: 700, letterSpacing: 4, textTransform: "uppercase", fontStyle: "italic" }}>
                 We Service All Leading Television Brands
               </p>
               <span style={{ width: 32, height: 2, background: "linear-gradient(90deg,transparent,#111111)", borderRadius: 9999 }} />
@@ -398,7 +441,7 @@ export default function TVBrandCards() {
               marginTop: 4,
             }}>
               <Tv2 size={15} color="#890b44" />
-              <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: "#890b44" }}>
+              <span style={{ fontSize: 14, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: "#890b44" }}>
                 {tvBrands.length}+ Brands &amp; Counting
               </span>
               <Sparkles size={13} color="#111111" />
@@ -406,7 +449,107 @@ export default function TVBrandCards() {
 
           </div>
         </div>
+{/* ── PREMIUM CONTENT SECTION ── */}
+<div
+  className={`tvc-up td2 ${headerInView ? "on" : ""}`}
+  style={{
+    maxWidth: 1150,
+    margin: "0 auto 60px",
+    padding: "0 24px",
+  }}
+>
+  {/* Title */}
+  <div style={{ textAlign: "center", marginBottom: 30 }}>
+    <h3
+      style={{
+        fontSize: "clamp(32px, 5vw, 48px)",
+        fontWeight: 900,
+        color: "#111",
+        marginBottom: 10,
+        letterSpacing: 1,
+      }}
+    >
+      Brands We Service
+    </h3>
 
+    <p
+      style={{
+        fontSize: "clamp(16px, 2vw, 18px)",
+        color: "black",
+        lineHeight: 1.8,
+        maxWidth: 800,
+        margin: "0 auto",
+      }}
+    >
+      At <strong style={{ color: "#890b44" }}>KJ LED Electronic TV Services</strong>, we provide expert repair
+      and servicing support for a wide range of LED TV brands. Our technicians
+      understand different technologies, models, and specifications across brands.
+    </p>
+  </div>
+
+  {/* Highlight Brands */}
+  <div
+    style={{
+      background: "linear-gradient(135deg, #890b44, #111)",
+      borderRadius: 20,
+      padding: "22px 28px",
+      textAlign: "center",
+      color: "#fff",
+      marginBottom: 30,
+      boxShadow: "0 12px 40px rgba(137,11,68,0.25)",
+    }}
+  >
+    <p
+      style={{
+        fontSize: "clamp(18px, 2.5vw, 22px)",
+        fontWeight: 700,
+        margin: 0,
+        letterSpacing: 1,
+      }}
+    >
+      Samsung • LG • Sony • Mi (Xiaomi) • OnePlus • Panasonic • TCL • Philips • Vu
+    </p>
+    <span style={{ fontSize: 14, opacity: 0.8 }}>
+      and many more brands supported
+    </span>
+  </div>
+
+  {/* Feature Cards */}
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+      gap: 22,
+    }}
+  >
+    {/* Card 1 */}
+    <div className="brand-info-card">
+      <h4>Multi-Brand Expertise</h4>
+      <p>
+        Each brand has its own technology and design. Our technicians apply the
+        right repair methods for every specific model with precision.
+      </p>
+    </div>
+
+    {/* Card 2 */}
+    <div className="brand-info-card">
+      <h4>Support for All Models</h4>
+      <p>
+        From older televisions to the latest smart TVs, we service all models
+        with proper care and advanced technical knowledge.
+      </p>
+    </div>
+
+    {/* Card 3 */}
+    <div className="brand-info-card">
+      <h4>Reliable Service</h4>
+      <p>
+        No matter the brand you own, expect consistent service quality,
+        transparency, and dependable repair solutions every time.
+      </p>
+    </div>
+  </div>
+</div>
         {/* ── THREE MARQUEE ROWS ── */}
         <div ref={marqueeRef} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div className={`mrow r1 ${marqueeInView ? "on" : ""}`}>

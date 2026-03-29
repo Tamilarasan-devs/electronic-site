@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import {
   MonitorCheck, CircuitBoard, Package, HeadphonesIcon,
   ShieldCheck, Clock, Star, Users, Phone, MapPin,
-  ArrowUpRight, Zap, Wrench, Sparkles, ChevronRight
+  ArrowUpRight, Zap, Wrench, Sparkles, ChevronRight,
+  TrendingUp, Award, CheckCircle, MessageSquare, Settings, Heart
 } from "lucide-react";
 
 /* ── DATA ── */
@@ -51,6 +52,60 @@ const whyUs = [
   { num: "02", icon: Clock,       title: "Same-Day Repairs", body: "Most standard repairs are completed within the day. We respect your time completely.",  accent: "#111111", soft: "#f0f0f0", border: "#cccccc" },
   { num: "03", icon: Package,     title: "Genuine Parts",    body: "OEM and trusted compatible parts sourced from verified suppliers — stocked in-house.",  accent: "#890b44", soft: "#f9eef4", border: "#e8b0cc" },
   { num: "04", icon: Users,       title: "Expert Team",      body: "Certified technicians trained on all major brands with 10+ years of hands-on experience.", accent: "#111111", soft: "#f0f0f0", border: "#cccccc" },
+];
+
+const approachSteps = [
+  {
+    num: "01", icon: CheckCircle,
+    title: "Accurate Problem Identification",
+    body: "We begin by carefully analyzing the issue to identify the exact cause, ensuring that the repair is done correctly without unnecessary work.",
+    accent: "#890b44", soft: "#f9eef4", border: "#e8b0cc",
+  },
+  {
+    num: "02", icon: MessageSquare,
+    title: "Clear Communication",
+    body: "We keep our customers informed at every stage by explaining the problem and the required solution in a simple and understandable manner.",
+    accent: "#111111", soft: "#f0f0f0", border: "#cccccc",
+  },
+  {
+    num: "03", icon: Settings,
+    title: "Efficient Execution",
+    body: "Our technicians carry out repairs using proper methods and tools, ensuring the work is completed efficiently and with attention to detail.",
+    accent: "#890b44", soft: "#f9eef4", border: "#e8b0cc",
+  },
+  {
+    num: "04", icon: ShieldCheck,
+    title: "Quality Check & Reliability",
+    body: "Before completing the service, we perform thorough testing to ensure everything is working perfectly and meets our quality standards.",
+    accent: "#111111", soft: "#f0f0f0", border: "#cccccc",
+  },
+  {
+    num: "05", icon: Heart,
+    title: "Customer-Focused Service",
+    body: "Our goal is to provide a smooth and hassle-free experience, making sure every customer feels confident and satisfied with our service.",
+    accent: "#890b44", soft: "#f9eef4", border: "#e8b0cc",
+  },
+];
+
+const trustPillars = [
+  {
+    num: "01", icon: ShieldCheck,
+    title: "Built on Reliability",
+    body: "Our customers rely on us for honest service and dependable solutions, knowing that their devices are handled with care and expertise.",
+    accent: "#890b44", soft: "#f9eef4", border: "#e8b0cc",
+  },
+  {
+    num: "02", icon: Star,
+    title: "Consistent Service Quality",
+    body: "Maintaining high standards in every service has helped us grow through customer satisfaction and positive word-of-mouth.",
+    accent: "#111111", soft: "#f0f0f0", border: "#cccccc",
+  },
+  {
+    num: "03", icon: Users,
+    title: "Long-Term Customer Relationships",
+    body: "Many of our customers continue to choose us for their service needs, which reflects the trust and satisfaction we have built over time.",
+    accent: "#890b44", soft: "#f9eef4", border: "#e8b0cc",
+  },
 ];
 
 /* ── HOOKS ── */
@@ -116,10 +171,7 @@ export default function KJLight() {
   return (
     <div style={{ background: "#fff", color: "#111111" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap');
-
-        * { font-family: 'DM Sans', sans-serif; }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
+ 
 
         .dot-bg {
           background-image: radial-gradient(circle, #890b4420 1.2px, transparent 1.2px);
@@ -268,12 +320,12 @@ export default function KJLight() {
               style={{ background: "rgba(137,11,68,0.06)", borderColor: "rgba(137,11,68,0.2)", color: "#890b44" }}>
               <span className="pdot" style={{ background: "#890b44" }} />
               <span className="text-[10px] tracking-[5px] uppercase">
-                Coimbatore's #1 TV Repair
+                Trusted Since 2007
               </span>
             </div>
 
             <div className="ha2 mb-4">
-              <h1 style={{ fontSize: "clamp(60px,10vw,116px)", lineHeight: 0.88, letterSpacing: "-2px", fontWeight: 900, fontFamily: "'Playfair Display', serif" }}>
+              <h1 style={{ fontSize: "clamp(60px,10vw,116px)", lineHeight: 0.88, letterSpacing: "-2px", fontWeight: 900,}}>
                 <span style={{ display: "block", color: "#111111" }}>YOUR TV,</span>
                 <span style={{ display: "block", color: "#890b44", position: "relative" }}>
                   FIXED.
@@ -287,15 +339,15 @@ export default function KJLight() {
             <div className="ha3 flex items-center gap-3 mt-8 mb-4">
               <div style={{ width: 40, height: 2, background: "#890b44", borderRadius: 9999 }} />
               <span className="text-[11px] font-bold tracking-[4px] uppercase" style={{ color: "#890b44" }}>
-                Trusted Since 2014
+                Established 2007
               </span>
             </div>
 
             <div className="ha4">
-              <p className="mb-8 max-w-[460px]" style={{ fontSize: 16, lineHeight: 1.85, color: "rgba(17,17,17,0.55)" }}>
-                Specialists in LCD &amp; LED television repair, motherboard diagnostics,
-                and genuine spare parts — trusted by{" "}
-                <strong style={{ color: "#111111" }}>thousands across Coimbatore.</strong>
+              <p className="mb-8 max-w-[460px]" style={{ fontSize: 18, lineHeight: 1.85,  }}>
+                Specialists in LED television repair, delivering dependable and professional solutions
+                with extensive hands-on experience across{" "}
+                <strong style={{ color: "#111111" }}>all major brands and models.</strong>
               </p>
             </div>
 
@@ -345,11 +397,11 @@ export default function KJLight() {
                       <Icon size={18} color={s.accent} />
                     </div>
                     <div className="font-black leading-none mb-1"
-                      style={{ fontSize: "clamp(34px,5vw,48px)", color: s.accent, fontFamily: "'Playfair Display', serif" }}>
+                      style={{ fontSize: "clamp(34px,5vw,48px)", color: s.accent, }}>
                       <Counter end={s.value} suffix={s.suffix} inView={statsInView} delay={i * 110} />
                     </div>
-                    <div className="font-bold text-[11px] tracking-[2px] uppercase" style={{ color: "#111111" }}>{s.label}</div>
-                    <div className="text-[10px] tracking-[1px] uppercase mt-0.5" style={{ color: "rgba(17,17,17,0.35)" }}>{s.sub}</div>
+                    <div className="font-bold text-[14px] tracking-[2px] uppercase" style={{ color: "#111111" }}>{s.label}</div>
+                    <div className="text-[14px] tracking-[1px] uppercase mt-0.5" style={{ color: "rgba(17,17,17,0.35)" }}>{s.sub}</div>
                   </div>
                 </Reveal>
               );
@@ -364,7 +416,7 @@ export default function KJLight() {
         <div className="ticker-track">
           {[...Array(3)].fill(brands).flat().map((b, i) => (
             <span key={i} className="inline-flex items-center gap-5 px-5">
-              <span className="text-[11px] font-bold tracking-[5px] uppercase" style={{ color: "rgba(255,255,255,0.4)" }}>{b}</span>
+              <span className="text-[14px] font-bold tracking-[5px] uppercase" style={{ color: "rgba(255,255,255,0.4)" }}>{b}</span>
               <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#890b44", display: "inline-block", flexShrink: 0 }} />
             </span>
           ))}
@@ -380,7 +432,7 @@ export default function KJLight() {
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <Reveal from="left">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 border text-[10px] font-bold tracking-[4px] uppercase"
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 border text-[14px] font-bold tracking-[4px] uppercase"
                 style={{ color: "#890b44", borderColor: "rgba(137,11,68,0.2)", background: "rgba(137,11,68,0.05)" }}>
                 About Us
               </div>
@@ -395,8 +447,8 @@ export default function KJLight() {
               <div className="stamp-el inline-flex items-center justify-center w-24 h-24 rounded-full border-4"
                 style={{ borderColor: "#890b44", borderStyle: "dashed", transform: "rotate(-3deg)", color: "#890b44" }}>
                 <div className="text-center">
-                  <div className="font-black text-[18px]" style={{ fontFamily: "'Playfair Display', serif" }}>10+</div>
-                  <div className="text-[8px] font-bold tracking-[2px] uppercase">Years</div>
+                  <div className="font-black text-[18px]" >18+</div>
+                  <div className="text-[14px] font-bold tracking-[2px] uppercase">Years</div>
                 </div>
               </div>
             </div>
@@ -410,8 +462,8 @@ export default function KJLight() {
                     style={{ background: "rgba(137,11,68,0.08)" }}>
                     <Wrench size={15} color="#890b44" />
                   </div>
-                  <p style={{ fontSize: 15, lineHeight: 1.85, color: "rgba(17,17,17,0.6)" }}>
-                    KJ Electronics has been Coimbatore's go-to TV repair center for over a decade. Our technicians are trained across all major brands and specialize in both LCD and LED technology — from panel-level repairs to deep PCB diagnostics.
+                  <p style={{ fontSize: 17, lineHeight: 1.85,  }}>
+                    KJ LED Electronic TV Services was established in 2007, with a strong commitment to delivering dependable and professional LED TV repair solutions. Over the years, we have earned the trust of our customers through consistent service quality and a dedicated approach to every repair.
                   </p>
                 </div>
               </div>
@@ -421,11 +473,236 @@ export default function KJLight() {
                     style={{ background: "rgba(137,11,68,0.1)" }}>
                     <Sparkles size={15} color="#890b44" />
                   </div>
-                  <p style={{ fontSize: 15, lineHeight: 1.85, color: "rgba(17,17,17,0.6)" }}>
-                    Every repair starts with a <strong style={{ color: "#890b44" }}>free diagnosis</strong> and a clear quote before work begins. We stock genuine parts so you're never waiting longer than necessary.
+                  <p style={{ fontSize: 17, lineHeight: 1.85,  }}>
+                    With extensive hands-on experience, our team has developed the expertise to handle a wide range of technical issues across various LED TV models and brands. We focus on identifying the <strong style={{ color: "#890b44" }}>root cause of problems</strong> and providing effective, long-lasting solutions.
                   </p>
                 </div>
               </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══════════ EXPERIENCE & GROWTH ═══════════ */}
+      <section className="relative overflow-hidden px-6 sm:px-10 lg:px-16 py-24 sm:py-32" style={{ background: "#f7f7f7" }}>
+        <div className="checker-bg absolute inset-0 opacity-60" />
+        <div className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full"
+          style={{ background: "radial-gradient(circle at bottom right, rgba(137,11,68,0.06), transparent 60%)", filter: "blur(60px)" }} />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <Reveal from="left">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 border text-[10px] font-bold tracking-[4px] uppercase"
+                style={{ color: "#890b44", borderColor: "rgba(137,11,68,0.2)", background: "rgba(137,11,68,0.05)" }}>
+                <TrendingUp size={10} color="#890b44" />
+                Our Experience &amp; Growth
+              </div>
+              <h2 className="font-black leading-[1.0] mb-6"
+                style={{ fontSize: "clamp(38px,6vw,66px)", color: "#111111", letterSpacing: "-0.5px" }}>
+                Built Through
+                <br />
+                <span style={{ color: "#890b44" }}>Dedication</span>
+                <br />
+                <span style={{ color: "#111111", WebkitTextStroke: "2px #890b44", WebkitTextFillColor: "transparent" }}>&amp; Trust.</span>
+              </h2>
+              <p style={{ fontSize: 17, lineHeight: 1.85,  maxWidth: 460 }}>
+                Since our establishment in 2007, KJ LED Electronic TV Services has built a strong foundation through continuous learning and hands-on experience in the field of LED TV repair and servicing. Over the years, we have successfully handled a wide variety of technical issues, gaining deep knowledge and practical expertise.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal from="right" delay={120}>
+            <div className="flex flex-col gap-5">
+              <div className="p-6 rounded-2xl border" style={{ background: "#fff", borderColor: "rgba(17,17,17,0.08)" }}>
+                <div className="flex items-start gap-4">
+                  <div className="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
+                    style={{ background: "rgba(137,11,68,0.08)" }}>
+                    <TrendingUp size={15} color="#890b44" />
+                  </div>
+                  <p style={{ fontSize: 17, lineHeight: 1.85,  }}>
+                    Our growth has been driven by <strong style={{ color: "#111111" }}>dedication, consistency, and the trust</strong> our customers have placed in us. By maintaining high service standards and adapting to evolving technology, we have expanded our capabilities and strengthened our position as a reliable service provider.
+                  </p>
+                </div>
+              </div>
+              <div className="p-6 rounded-2xl border" style={{ background: "#f9eef4", borderColor: "rgba(137,11,68,0.12)" }}>
+                <div className="flex items-start gap-4">
+                  <div className="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
+                    style={{ background: "rgba(137,11,68,0.1)" }}>
+                    <Award size={15} color="#890b44" />
+                  </div>
+                  <p style={{ fontSize: 17, lineHeight: 1.85,  }}>
+                    Today, our journey reflects not just years of experience, but a commitment to <strong style={{ color: "#890b44" }}>improvement, quality service, and long-term customer relationships.</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══════════ OUR APPROACH ═══════════ */}
+      <section className="relative overflow-hidden px-6 sm:px-10 lg:px-16 py-24 sm:py-32" style={{ background: "#fff" }}>
+        <div className="line-bg absolute inset-0 opacity-50" />
+        <div className="pointer-events-none absolute top-0 left-0 w-[600px] h-[600px] rounded-full"
+          style={{ background: "radial-gradient(ellipse at top left, rgba(137,11,68,0.06), transparent 60%)", filter: "blur(60px)" }} />
+
+        <div className="relative max-w-7xl mx-auto">
+          <Reveal>
+            <div className="mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 border text-[10px] font-bold tracking-[4px] uppercase"
+                style={{ color: "#890b44", borderColor: "rgba(137,11,68,0.2)", background: "rgba(137,11,68,0.05)" }}>
+                <Zap size={10} color="#890b44" />
+                Our Approach
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+                <h2 className="font-black leading-none m-0"
+                  style={{ fontSize: "clamp(48px,8vw,92px)", color: "#111111", letterSpacing: "-1px" }}>
+                  HOW WE
+                  <br />
+                  <span style={{ color: "#890b44" }}>WORK</span>
+                </h2>
+                <p className="text-[13px] max-w-[320px] leading-relaxed"
+                  >
+                  A clear and systematic process — built on understanding each issue in detail and providing the right repair with precision and care.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {approachSteps.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={item.num} delay={idx * 80}>
+                  <div className="card-shine card-lift relative rounded-3xl p-7 border cursor-default h-full"
+                    style={{ background: "#fafafa", borderColor: "rgba(17,17,17,0.07)", boxShadow: "0 2px 10px rgba(17,17,17,0.04)" }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.background = item.soft;
+                      e.currentTarget.style.borderColor = item.border;
+                      e.currentTarget.style.boxShadow = `0 24px 60px ${item.accent}12`;
+                      e.currentTarget.querySelector(".approach-icon").style.background = item.soft;
+                      e.currentTarget.querySelector(".approach-icon").style.borderColor = item.border;
+                      e.currentTarget.querySelector(".approach-icon").style.color = item.accent;
+                      e.currentTarget.querySelector(".approach-num").style.color = `${item.accent}10`;
+                      e.currentTarget.querySelector(".approach-title").style.color = item.accent;
+                      e.currentTarget.querySelector(".approach-bar").style.background = item.accent;
+                      e.currentTarget.querySelector(".approach-bar").style.width = "36px";
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.background = "#fafafa";
+                      e.currentTarget.style.borderColor = "rgba(17,17,17,0.07)";
+                      e.currentTarget.style.boxShadow = "0 2px 10px rgba(17,17,17,0.04)";
+                      e.currentTarget.querySelector(".approach-icon").style.background = "#fff";
+                      e.currentTarget.querySelector(".approach-icon").style.borderColor = "rgba(17,17,17,0.08)";
+                      e.currentTarget.querySelector(".approach-num").style.color = "rgba(17,17,17,0.03)";
+                      e.currentTarget.querySelector(".approach-title").style.color = "#111111";
+                      e.currentTarget.querySelector(".approach-bar").style.background = "rgba(17,17,17,0.1)";
+                      e.currentTarget.querySelector(".approach-bar").style.width = "28px";
+                    }}
+                  >
+                    <div className="approach-num pointer-events-none select-none absolute bottom-3 right-4 font-black leading-none"
+                      style={{ fontSize: 80,  color: "rgba(17,17,17,0.03)", transition: "color .4s" }}>
+                      {item.num}
+                    </div>
+                    <div className="approach-icon w-11 h-11 rounded-xl flex items-center justify-center mb-5 border"
+                      style={{ background: "#fff", borderColor: "rgba(17,17,17,0.08)", transition: "all .4s" }}>
+                      <Icon size={20} color="rgba(17,17,17,0.3)" />
+                    </div>
+                    <div className="approach-bar rounded-full mb-4"
+                      style={{ height: 3, background: "rgba(17,17,17,0.1)", width: 28, transition: "all .4s" }} />
+                    <h4 className="approach-title font-black mb-3 leading-tight"
+                      style={{ fontSize: "clamp(17px,2vw,20px)", color: "#111111", transition: "color .3s" }}>
+                      {item.title}
+                    </h4>
+                    <p className="text-[15px] leading-relaxed" >
+                      {item.body}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════ TRUSTED SINCE 2007 ═══════════ */}
+      <section className="relative overflow-hidden px-6 sm:px-10 lg:px-16 py-24 sm:py-32" style={{ background: "#f7f7f7" }}>
+        <div className="checker-bg absolute inset-0 opacity-60" />
+        <div className="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] rounded-full"
+          style={{ background: "radial-gradient(circle at top right, rgba(137,11,68,0.07), transparent 60%)", filter: "blur(60px)" }} />
+
+        <div className="relative max-w-7xl mx-auto">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-14">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 border text-[10px] font-bold tracking-[4px] uppercase"
+                  style={{ color: "#890b44", borderColor: "rgba(137,11,68,0.2)", background: "rgba(137,11,68,0.05)" }}>
+                  <span className="pdot" style={{ background: "#890b44" }} />
+                  Trusted by Customers
+                </div>
+                <h2 className="font-black leading-none m-0 mb-6"
+                  style={{ fontSize: "clamp(40px,7vw,86px)", color: "#111111", letterSpacing: "-1px" }}>
+                  SINCE
+                  <br />
+                  <span style={{ color: "#890b44" }}>2007</span>
+                </h2>
+              </div>
+              <div className="flex flex-col gap-4 justify-center">
+                <p style={{ fontSize: 17, lineHeight: 1.85,  }}>
+                  Since 2007, KJ LED Electronic TV Services has earned a strong reputation for reliability and consistent service quality. Our long-standing presence in the industry reflects the confidence and trust that customers have placed in us over the years.
+                </p>
+                <p style={{ fontSize: 17, lineHeight: 1.85,  }}>
+                  We have built this trust by focusing on <strong style={{ color: "#111111" }}>dependable service, professional workmanship, and a commitment</strong> to meeting customer expectations every time.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {trustPillars.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={item.num} delay={idx * 90}>
+                  <div className="card-shine card-lift relative rounded-3xl p-7 border cursor-default h-full"
+                    style={{ background: "#fff", borderColor: "rgba(17,17,17,0.08)", boxShadow: "0 2px 12px rgba(17,17,17,0.05)" }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.background = item.soft;
+                      e.currentTarget.style.borderColor = item.border;
+                      e.currentTarget.style.boxShadow = `0 24px 60px ${item.accent}14`;
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.background = "#fff";
+                      e.currentTarget.style.borderColor = "rgba(17,17,17,0.08)";
+                      e.currentTarget.style.boxShadow = "0 2px 12px rgba(17,17,17,0.05)";
+                    }}
+                  >
+                    <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl"
+                      style={{ background: `linear-gradient(90deg,${item.accent},${item.accent}44)` }} />
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
+                      style={{ background: item.soft, border: `1px solid ${item.border}` }}>
+                      <Icon size={20} color={item.accent} />
+                    </div>
+                    <h4 className="font-black mb-3 leading-tight"
+                      style={{ fontSize: "clamp(18px,2vw,22px)", color: "#111111" }}>
+                      {item.title}
+                    </h4>
+                    <p className="text-[15px] leading-relaxed">
+                      {item.body}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <Reveal delay={200}>
+            <div className="mt-10 p-7 rounded-3xl border text-center"
+              style={{ background: "rgba(137,11,68,0.04)", borderColor: "rgba(137,11,68,0.15)" }}>
+              <p style={{ fontSize: 17, lineHeight: 1.85,  maxWidth: 640, margin: "0 auto" }}>
+                Our journey since 2007 stands as a testament to our{" "}
+                <strong style={{ color: "#890b44" }}>dedication, consistency, and the lasting relationships</strong>{" "}
+                we have created with our customers.
+              </p>
             </div>
           </Reveal>
         </div>
@@ -442,7 +719,7 @@ export default function KJLight() {
           <Reveal>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 border text-[10px] font-bold tracking-[4px] uppercase"
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 border text-[14px] font-bold tracking-[4px] uppercase"
                   style={{ color: "#890b44", borderColor: "rgba(137,11,68,0.2)", background: "rgba(137,11,68,0.05)" }}>
                   <Zap size={10} color="#890b44" />
                   Services
@@ -454,8 +731,8 @@ export default function KJLight() {
                   <span style={{ color: "#890b44" }}>DO BEST</span>
                 </h2>
               </div>
-              <p className="text-[13px] max-w-[260px] leading-relaxed"
-                style={{ color: "rgba(17,17,17,0.4)" }}>
+              <p className="text-[16px] max-w-[260px] leading-relaxed"
+                >
                 Four core specialisations — precision and speed, every single time.
               </p>
             </div>
@@ -489,8 +766,8 @@ export default function KJLight() {
                         }}>
                         <Icon size={22} color={isHov ? s.accent : "rgba(17,17,17,0.3)"} />
                       </div>
-                      <span className="font-black text-[11px] tracking-[3px] transition-colors duration-300"
-                        style={{ color: isHov ? s.accent : "rgba(17,17,17,0.12)", fontFamily: "'Playfair Display', serif" }}>
+                      <span className="font-black text-[14px] tracking-[3px] transition-colors duration-300"
+                        style={{ color: isHov ? s.accent : "rgba(17,17,17,0.12)" }}>
                         {s.num}
                       </span>
                     </div>
@@ -500,12 +777,12 @@ export default function KJLight() {
                       {s.title}
                     </h3>
                     <h3 className="font-black leading-none mb-5 transition-all duration-300"
-                      style={{ fontSize: "clamp(24px,3vw,36px)", color: s.accent, opacity: isHov ? 1 : 0.25 }}>
+                      style={{ fontSize: "clamp(24px,3vw,36px)" }}>
                       {s.sub}
                     </h3>
 
                     <p className="mb-6 transition-colors duration-300"
-                      style={{ fontSize: 14, lineHeight: 1.8, color: isHov ? "rgba(17,17,17,0.65)" : "rgba(17,17,17,0.35)" }}>
+                      style={{ fontSize: 16, lineHeight: 1.8,  }}>
                       {s.desc}
                     </p>
 
@@ -514,7 +791,7 @@ export default function KJLight() {
                         <span key={tag} className="tag-hover text-[9px] font-bold tracking-[2px] uppercase px-3 py-1.5 rounded-full transition-all duration-250"
                           style={{
                             background: isHov ? s.soft : "rgba(17,17,17,0.04)",
-                            color: isHov ? s.accent : "rgba(17,17,17,0.3)",
+                            
                             border: `1px solid ${isHov ? s.border : "rgba(17,17,17,0.08)"}`,
                           }}>
                           {tag}
@@ -556,10 +833,10 @@ export default function KJLight() {
               </div>
               <h2 className="font-black m-0 leading-none"
                 style={{ fontSize: "clamp(40px,7vw,86px)", color: "#111111", letterSpacing: "-1px" }}>
-                The KJ Electronics <span style={{ color: "#890b44" }}>Difference</span>
+                The KJ LED <span style={{ color: "#890b44" }}>Difference</span>
               </h2>
-              <p style={{ color: "rgba(17,17,17,0.45)", fontSize: 15, maxWidth: 400, lineHeight: 1.7 }}>
-                Four pillars that set us apart — and keep customers coming back.
+              <p style={{  fontSize: 17, maxWidth: 460, lineHeight: 1.7 }}>
+                Our approach is built on accurate problem identification, clear communication, efficient execution, and long-term customer relationships — since 2007.
               </p>
             </div>
           </Reveal>
@@ -588,7 +865,7 @@ export default function KJLight() {
                       }} />
 
                     <div className="pointer-events-none select-none absolute bottom-3 right-4 font-black leading-none transition-colors duration-300"
-                      style={{ fontSize: 80, fontFamily: "'Playfair Display', serif", color: isHov ? `${item.accent}10` : "rgba(17,17,17,0.03)" }}>
+                      style={{ fontSize: 80,  color: isHov ? `${item.accent}10` : "rgba(17,17,17,0.03)" }}>
                       {item.num}
                     </div>
 
@@ -609,8 +886,8 @@ export default function KJLight() {
                       style={{ fontSize: "clamp(18px,2vw,22px)", color: isHov ? item.accent : "#111111" }}>
                       {item.title}
                     </h4>
-                    <p className="text-[13.5px] leading-relaxed transition-colors duration-300"
-                      style={{ color: isHov ? "rgba(17,17,17,0.65)" : "rgba(17,17,17,0.4)" }}>
+                    <p className="text-[17px] leading-relaxed transition-colors duration-300"
+                      style={{ color: isHov ? "" : "black" }}>
                       {item.body}
                     </p>
                   </div>
@@ -621,77 +898,6 @@ export default function KJLight() {
         </div>
       </section>
 
-      {/* ═══════════ CTA ═══════════ */}
-      <section className="relative overflow-hidden px-6 sm:px-10 lg:px-16 py-24 sm:py-32"
-        style={{ background: "#111111" }}>
-        <div className="crimson-stripe absolute inset-0 opacity-40" />
-        <div className="pointer-events-none absolute top-0 right-0 w-[600px] h-[600px] rounded-full"
-          style={{ background: "radial-gradient(circle at top right, rgba(137,11,68,0.2), transparent 60%)", filter: "blur(60px)" }} />
-        <div className="pointer-events-none absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full"
-          style={{ background: "radial-gradient(circle at bottom left, rgba(137,11,68,0.15), transparent 60%)", filter: "blur(60px)" }} />
-
-        {/* Ghost KJ */}
-        <div className="pointer-events-none select-none absolute -bottom-6 -right-4 font-black leading-none"
-          style={{ fontSize: "clamp(100px,18vw,200px)", color: "rgba(137,11,68,0.08)", fontFamily: "'Playfair Display', serif" }}>KJ</div>
-
-        {/* Crimson vertical accent line */}
-        <div className="absolute left-0 top-0 bottom-0 w-1"
-          style={{ background: "linear-gradient(180deg, transparent, #890b44, transparent)" }} />
-
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 items-center">
-          <Reveal from="left">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 border text-[10px] font-bold tracking-[4px] uppercase"
-                style={{ color: "rgba(255,255,255,0.5)", borderColor: "rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.05)" }}>
-                Free · No Obligation
-              </div>
-
-              <h2 className="font-black leading-[0.92] mb-6"
-                style={{ fontSize: "clamp(38px,7vw,82px)", letterSpacing: "-1px" }}>
-                <span style={{ color: "#fff" }}>BRING YOUR<br />TV IN.</span>
-                <br />
-                <span style={{ color: "rgba(255,255,255,0.2)" }}>WE'LL HANDLE IT.</span>
-              </h2>
-
-              {/* Crimson divider */}
-              <div className="flex items-center gap-3 mb-6">
-                <div style={{ width: 48, height: 2, background: "#890b44", borderRadius: 9999 }} />
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#890b44" }} />
-              </div>
-
-              <p style={{ fontSize: 15, lineHeight: 1.85, maxWidth: 460, color: "rgba(255,255,255,0.45)" }}>
-                Walk in to our Coimbatore service center or call ahead. Diagnosis is always free —
-                you only pay when you're happy with the quote.
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal from="right" delay={150}>
-            <div className="flex flex-row lg:flex-col gap-3 flex-shrink-0 flex-wrap">
-              <a href="tel:+91"
-                className="btn-ink inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl text-[11px] font-black tracking-[3px] uppercase no-underline whitespace-nowrap"
-                style={{
-                  background: "#890b44",
-                  color: "#fff",
-                  boxShadow: "0 8px 28px rgba(137,11,68,0.4)",
-                }}>
-                <Phone size={14} />
-                Call Now
-              </a>
-              <button
-                className="btn-ink inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl text-[11px] font-black tracking-[3px] uppercase whitespace-nowrap"
-                style={{
-                  border: "2px solid rgba(255,255,255,0.2)",
-                  background: "rgba(255,255,255,0.06)",
-                  color: "#fff",
-                }}>
-                <MapPin size={14} color="#890b44" />
-                Get Directions
-              </button>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </div>
   );
 }
