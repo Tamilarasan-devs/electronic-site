@@ -270,7 +270,6 @@ export default function KJLight() {
         }
 
         .hero-number-bg {
-          font-family: 'Playfair Display', serif;
           font-size: clamp(200px, 35vw, 420px);
           font-weight: 900;
           color: rgba(137,11,68,0.04);
@@ -286,7 +285,7 @@ export default function KJLight() {
       `}</style>
 
       {/* ═══════════ HERO ═══════════ */}
-      <section className="relative overflow-hidden" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", background: "#fff" }}>
+      <section className="relative overflow-hidden" style={{ minHeight: "80vh", display: "flex", flexDirection: "column", justifyContent: "center", background: "#fff" }}>
         <div className="dot-bg absolute inset-0 opacity-60" />
 
         {/* Crimson blob top right */}
@@ -429,7 +428,7 @@ export default function KJLight() {
         <div className="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(circle at top right, rgba(137,11,68,0.07), transparent 60%)", filter: "blur(60px)" }} />
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2  items-center">
           <Reveal from="left">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 border text-[14px] font-bold tracking-[4px] uppercase"
@@ -626,7 +625,7 @@ export default function KJLight() {
       </section>
 
       {/* ═══════════ TRUSTED SINCE 2007 ═══════════ */}
-      <section className="relative overflow-hidden px-6 sm:px-10 lg:px-16 py-24 sm:py-32" style={{ background: "#f7f7f7" }}>
+      <section className="relative overflow-hidden px-6 py-8" style={{ background: "#f7f7f7" }}>
         <div className="checker-bg absolute inset-0 opacity-60" />
         <div className="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(circle at top right, rgba(137,11,68,0.07), transparent 60%)", filter: "blur(60px)" }} />
@@ -709,8 +708,8 @@ export default function KJLight() {
       </section>
 
       {/* ═══════════ SERVICES ═══════════ */}
-      <section id="services" className="relative overflow-hidden px-6 sm:px-10 lg:px-16 py-24 sm:py-32"
-        style={{ background: "#f7f7f7" }}>
+      <section id="services" className="relative overflow-hidden px-6   py-4 bg-black"
+        style={{ background: "#e7e2e2" }}>
         <div className="checker-bg absolute inset-0 opacity-60" />
         <div className="pointer-events-none absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(circle at bottom left, rgba(137,11,68,0.06), transparent 60%)", filter: "blur(60px)" }} />
@@ -818,7 +817,7 @@ export default function KJLight() {
       </section>
 
       {/* ═══════════ WHY US ═══════════ */}
-      <section className="relative overflow-hidden px-6 sm:px-10 lg:px-16 py-24 sm:py-32" style={{ background: "#fff" }}>
+      <section className="relative overflow-hidden px-6  py-8 " style={{ background: "#fff" }}>
         <div className="line-bg absolute inset-0 opacity-50" />
         <div className="pointer-events-none absolute top-0 right-0 w-[600px] h-[600px] rounded-full"
           style={{ background: "radial-gradient(ellipse at top right, rgba(137,11,68,0.06), transparent 60%)", filter: "blur(60px)" }} />

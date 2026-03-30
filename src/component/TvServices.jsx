@@ -120,20 +120,6 @@ export default function TVServices() {
             })}
           </div>
 
-          {/* CTA */}
-          <div className="flex gap-3 flex-wrap mt-4">
-
-            <button className="flex items-center gap-2 px-6 py-3 rounded-full text-white text-xs tracking-widest font-bold uppercase bg-gradient-to-r from-[#890b44] to-[#5a072c] shadow-lg hover:scale-105 transition">
-              <MessageSquare size={14} />
-              Contact Us
-            </button>
-
-            <button className="flex items-center gap-2 px-6 py-3 rounded-full text-xs tracking-widest font-bold uppercase border border-[#f5c2d2] bg-[#fdf2f5] text-[#890b44] hover:bg-[#890b44] hover:text-white transition">
-              <Phone size={14} />
-              Call Now
-            </button>
-
-          </div>
         </div>
       </div>
     </section>

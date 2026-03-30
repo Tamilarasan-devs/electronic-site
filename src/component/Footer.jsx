@@ -48,8 +48,6 @@ export default function Footer() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');
-
         .footer-root * { box-sizing: border-box; }
 
         /* ── Animated gradient background ── */
@@ -64,7 +62,7 @@ export default function Footer() {
             #890b44 100%
           );
           color: #fff;
-          font-family: 'DM Sans', sans-serif;
+        
         }
 
         /* subtle diagonal stripe texture */
@@ -139,7 +137,7 @@ export default function Footer() {
           font-weight: 700;
           letter-spacing: 2px;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.7);
+          color: #fff;
           transition: all .3s;
         }
         .trust-badge:hover {
@@ -191,9 +189,9 @@ export default function Footer() {
           border-color: rgba(137,11,68,0.6);
         }
         .contact-text {
-          font-size: 12.5px;
+          font-size: 15px;
           line-height: 1.55;
-          color: rgba(255,255,255,0.6);
+          color: #fff;
           transition: color .3s;
           padding-top: 4px;
         }
@@ -218,11 +216,11 @@ export default function Footer() {
           50%       { opacity: 1;   transform: scale(1.3); }
         }
         .section-label-text {
-          font-size: 10px;
+          font-size: 13px;
           font-weight: 800;
           letter-spacing: 5px;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.5);
+          color: #fff;
         }
 
         /* Nav links */
@@ -252,9 +250,9 @@ export default function Footer() {
           transform: translateX(3px);
         }
         .nav-link-text {
-          font-size: 13.5px;
+          font-size: 15px;
           font-weight: 500;
-          color: rgba(255,255,255,0.55);
+          color: #fff;
           transition: color .3s;
         }
         .nav-link:hover .nav-link-text {
@@ -263,14 +261,14 @@ export default function Footer() {
 
         /* Brand tags */
         .brand-tag {
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 700;
           letter-spacing: 1.5px;
           text-transform: uppercase;
           padding: 5px 12px;
           border-radius: 999px;
           border: 1px solid rgba(255,255,255,0.12);
-          color: rgba(255,255,255,0.5);
+          color: #fff;
           cursor: default;
           transition: all .3s;
           background: rgba(255,255,255,0.03);
@@ -333,7 +331,7 @@ export default function Footer() {
           display: flex; align-items: center; justify-content: center;
           cursor: pointer;
           transition: all .35s cubic-bezier(.16,1,.3,1);
-          color: rgba(255,255,255,0.45);
+          color: #fff;
         }
         .social-btn:hover {
           background: rgba(137,11,68,0.3);
@@ -371,7 +369,7 @@ export default function Footer() {
         }
         .footer-bottom-text {
           font-size: 12px;
-          color: rgba(255,255,255,0.3);
+          color: #fff;
           font-weight: 500;
           letter-spacing: 0.5px;
         }
@@ -380,8 +378,8 @@ export default function Footer() {
           gap: 20px;
         }
         .footer-bottom-link {
-          font-size: 11px;
-          color: rgba(255,255,255,0.25);
+          font-size: 14px;
+          color: #fff;
           font-weight: 600;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -470,7 +468,7 @@ export default function Footer() {
               </div>
 
               {/* Description */}
-              <p style={{ fontSize: 13.5, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", marginBottom: 22, maxWidth: 280 }}>
+              <p style={{ fontSize: 15, lineHeight: 1.8, color: "#fff", marginBottom: 22, maxWidth: 280 }}>
                 Trusted LED TV repair experts since 2007 — delivering dependable solutions with genuine parts, free diagnosis, and professional workmanship across all major brands.
               </p>
 
@@ -542,9 +540,9 @@ export default function Footer() {
               <div style={{ padding: "14px 16px", borderRadius: 12, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 8 }}>
                   <Clock size={12} color="#890b44" />
-                  <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "3px", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Working Hours</span>
+                  <span style={{ fontSize: 14, fontWeight: 800, letterSpacing: "3px", textTransform: "uppercase", color: "#fff" }}>Working Hours</span>
                 </div>
-                <p style={{ fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.5)" }}>
+                <p style={{ fontSize: 14, lineHeight: 1.6, color: "rgba(255,255,255,0.5)" }}>
                   Mon – Fri &nbsp;<strong style={{ color: "rgba(255,255,255,0.75)" }}>9:30 AM – 10:00 PM</strong><br />
                   Saturday &nbsp;<strong style={{ color: "rgba(255,255,255,0.75)" }}>9:30 AM – 5:00 PM</strong>
                 </p>
@@ -564,39 +562,9 @@ export default function Footer() {
                 ))}
               </div>
 
-              {/* CTA card */}
-              <div className="cta-card">
-                <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 10, padding: "4px 10px", borderRadius: 999, background: "rgba(137,11,68,0.18)", border: "1px solid rgba(137,11,68,0.35)" }}>
-                  <Zap size={10} color="#890b44" />
-                  <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "3px", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Free Diagnosis</span>
-                </div>
+          
 
-                <p style={{ fontSize: 13, lineHeight: 1.7, color: "rgba(255,255,255,0.5)", marginBottom: 14 }}>
-                  Get your TV checked before repair — completely free. No obligation, no hidden fees.
-                </p>
-
-                <button className="cta-book-btn">
-                  <Phone size={12} />
-                  Book Repair
-                  <ArrowUpRight size={12} />
-                </button>
-              </div>
-
-              {/* Map placeholder */}
-              <div style={{ marginTop: 16, borderRadius: 12, overflow: "hidden", border: "1px solid rgba(137,11,68,0.25)", background: "rgba(137,11,68,0.06)", padding: "14px 16px" }}>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                  <MapPin size={14} color="#890b44" style={{ flexShrink: 0, marginTop: 2 }} />
-                  <div>
-                    <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "3px", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 4 }}>Our Location</div>
-                    <p style={{ fontSize: 12.5, lineHeight: 1.6, color: "rgba(255,255,255,0.6)" }}>
-                      32/7 Nethaji Road, PN Pudur,<br />Coimbatore – 641 041
-                    </p>
-                    <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 4, marginTop: 8, fontSize: 10, fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "#890b44", textDecoration: "none", transition: "opacity .3s" }}>
-                      Get Directions <ArrowUpRight size={10} />
-                    </a>
-                  </div>
-                </div>
-              </div>
+              
             </div>
 
           </div>{/* end grid */}

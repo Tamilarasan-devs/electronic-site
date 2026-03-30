@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Phone, CalendarCheck, ArrowUpRight, Tv2, Sparkles } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 /* ─── DATA ─── */
 const tvBrands = [
   { name: "Samsung",   img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/250px-Samsung_wordmark.svg.png" },
@@ -54,7 +54,6 @@ function BrandCard({ brand, globalIndex, size = "md" }) {
   const [hov, setHov] = useState(false);
   const a = ACCENTS[globalIndex % ACCENTS.length];
   const isLg = size === "lg";
-
   return (
     <div
       onMouseEnter={() => setHov(true)}
@@ -205,6 +204,8 @@ export default function TVBrandCards() {
   const [marqueeRef, marqueeInView] = useInView(0.05);
   const [ctaRef, ctaInView] = useInView(0.2);
 
+
+  const navigate = useNavigate()
   return (
     <>
       <style>{`
@@ -592,9 +593,25 @@ export default function TVBrandCards() {
             </div>
 
             <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
-              <button className="btn-p"><CalendarCheck size={15} />Book a Repair</button>
-              <button className="btn-g"><Phone size={14} />Call Us<ArrowUpRight size={14} /></button>
-            </div>
+  <button
+    type="button"
+    className="btn-p"
+    onClick={() => navigate('/contact')}
+  >
+    <CalendarCheck size={15} />
+    Book a Repair
+  </button>
+
+  <button
+    type="button"
+    className="btn-g"
+    onClick={() => window.location.href = "tel:+9514698694"}
+  >
+    <Phone size={14} />
+    Call Us
+    <ArrowUpRight size={14} />
+  </button>
+</div>
           </div>
         </div>
 

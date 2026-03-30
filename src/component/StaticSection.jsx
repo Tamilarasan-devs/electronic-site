@@ -179,39 +179,7 @@ export default function StatsSection() {
       })}
     </div>
 
-    {/* CTA STRIP */}
-    <div
-      ref={ctaRef}
-      className={`mt-16 flex flex-col lg:flex-row items-center justify-between gap-6 bg-[#fdf2f7] border border-[#f3d6e3] rounded-2xl p-8
-      transition-all duration-700 ${
-        ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-    >
-
-      {/* TEXT */}
-      <div>
-        <h3 className="text-2xl font-semibold text-gray-900 mb-1">
-          Ready to get your TV fixed?
-        </h3>
-        <p className="text-gray-600">
-          Book a repair today and experience professional service.
-        </p>
-      </div>
-
-      {/* BUTTONS */}
-      <div className="flex gap-3">
-        <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#890b44] text-white text-sm font-semibold hover:bg-[#5e072e] transition shadow-md">
-          <CalendarCheck size={16} />
-          Book Repair
-        </button>
-
-        <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-[#f3d6e3] text-[#890b44] text-sm font-semibold hover:bg-[#890b44] hover:text-white transition">
-          <Phone size={16} />
-          Call Us
-        </button>
-      </div>
-
-    </div>
+  
 
   </div>
 </section>
