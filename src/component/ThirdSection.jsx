@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const stats = [
   { value: "10+",  raw: 10, suffix: "+",  label: "Years Exp.",   icon: "⚡" },
   { value: "50K+", raw: 50, suffix: "K+", label: "TVs Fixed",    icon: "📺" },
@@ -13,7 +13,7 @@ const brands = [
 ];
 
 const features = [
-  { icon: "🔧", title: "LED, LCD & Plasma",   desc: "— all panel types serviced" },
+  { icon: "🔧", title: "LED & Plasma",   desc: "— all panel types serviced" },
   { icon: "⏱",  title: "3-hour express",       desc: "same-day service available" },
   { icon: "✅", title: "Original parts only",  desc: "— no counterfeit components" },
   { icon: "🏆", title: "50,000+ repairs",      desc: "completed since 2014" },
@@ -61,6 +61,7 @@ function Counter({ raw, suffix, active }) {
   return <>{count}{suffix}</>;
 }
 
+
 export default function KJElectronics() {
   const [heroRef,     heroVisible]     = useInView(0.1);
   const [statsRef,    statsVisible]    = useInView(0.2);
@@ -68,6 +69,7 @@ export default function KJElectronics() {
   const [aboutRef,    aboutVisible]    = useInView(0.15);
   const [servicesRef, servicesVisible] = useInView(0.1);
   const [trustRef,    trustVisible]    = useInView(0.15);
+const navigate = useNavigate()
 
   return (
     <section className="bg-white text-black overflow-hidden">
@@ -96,7 +98,7 @@ export default function KJElectronics() {
         <p className={`text-xl text-gray-700 leading-relaxed max-w-xl mb-10 transition-all duration-700 delay-150
           ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
-          Coimbatore's most trusted LED & LCD TV repair specialists with{" "}
+          Coimbatore's most trusted LED  TV repair specialists with{" "}
           <strong className="text-black font-semibold">10+ years</strong> of proven excellence.
           Fast turnaround, original parts, zero compromise.
         </p>
@@ -125,14 +127,14 @@ export default function KJElectronics() {
         <div className={`flex gap-3 flex-wrap transition-all duration-700 delay-300
           ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
-          <button className="inline-flex items-center gap-2 bg-[#890b44] hover:bg-[#6e0936] active:scale-[0.98] text-white text-lg font-medium px-7 py-3.5 rounded-full transition-all">
+          <button className="inline-flex items-center gap-2 bg-[#890b44] hover:bg-[#6e0936] active:scale-[0.98] text-white text-lg font-medium px-7 py-3.5 rounded-full transition-all" onClick={() => navigate("/contact")}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
               <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
             </svg>
             Book Repair
           </button>
-          <button className="inline-flex items-center gap-2 border-[1.5px] border-[#890b44] hover:bg-[#890b44] text-[#890b44] hover:text-white text-lg font-medium px-7 py-3.5 rounded-full transition-all">
+          <button className="inline-flex items-center gap-2 border-[1.5px] border-[#890b44] hover:bg-[#890b44] text-[#890b44] hover:text-white text-lg font-medium px-7 py-3.5 rounded-full transition-all" onClick={() => navigate("/contact")}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>

@@ -5,13 +5,13 @@ import {
   ArrowUpRight, Zap, Wrench, Sparkles, ChevronRight,
   TrendingUp, Award, CheckCircle, MessageSquare, Settings, Heart
 } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 /* ── DATA ── */
 const services = [
   {
     id: 1, num: "01", icon: MonitorCheck,
     title: "Panel & Display", sub: "Repairs",
-    desc: "Complete diagnosis and restoration of LCD and LED panels — from backlight failures to full screen replacements.",
+    desc: "Complete diagnosis and restoration of  LED panels — from backlight failures to full screen replacements.",
     tags: ["LED Backlight", "Panel Swap", "Calibration"],
     accent: "#890b44", soft: "#f9eef4", border: "#e8b0cc",
   },
@@ -168,6 +168,7 @@ export default function KJLight() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
+  const navigate = useNavigate();
   return (
     <div style={{ background: "#fff", color: "#111111" }}>
       <style>{`
@@ -353,13 +354,13 @@ export default function KJLight() {
             <div className="ha5 flex flex-wrap items-center gap-4">
               <button
                 className="btn-ink flex items-center gap-2.5 px-7 py-4 rounded-2xl text-[11px] font-black tracking-[3px] uppercase"
-                style={{ background: "#890b44", color: "#fff", boxShadow: "0 8px 30px rgba(137,11,68,0.35)" }}>
+                style={{ background: "#890b44", color: "#fff", boxShadow: "0 8px 30px rgba(137,11,68,0.35)" }} onClick={()=>navigate("/contact")}>
                 <Phone size={13} />
                 Call Now
               </button>
               <button
                 className="btn-ink flex items-center gap-2.5 px-7 py-4 rounded-2xl text-[11px] font-black tracking-[3px] uppercase"
-                style={{ background: "transparent", color: "#111111", border: "2px solid #111111" }}>
+                style={{ background: "transparent", color: "#111111", border: "2px solid #111111" }} onClick={()=>navigate("/service")}>
                 Our Services
                 <ArrowUpRight size={13} />
               </button>
@@ -483,7 +484,7 @@ export default function KJLight() {
       </section>
 
       {/* ═══════════ EXPERIENCE & GROWTH ═══════════ */}
-      <section className="relative overflow-hidden px-6 sm:px-10 lg:px-16 py-24 sm:py-32" style={{ background: "#f7f7f7" }}>
+      <section className="relative overflow-hidden px-6  py-8 " style={{ background: "#f7f7f7" }}>
         <div className="checker-bg absolute inset-0 opacity-60" />
         <div className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(circle at bottom right, rgba(137,11,68,0.06), transparent 60%)", filter: "blur(60px)" }} />
@@ -540,7 +541,7 @@ export default function KJLight() {
       </section>
 
       {/* ═══════════ OUR APPROACH ═══════════ */}
-      <section className="relative overflow-hidden px-6 sm:px-10 lg:px-16 py-24 sm:py-32" style={{ background: "#fff" }}>
+      <section className="relative overflow-hidden px-6  py-8 " style={{ background: "#fff" }}>
         <div className="line-bg absolute inset-0 opacity-50" />
         <div className="pointer-events-none absolute top-0 left-0 w-[600px] h-[600px] rounded-full"
           style={{ background: "radial-gradient(ellipse at top left, rgba(137,11,68,0.06), transparent 60%)", filter: "blur(60px)" }} />
@@ -560,7 +561,7 @@ export default function KJLight() {
                   <br />
                   <span style={{ color: "#890b44" }}>WORK</span>
                 </h2>
-                <p className="text-[13px] max-w-[320px] leading-relaxed"
+                <p className="text-xl max-w-[420px] leading-relaxed"
                   >
                   A clear and systematic process — built on understanding each issue in detail and providing the right repair with precision and care.
                 </p>

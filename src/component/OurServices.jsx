@@ -2,6 +2,7 @@ import React from "react";
 import { Import, Tv } from "lucide-react";
 import uv from '../assets/images/VuTv_logo.avif'
 import bg from '../assets/images/electric.webp'
+import { useNavigate } from "react-router-dom";
 const services = [
   {
     name: "Samsung LED TV Service in Coimbatore",
@@ -84,6 +85,8 @@ const services = [
 
 
 export default function OurServices() {
+
+  const navigate = useNavigate()
   return (
     <section className="w-full  py-24 px-6 md:px-12 relative overflow-hidden">
 
@@ -210,10 +213,10 @@ export default function OurServices() {
           <div className="relative flex items-center gap-4 shrink-0">
             <button className="px-7 py-3 text-white text-xs font-bold tracking-[3px] uppercase rounded-full transition-all duration-300
               bg-[#890b44] shadow-[0_8px_28px_rgba(42,71,113,0.30)]
-              hover:bg-[#3d5f96] hover:shadow-[0_12px_36px_rgba(42,71,113,0.45)] hover:-translate-y-0.5">
+              hover:bg-[#3d5f96] hover:shadow-[0_12px_36px_rgba(42,71,113,0.45)] hover:-translate-y-0.5" onClick={() => navigate("/contact")}>
               Book a Repair
             </button>
-            <button className="group/sec flex items-center gap-2 text-gray-600 hover:text-[#2a4771] text-md tracking-[2px] uppercase font-semibold transition-all duration-300">
+            <button className="group/sec flex items-center gap-2 text-gray-600 hover:text-[#2a4771] text-md tracking-[2px] uppercase font-semibold transition-all duration-300" onClick={() => navigate("/contact")}>
               Call Us
               <span className="relative inline-block w-5 h-px bg-gray-300 group-hover/sec:bg-[#2a4771] group-hover/sec:w-8 transition-all duration-300">
                 <span className="absolute right-0 top-[-3px] w-1.5 h-1.5 border-t border-r border-gray-300 group-hover/sec:border-[#2a4771] rotate-45 inline-block transition-colors duration-300" />
