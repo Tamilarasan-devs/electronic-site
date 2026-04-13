@@ -575,7 +575,7 @@ export default function Footer() {
           <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(137,11,68,0.4), rgba(255,255,255,0.08), rgba(137,11,68,0.4), transparent)" }} />
           <div className="footer-bottom">
             <span className="footer-bottom-text">
-              © 2025 KJ LED Electronic TV Services · Coimbatore. All rights reserved.
+                © {new Date().getFullYear()} Fruition Globs Coimbatore. All rights reserved.
             </span>
             <div className="footer-bottom-links">
               <a href="#" className="footer-bottom-link">Privacy</a>

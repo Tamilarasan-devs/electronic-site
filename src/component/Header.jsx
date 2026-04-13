@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 // ── Inline SVGs ──────────────────────────────────────────────
 const TvIcon = () => (
-  <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+  <svg className="w-5 h-5 text-[#890b44]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
     <rect x="2" y="3" width="20" height="14" rx="2" />
     <path d="M8 21h8M12 17v4" />
   </svg>
@@ -90,7 +90,7 @@ export default function Header() {
 
           {/* ════ LOGO ════ */}
           <Link to="/" className="flex items-center gap-3 group shrink-0 no-underline">
-            <div className="w-11 h-11 rounded-2xl bg-slate-900 flex items-center justify-center shadow-[0_4px_14px_rgba(15,23,42,0.25)] group-hover:-rotate-6 group-hover:scale-105 transition-all duration-300">
+            <div className="w-11 h-11 rounded-2xl  flex items-center justify-center shadow-[0_4px_14px_rgba(15,23,42,0.25)] group-hover:-rotate-6 group-hover:scale-105 transition-all duration-300">
               <TvIcon />
             </div>
             <div className="flex flex-col">
