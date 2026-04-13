@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  Facebook, Twitter, Instagram, Youtube,
+  Facebook, Twitter, Instagram, Youtube,  MessageCircle,
   Phone, MapPin, Mail, Tv2, ArrowUpRight,
   ChevronRight, Zap, Clock, Shield, Star, Wrench
 } from "lucide-react";
@@ -16,11 +16,14 @@ const contactItems = [
   { Icon: Clock,  text: "Mon–Fri 9:30 AM–10:00 PM · Sat 9:30 AM–5:00 PM", label: "Hours"   },
 ];
 
+const phoneNumber='9514698694'
+const message = "Hi, I need TV repair service";
 const socials = [
-  { Icon: Facebook,  label: "Facebook",  href: "#" },
-  { Icon: Instagram, label: "Instagram", href: "#" },
-  { Icon: Youtube,   label: "YouTube",   href: "#" },
-  { Icon: Twitter,   label: "Twitter",   href: "#" },
+  // { Icon: Facebook,  label: "Facebook",  href: "#" },
+  { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/_kj_electronics?igsh=MTRjOWpwbDhhdjBoaA==&utm_source=ig_contact_invite" },
+  // { Icon: Youtube,   label: "YouTube",   href: "#" },
+  // { Icon: Twitter,   label: "Twitter",   href: "#" },
+  { Icon: MessageCircle,  label: "WhatsApp",  href: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}` },
 ];
 
 const trustBadges = [
